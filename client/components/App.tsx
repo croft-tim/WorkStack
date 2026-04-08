@@ -1,3 +1,5 @@
+import { useFruits } from '../hooks/useFruits.ts'
+import JobSummary from './Job.tsx'
 import { Link } from 'react-router'
 
 function App() {
