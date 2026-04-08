@@ -1,0 +1,50 @@
+import { Job } from '../../models/job'
+
+export const mockJobs: Job[] = [
+  {
+    id: 'JOB-001',
+    title: 'Rewire Kitchen',
+    client: 'Sarah Jenkins',
+    location: '123 Oak St, Suburb',
+    priority: 'High',
+    status: 'Todo',
+    dueDate: '2026-04-10',
+    description: 'Complete rewiring of the kitchen area including new power points.',
+  },
+  {
+    id: 'JOB-002',
+    title: 'Install Solar Panels',
+    client: 'David Miller',
+    location: '45 Pine Ave, Heights',
+    priority: 'Medium',
+    status: 'In Progress',
+    dueDate: '2026-04-12',
+  },
+  {
+    id: 'JOB-003',
+    title: 'Emergency Leak Fix',
+    client: 'Emily Chen',
+    location: '78 River Rd, Downtown',
+    priority: 'High',
+    status: 'In Progress',
+    dueDate: '2026-04-09',
+  },
+  {
+    id: 'JOB-004',
+    title: 'Annual HVAC Checkup',
+    client: 'Westside Office Park',
+    location: '900 Business Pkwy',
+    priority: 'Low',
+    status: 'Review',
+    dueDate: '2026-04-15',
+  },
+  {
+    id: 'JOB-005',
+    title: 'Bathroom Renovations',
+    client: 'Robert Taylor',
+    location: '12 Bluebay Dr',
+    priority: 'Medium',
+    status: 'Done',
+    dueDate: '2026-04-05',
+  },
+]
