@@ -10,7 +10,10 @@ function App() {
         <h1 className="text-3xl font-bold underline">
           Fullstack Boilerplate - with Fruits!
         </h1>
-        <JobSummary />
+        <div className="mt-6 flex flex-col gap-4">
+          <JobSummary title="Job 1" dueDate="9/4" status="Awaiting Payment" />
+          <JobSummary title="Job 2" dueDate="12/4" status="In Progress" />
+        </div>
         <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul>
       </div>
     </>

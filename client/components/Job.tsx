@@ -10,7 +10,7 @@ export default function JobSummary({
   status,
 }: JobSummaryProps) {
   return (
-    <div className="mx-auto flex max-w-4xl items-center justify-between gap-6 rounded-md bg-zinc-100 p-4">
+    <div className="flex w-full items-center justify-between gap-6 rounded-md border border-zinc-400 bg-zinc-100 p-4">
       <div className="flex min-w-[180px] items-center gap-4">
         <h2 className="text-3xl font-medium">{title}</h2>
         <p className="text-lg text-zinc-700">Due: {dueDate}</p>
