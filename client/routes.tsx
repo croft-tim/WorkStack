@@ -8,6 +8,6 @@ export default createRoutesFromElements(
   <Route path="/" element={<Layout />}>
     <Route index element={<App />} />
     <Route path="kanban" element={<KanbanBoard />} />
-    <Route path='customers' element={<CustomerList />} />
+    <Route path="customers" element={<CustomerList />} />
   </Route>,
 )
