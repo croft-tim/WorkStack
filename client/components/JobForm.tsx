@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
+import { Job, JobData } from '../../models/job'
 
-const defaultEventData = {
-  tradieId: 'tradie_1',
-  customerId: 'customer_1',
+const defaultJobData: JobData = {
+  tradieId: 1,
+  customerId: 1,
   status: 'new',
   title: '',
   quote: 0,
@@ -11,14 +12,35 @@ const defaultEventData = {
   endDate: '',
 }
 
+interface JobFormProps {
+  initialData?: Partial<Job>
+  onSubmit: (data: JobData) => void
+}
+
 const status = ['New', 'In Progress', 'Billed', 'Paid', 'Done']
 
-export default function JobForm() {
-  const [formData, setFormData] = useState(defaultEventData)
+export default function JobForm({ initialData, onSubmit }: JobFormProps) {
+  const [formData, setFormData] = useState<JobData>({
+    ...defaultJobData,
+    ...initialData,
+  })
 
-  function handleChange() {}
+  function handleChange(
+    evt: ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) {
+    const { name, value } = evt.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
 
-  function handleSubmit() {}
+  function handleSubmit(evt: FormEvent) {
+    evt.preventDefault()
+    onSubmit(formData)
+  }
 
   return (
     <form onSubmit={handleSubmit} className="form">

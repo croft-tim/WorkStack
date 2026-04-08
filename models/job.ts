@@ -1,13 +1,27 @@
-export type Priority = 'High' | 'Medium' | 'Low'
-export type JobStatus = 'Todo' | 'In Progress' | 'Review' | 'Done'
-
-export interface Job {
-  id: string
+export interface JobData {
+  tradieId: number
+  customerId: number
+  status: string
   title: string
-  client: string
-  location: string
-  priority: Priority
-  status: JobStatus
-  dueDate: string
-  description?: string
+  quote: number
+  notes: string
+  startDate: string
+  endDate: string
+}
+
+export interface Job extends JobData {
+  id: number
+}
+
+export interface CustomerData {
+  name: string
+  address: string
+  phone: string
+  email: string
+  notes: string
+  rating: number
+}
+
+export interface Customer extends CustomerData {
+  id: number
 }
