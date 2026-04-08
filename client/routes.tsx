@@ -1,7 +1,7 @@
 import { createRoutesFromElements, Route } from 'react-router'
+import Layout from './components/Layout.tsx'
 import App from './components/App.tsx'
 import KanbanBoard from './components/KanbanBoard.tsx'
-import Layout from './components/Layout.tsx'
 
 export default createRoutesFromElements(
   <Route path="/" element={<Layout />}>
