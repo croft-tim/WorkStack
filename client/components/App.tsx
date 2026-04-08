@@ -1,4 +1,5 @@
 import { useFruits } from '../hooks/useFruits.ts'
+import JobSummary from './Job.tsx'
 
 function App() {
   const { data } = useFruits()
@@ -9,6 +10,7 @@ function App() {
         <h1 className="text-3xl font-bold underline">
           Fullstack Boilerplate - with Fruits!
         </h1>
+        <JobSummary />
         <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul>
       </div>
     </>
