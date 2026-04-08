@@ -1,10 +1,16 @@
-import { Customer } from '../../models/customer'
+import { useParams } from "react-router";
 
-interface Props {
-  customer: Customer
-}
+export default function CustomerView() {
+  const { id } = useParams()
+  const { data, isPending, isError, error } = useCustomerById(Number(id))
 
-export default function CustomerCard({ customer }: Props) {
+  if (isPending) {
+    return <p>Loading...</p>
+  }
+  if (isError) {
+    return <p>Error: {error.message}</p>
+  }
+
   return (
     <div className="group relative flex max-w-md flex-col gap-3 rounded-lg border border-zinc-800 bg-zinc-900 p-4 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-black/20">
       <div className="flex items-start justify-between">
@@ -41,7 +47,7 @@ export default function CustomerCard({ customer }: Props) {
           {customer.phone}
         </div>
         {customer.notes && (
-          <p className="mt-1 text-[11px] text-zinc-400 italic">{customer.notes}</p>
+          <p className="mt-1 text-[11px] text-zinc-400 italic">"{customer.notes}"</p>
         )}
       </div>
     </div>
