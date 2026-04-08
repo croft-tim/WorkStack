@@ -4,7 +4,7 @@ export async function seed(knex) {
   // Deletes ALL existing entries
   await knex('jobs').del()
 
-  const jobStatus = ['New' | 'Quoted' | 'Awaiting Inspection' | 'Done']
+  const jobStatus = ['New', 'Quoted', 'Awaiting Inspection', 'Done']
   const jobs = [
     {
       id: 1,

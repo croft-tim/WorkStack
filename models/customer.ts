@@ -15,3 +15,7 @@ export interface Customer {
 //     email: 'real@beanmail.com',
 //     notes: '',
 //     rating: 7.5,
+
+export interface CustomerSearch {
+  id?: string
+}

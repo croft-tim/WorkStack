@@ -31,7 +31,7 @@ export default function NavHeader({ showToolbar = true }: Props) {
             <Link to="/" className="transition-colors hover:text-zinc-200">
               Analytics
             </Link>
-            <Link to="/" className="transition-colors hover:text-zinc-200">
+            <Link to="/customers" className="transition-colors hover:text-zinc-200">
               Customers
             </Link>
             <Link to="/" className="transition-colors hover:text-zinc-200">
