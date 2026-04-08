@@ -9,7 +9,7 @@ const navLinks = [
   { label: 'Dashboard', to: '/' },
   { label: 'Board', to: '/kanban' },
   { label: 'Jobs', to: '/jobs' },
-  { label: 'Clients', to: '/clients' },
+  { label: 'Customers', to: '/customers' },
   { label: 'Costs', to: '/costs' },
   { label: 'Invoices', to: '/invoices' },
   { label: 'Analytics', to: '/analytics' },
