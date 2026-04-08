@@ -2,7 +2,7 @@ export type Priority = 'High' | 'Medium' | 'Low'
 export type JobStatus = 'Todo' | 'In Progress' | 'Review' | 'Done'
 
 export interface Job {
-  id: string
+  id: number
   title: string
   client: string
   location: string

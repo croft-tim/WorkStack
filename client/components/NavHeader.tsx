@@ -32,7 +32,7 @@ export default function NavHeader({ showToolbar = true }: Props) {
               Analytics
             </Link>
             <Link to="/" className="transition-colors hover:text-zinc-200">
-              Clients
+              Customers
             </Link>
             <Link to="/" className="transition-colors hover:text-zinc-200">
               Invoices
