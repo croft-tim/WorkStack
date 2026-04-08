@@ -1,11 +1,10 @@
 import { Outlet } from 'react-router'
+import Header from './Header.tsx'
 
 export default function Layout() {
   return (
     <>
-      <header>
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-      </header>
+      <Header />
       <main>
         <Outlet />
       </main>
