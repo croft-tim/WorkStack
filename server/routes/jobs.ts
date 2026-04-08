@@ -58,7 +58,7 @@ router.patch('/', async (req, res, next) => {
 router.delete('/', async (req, res, next) => {
   try {
     const data = req.body
-    const id = await db.addjob(data)
+    const id = await db.deleteJobById(data)
     res
       .setHeader('Location', `${req.baseUrl}/${id}`)
       .sendStatus(StatusCodes.NO_CONTENT)
