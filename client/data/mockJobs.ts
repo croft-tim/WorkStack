@@ -1,13 +1,13 @@
 import { Job } from '../../models/job'
 
-export const mockJobs: Job[] = [
+export const mockJobs = [
   {
     id: 'JOB-001',
     title: 'Rewire Kitchen',
     client: 'Sarah Jenkins',
     location: '123 Oak St, Suburb',
     priority: 'High',
-    status: 'Todo',
+    status: 'New',
     dueDate: '2026-04-10',
     description: 'Complete rewiring of the kitchen area including new power points.',
   },
@@ -35,7 +35,7 @@ export const mockJobs: Job[] = [
     client: 'Westside Office Park',
     location: '900 Business Pkwy',
     priority: 'Low',
-    status: 'Review',
+    status: 'Quoted',
     dueDate: '2026-04-15',
   },
   {
@@ -44,7 +44,7 @@ export const mockJobs: Job[] = [
     client: 'Robert Taylor',
     location: '12 Bluebay Dr',
     priority: 'Medium',
-    status: 'Done',
+    status: 'Completed',
     dueDate: '2026-04-05',
   },
 ]
