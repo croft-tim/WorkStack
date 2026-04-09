@@ -4,6 +4,7 @@ import KanbanBoard from './components/KanbanBoard.tsx'
 import Layout from './components/Layout.tsx'
 import CustomerList from './components/CustomerList.tsx'
 import CustomerView from './components/CustomerView.tsx'
+import NewJobPage from './components/NewJobPage.tsx'
 
 export default createRoutesFromElements(
   <Route path="/" element={<Layout />}>
@@ -11,5 +12,6 @@ export default createRoutesFromElements(
     <Route path="kanban" element={<KanbanBoard />} />
     <Route path='customers' element={<CustomerList />} />
     <Route path='customer/:id' element={<CustomerView />} />
+    <Route path="/jobs/new" element={<NewJobPage />} />
   </Route>,
 )
