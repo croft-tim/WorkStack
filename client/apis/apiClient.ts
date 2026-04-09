@@ -7,8 +7,10 @@ const rootURL = new URL(`/api/v1`, document.baseURI)
 // Jobs
 export async function getJobs() {
   const response = await request.get(`${rootURL}/jobs`)
-  return response.body.jobs as Job[]
+  return response.body as Job[]
 }
+
+//Tim here I have changed return response.body.jobs as Job[] and removed .jobs
 
 export async function getJobById(id: number) {
   const response = await request.get(`${rootURL}/jobs/${id}`)
@@ -31,7 +33,6 @@ export async function updateJobById(updatedJob: Job): Promise<Job> {
     .send(updatedJob)
   return response.body as Job
 }
-
 
 // Customers
 const customerURL = `${rootURL}/customers`
