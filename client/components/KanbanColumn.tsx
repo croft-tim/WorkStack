@@ -8,9 +8,9 @@ interface Props {
 
 export default function KanbanColumn({ status, jobs }: Props) {
   const statusColors = {
-    Todo: 'bg-zinc-500',
-    'In Progress': 'bg-amber-500',
-    Review: 'bg-blue-500',
+    New: 'bg-zinc-500',
+    Quoted: 'bg-amber-500',
+    'Awaiting Inspection': 'bg-blue-500',
     Done: 'bg-emerald-500',
   }
 
@@ -43,7 +43,7 @@ export default function KanbanColumn({ status, jobs }: Props) {
         </button>
       </div>
 
-      <div className="flex flex-col gap-3 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
+      <div className="scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent flex flex-col gap-3 overflow-y-auto pr-1">
         {jobs.map((job) => (
           <KanbanCard key={job.id} job={job} />
         ))}

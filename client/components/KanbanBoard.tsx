@@ -3,7 +3,7 @@ import { mockJobs } from '../data/mockJobs'
 import KanbanColumn from './KanbanColumn'
 
 export default function KanbanBoard() {
-  const statuses: JobStatus[] = ['Todo', 'In Progress', 'Review', 'Done']
+  const statuses: JobStatus[] = ['New', 'Quoted', 'Awaiting Inspection', 'Done']
 
   return (
     <div className="flex h-full flex-col bg-zinc-950 font-sans text-zinc-100">
