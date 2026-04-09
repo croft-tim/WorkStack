@@ -16,7 +16,7 @@ export async function getJobById(id: number) {
 
 export async function addJob(newJob: JobData) {
   const response = await request.post(`${rootURL}/jobs`).send(newJob)
-  return response.body as Job
+  return response.body as number
 }
 
 export async function deleteJobById(id: number) {
