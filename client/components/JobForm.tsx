@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { Job, JobData } from '../../models/job'
+import { Job, JobData, statuses } from '../../models/job'
 
 const defaultJobData: JobData = {
   tradieId: 1,
@@ -16,8 +16,6 @@ interface JobFormProps {
   initialData?: Partial<Job>
   onSubmit: (data: JobData) => void
 }
-
-const status = ['New', 'Quoted', 'Awaiting Inspection', 'Done']
 
 export default function JobForm({ initialData, onSubmit }: JobFormProps) {
   const [formData, setFormData] = useState<JobData>({
@@ -142,9 +140,9 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
            text-zinc-100 placeholder:text-zinc-600
            focus:border-amber-500 focus:outline-none"
                 >
-                  {status.map((stt) => (
-                    <option key={stt} value={stt}>
-                      {stt}
+                  {statuses.map((status) => (
+                    <option key={status} value={status}>
+                      {status}
                     </option>
                   ))}
                 </select>

@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { status } from '../../../client/data/status'
+import { statuses } from '../../../models/job'
 
 export async function seed(knex) {
   // Deletes ALL existing entries
@@ -33,7 +33,7 @@ export async function seed(knex) {
       id: i,
       tradie_id: 1, // Currently only one tradie in seeds
       customer_id: faker.number.int({ min: 0, max: 14 }), // 0 to 14 from customers seed
-      status: faker.helpers.arrayElement(status),
+      status: faker.helpers.arrayElement(statuses),
       title: faker.commerce.productName() + ' Repair',
       quote: faker.number.int({ min: 50, max: 1000 }),
       notes: faker.lorem.sentence(),
