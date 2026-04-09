@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { Job, JobData, statuses } from '../../models/job'
+import { Job, JobData, statuses } from '../../models/job.ts'
 
 const defaultJobData: JobData = {
   tradieId: 1,
