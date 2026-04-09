@@ -1,7 +1,7 @@
 export interface JobData {
   tradieId: number
   customerId: number
-  status: string
+  status: JobStatus
   title: string
   quote: number
   notes: string
