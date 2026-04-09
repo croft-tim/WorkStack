@@ -1,16 +1,16 @@
 import { faker } from '@faker-js/faker'
+import { status } from '../../../client/data/status'
 
 export async function seed(knex) {
   // Deletes ALL existing entries
   await knex('jobs').del()
 
-  const jobStatus = ['New', 'Quoted', 'Awaiting Inspection', 'Done']
   const jobs = [
     {
       id: 1,
       tradie_id: 1,
       customer_id: 1,
-      status: 'Awaiting inspection',
+      status: 'Quoted',
       title: 'Broken Faucet',
       quote: 85,
       notes: '',
@@ -33,7 +33,7 @@ export async function seed(knex) {
       id: i,
       tradie_id: 1, // Currently only one tradie in seeds
       customer_id: faker.number.int({ min: 0, max: 14 }), // 0 to 14 from customers seed
-      status: faker.helpers.arrayElement(jobStatus),
+      status: faker.helpers.arrayElement(status),
       title: faker.commerce.productName() + ' Repair',
       quote: faker.number.int({ min: 50, max: 1000 }),
       notes: faker.lorem.sentence(),
