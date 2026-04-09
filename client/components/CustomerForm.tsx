@@ -1,27 +1,26 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { Customer, CustomerData } from '../../models/customer'
 
-const defaultCustomerData: JobData = {
-  tradieId: 1,
-  customerId: 1,
-  status: 'New',
-  title: '',
-  quote: 0,
+const defaultCustomerData: CustomerData = {
+  name: '',
+  address: '',
+  phone: '',
+  email: '',
   notes: '',
-  startDate: '',
-  endDate: '',
+  rating: 0,
 }
 
-interface JobFormProps {
-  initialData?: Partial<Job>
-  onSubmit: (data: JobData) => void
+interface CustomerFormProps {
+  initialData?: Partial<Customer>
+  onSubmit: (data: CustomerData) => void
 }
 
-const status = ['New', 'Quoted', 'Awaiting Inspection', 'Done']
-
-export default function JobForm({ initialData, onSubmit }: JobFormProps) {
-  const [formData, setFormData] = useState<JobData>({
-    ...defaultJobData,
+export default function CustomerForm({
+  initialData,
+  onSubmit,
+}: CustomerFormProps) {
+  const [formData, setFormData] = useState<CustomerData>({
+    ...defaultCustomerData,
     ...initialData,
   })
 
@@ -49,10 +48,10 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
       <div className="mx-auto max-w-2xl">
         <div className="mb-6">
           <p className="text-xs text-zinc-500">
-            Jobs / {isEditing ? 'Edit' : 'New'}
+            Customers / {isEditing ? 'Edit' : 'New'}
           </p>
           <h1 className="text-xl font-medium text-zinc-50">
-            {isEditing ? 'Edit job' : 'Create job'}
+            {isEditing ? 'Edit customer' : 'Create customer'}
           </h1>
         </div>
 
@@ -60,7 +59,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div className="flex flex-col gap-1.5">
               <label
-                htmlFor="title"
+                htmlFor="name"
                 className="text-xs font-medium text-zinc-400"
               >
                 Job title
@@ -96,99 +95,6 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
            text-zinc-100 placeholder:text-zinc-600
            focus:border-amber-500 focus:outline-none"
               />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="quote"
-                  className="text-xs font-medium text-zinc-400"
-                >
-                  Quote
-                </label>
-                <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-zinc-400">
-                    $
-                  </span>
-                  <input
-                    type="number"
-                    id="quote"
-                    name="quote"
-                    placeholder="0.00"
-                    min={0}
-                    step={0.01}
-                    onChange={handleChange}
-                    value={formData.quote}
-                    className="rounded-lg border border-zinc-700 bg-zinc-950 py-2 pl-7 pr-3 text-sm
-           text-zinc-100 placeholder:text-zinc-600
-           focus:border-amber-500 focus:outline-none"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="status"
-                  className="text-xs font-medium text-zinc-400"
-                >
-                  Status
-                </label>
-                <select
-                  id="status"
-                  name="status"
-                  value={formData.status}
-                  onChange={handleChange}
-                  className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm
-           text-zinc-100 placeholder:text-zinc-600
-           focus:border-amber-500 focus:outline-none"
-                >
-                  {status.map((stt) => (
-                    <option key={stt} value={stt}>
-                      {stt}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="startDate"
-                  className="text-xs font-medium text-zinc-400"
-                >
-                  Start date
-                </label>
-                <input
-                  type="date"
-                  id="startDate"
-                  name="startDate"
-                  onChange={handleChange}
-                  value={formData.startDate}
-                  className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm
-           text-zinc-100 [color-scheme:dark]
-           placeholder:text-zinc-600 focus:border-amber-500 focus:outline-none"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label
-                  htmlFor="endDate"
-                  className="text-xs font-medium text-zinc-400"
-                >
-                  End date
-                </label>
-                <input
-                  type="date"
-                  id="endDate"
-                  name="endDate"
-                  onChange={handleChange}
-                  value={formData.endDate}
-                  className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm
-           text-zinc-100 [color-scheme:dark]
-           placeholder:text-zinc-600 focus:border-amber-500 focus:outline-none"
-                />
-              </div>
             </div>
 
             <div className="flex justify-end gap-2 border-t border-zinc-800 pt-5">
