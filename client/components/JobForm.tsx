@@ -17,7 +17,7 @@ interface JobFormProps {
   onSubmit: (data: JobData) => void
 }
 
-const status = ['New', 'In Progress', 'Billed', 'Paid', 'Done']
+const status = ['New', 'Quoted', 'Awaiting Inspection', 'Done']
 
 export default function JobForm({ initialData, onSubmit }: JobFormProps) {
   const [formData, setFormData] = useState<JobData>({

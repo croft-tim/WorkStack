@@ -12,8 +12,6 @@ export async function seed(knex) {
       customer_id: 1,
       status: 'Awaiting inspection',
       title: 'Broken Faucet',
-      problem: 'Customer states that the faucet is broken? Inspection required',
-      inspection: 'Found valve to be siezed, replacment ordered.',
       quote: 85,
       notes: '',
       start_date: '2026-04-08',
@@ -24,7 +22,10 @@ export async function seed(knex) {
   // const statuses = ['Awaiting inspection', 'In progress', 'Completed', 'Awaiting parts', 'Cancelled']
 
   for (let i = 2; i <= 10; i++) {
-    const startDate = faker.date.between({ from: '2026-01-01', to: '2026-06-30' })
+    const startDate = faker.date.between({
+      from: '2026-01-01',
+      to: '2026-06-30',
+    })
     const endDate = new Date(startDate)
     endDate.setDate(startDate.getDate() + faker.number.int({ min: 1, max: 14 }))
 
@@ -34,8 +35,6 @@ export async function seed(knex) {
       customer_id: faker.number.int({ min: 0, max: 14 }), // 0 to 14 from customers seed
       status: faker.helpers.arrayElement(jobStatus),
       title: faker.commerce.productName() + ' Repair',
-      problem: faker.lorem.sentence(),
-      inspection: faker.lorem.sentence(),
       quote: faker.number.int({ min: 50, max: 1000 }),
       notes: faker.lorem.sentence(),
       start_date: startDate.toISOString().split('T')[0],
