@@ -70,7 +70,10 @@ export default function Header({ showToolbar = true }: Props) {
 
         {/* Right side actions */}
         <div className="flex items-center gap-4">
-          <button className="flex items-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-sm font-bold text-white transition-all hover:bg-amber-400">
+          <Link
+            to="/jobs/new"
+            className="flex items-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-sm font-bold text-white transition-all hover:bg-amber-400"
+          >
             <svg
               className="h-4 w-4"
               fill="none"
@@ -85,10 +88,13 @@ export default function Header({ showToolbar = true }: Props) {
               />
             </svg>
             New Job
-          </button>
-          <button className="rounded-lg bg-slate-500 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-slate-600">
-            Clients
-          </button>
+          </Link>
+          <Link
+            to="/customers"
+            className="rounded-lg bg-slate-500 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-slate-600"
+          >
+            Customers
+          </Link>
 
           {/* Profile avatar placeholder */}
           <button
