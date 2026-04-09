@@ -13,4 +13,12 @@ export interface Job extends JobData {
   id: number
 }
 
-export type JobStatus = 'New' | 'Quoted' | 'Awaiting Inspection' | 'Done'
+export const statuses = [
+  'New',
+  'Quoted',
+  'In Progress',
+  'Invoiced',
+  'Completed',
+] as const
+
+export type JobStatus = (typeof statuses)[number]
