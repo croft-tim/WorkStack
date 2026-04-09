@@ -145,7 +145,7 @@ const jobs: ViewJobData[] = [
 ]
 
 export default function ViewJob() {
-  const { id } = useParams()
+  const id = 'JOB-001'
   const job = jobs.find((job) => job.id === id)
 
   if (!job) {
