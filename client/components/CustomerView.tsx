@@ -1,8 +1,9 @@
 import { useParams } from "react-router";
+import { useCustomerById } from "../hooks/useCustomer";
 
 export default function CustomerView() {
   const { id } = useParams()
-  const { data, isPending, isError, error } = useCustomerById(Number(id))
+  const { data: customer, isPending, isError, error } = useCustomerById(Number(id))
 
   if (isPending) {
     return <p>Loading...</p>
