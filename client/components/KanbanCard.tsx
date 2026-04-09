@@ -1,4 +1,5 @@
 import { Job } from '../../models/job'
+import { Link } from 'react-router'
 import { useDeleteJob } from '../hooks/useDeleteJob'
 
 interface Props {
@@ -79,9 +80,12 @@ export default function KanbanCard({ job }: Props) {
           Change Status
         </button>
 
-        <button className="rounded-md border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-xs text-zinc-200 transition hover:bg-zinc-700">
+        <Link
+          to={`/jobs/${job.id}`}
+          className="rounded-md border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-xs text-zinc-200 transition hover:bg-zinc-700"
+        >
           Open
-        </button>
+        </Link>
 
         <button
           onClick={() => {

@@ -20,10 +20,10 @@ router.get('/:id', async (req, res, next) => {
   try {
     const id = Number(req.params.id)
 
-    if (Number.isNaN(id)) {
-      res.status(400).json({ message: 'Invalid job id' })
-      return
-    }
+    // if (Number.isNaN(id)) {
+    //   res.status(400).json({ message: 'Invalid job id' })
+    //   return
+    // }
 
     const job = await db.getJobById(id)
 
