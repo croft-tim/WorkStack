@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { Job, JobData, statuses } from '../../models/job.ts'
 import { useCustomer } from '../hooks/useCustomer.ts'
+import { Link } from 'react-router'
 
 const defaultJobData: JobData = {
   tradieId: 1,
@@ -219,13 +220,14 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
             </div>
 
             <div className="flex justify-end gap-2 border-t border-zinc-800 pt-5">
-              <button
+              <Link
+                to="/kanban"
                 type="button"
                 className="rounded-lg border border-zinc-700 px-4 py-2 text-sm
            font-medium text-zinc-400 hover:bg-zinc-800"
               >
                 Cancel
-              </button>
+              </Link>
               <button
                 type="submit"
                 className="rounded-lg bg-amber-500 px-5 py-2 text-sm font-medium text-white hover:bg-amber-400"
