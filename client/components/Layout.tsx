@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router'
-import NavHeader from './NavHeader'
+import Header from './Header'
 
 export default function Layout() {
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-950 font-sans text-zinc-100">
-      <NavHeader />
-      <main className="flex-1 overflow-hidden">
+    <div className="flex min-h-screen flex-col bg-white font-sans">
+      <Header />
+      <main className="flex-1 overflow-hidden bg-zinc-950">
         <Outlet />
       </main>
     </div>
