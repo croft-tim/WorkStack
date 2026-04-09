@@ -13,17 +13,4 @@ export interface Job extends JobData {
   id: number
 }
 
-export interface CustomerData {
-  name: string
-  address: string
-  phone: string
-  email: string
-  notes: string
-  rating: number
-}
-
-export interface Customer extends CustomerData {
-  id: number
-}
-
 export type JobStatus = 'New' | 'Quoted' | 'Awaiting Inspection' | 'Done'

@@ -1,5 +1,8 @@
-export interface Customer {
-  id: number
+export interface CustomerSearch {
+  id?: string
+}
+
+export interface CustomerData {
   name: string
   address: string
   phone: string
@@ -8,14 +11,6 @@ export interface Customer {
   rating: number
 }
 
-//     id: 1,
-//     name: 'Jessie',
-//     address: '69 place over there',
-//     phone: '0210231212',
-//     email: 'real@beanmail.com',
-//     notes: '',
-//     rating: 7.5,
-
-export interface CustomerSearch {
-  id?: string
+export interface Customer extends CustomerData {
+  id: number
 }

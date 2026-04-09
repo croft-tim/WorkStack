@@ -1,9 +1,10 @@
 import request from 'superagent'
 import { Job, JobData } from '../../models/job.ts'
-import { Customer, CustomerData } from '../../models/customer.ts'
+import { Customer } from '../../models/customer.ts'
 
 const rootURL = new URL(`/api/v1`, document.baseURI)
 
+// Jobs
 export async function getJobs() {
   const response = await request.get(`${rootURL}/jobs`)
   return response.body.jobs as Job[]
@@ -29,4 +30,18 @@ export async function updateJobById(updatedJob: Job): Promise<Job> {
     .patch(`${rootURL}/jobs/${updatedJob.id}`)
     .send(updatedJob)
   return response.body as Job
+}
+
+
+// Customers
+const customerURL = `${rootURL}/customers`
+
+export async function getCustomerById(id: number) {
+  const response = await request.get(`${customerURL}/${id}`)
+  return response.body as Customer
+}
+
+export async function getCustomers() {
+  const response = await request.get(`${customerURL}`)
+  return response.body as Customer[]
 }
