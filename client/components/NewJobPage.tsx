@@ -4,12 +4,12 @@ import { JobData } from '../../models/job'
 import { useAddJob } from '../hooks/useAddJob'
 
 export default function NewJobPage() {
+  const addJob = useAddJob()
   const navigate = useNavigate()
 
-  const { mutate: addJob } = useAddJob()
-
-  function handleSubmit(data: JobData) {
-    addJob(data, { onSuccess: (id) => navigate(`/jobs/${id}`) })
+  const handleSubmit = async (data: JobData) => {
+    const id = await addJob.mutateAsync(data)
+    navigate(`/jobs/${id}`)
   }
 
   return (

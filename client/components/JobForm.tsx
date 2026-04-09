@@ -4,7 +4,7 @@ import { Job, JobData } from '../../models/job'
 const defaultJobData: JobData = {
   tradieId: 1,
   customerId: 1,
-  status: 'new',
+  status: 'New',
   title: '',
   quote: 0,
   notes: '',
