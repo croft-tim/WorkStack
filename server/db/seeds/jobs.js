@@ -1,9 +1,10 @@
 import { faker } from '@faker-js/faker'
-import { statuses } from '../../../models/job'
 
 export async function seed(knex) {
   // Deletes ALL existing entries
   await knex('jobs').del()
+
+  const statuses = ['New', 'Quoted', 'In Progress', 'Invoiced', 'Completed']
 
   const jobs = [
     {
