@@ -1,11 +1,14 @@
 import { Job } from '../../models/job'
 import { Link } from 'react-router'
+import { useDeleteJob } from '../hooks/useDeleteJob'
 
 interface Props {
   job: Job
 }
 
 export default function KanbanCard({ job }: Props) {
+  const { mutate: deleteJob } = useDeleteJob()
+
   const priorityColors = {
     High: 'bg-rose-500/10 text-rose-500 border-rose-500/20',
     Medium: 'bg-amber-500/10 text-amber-500 border-amber-500/20',
@@ -83,6 +86,17 @@ export default function KanbanCard({ job }: Props) {
         >
           Open
         </Link>
+
+        <button
+          onClick={() => {
+            if (window.confirm(`Do you really want to delete this job?`)) {
+              deleteJob(job.id)
+            }
+          }}
+          className="rounded-md border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-xs text-rose-400 transition hover:bg-rose-500/20"
+        >
+          Delete
+        </button>
       </div>
     </div>
   )

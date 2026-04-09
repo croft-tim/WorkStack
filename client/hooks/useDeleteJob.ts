@@ -1,11 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { JobData } from '../../models/job'
-import { addJob } from '../apis/apiClient'
+import { deleteJobById } from '../apis/apiClient'
 
-export function useAddJob() {
+export function useDeleteJob() {
   const queryClient = useQueryClient()
   return useMutation({
-    mutationFn: (data: JobData) => addJob(data),
+    mutationFn: (id: number) => deleteJobById(id),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['jobs'] }),
   })
 }
