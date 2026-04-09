@@ -1,12 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
-
-import { Job } from '../../models/job'
-
-const rootURL = new URL('/api/v1', document.baseURI)
+import { getJobById } from '../apis/apiClient'
 
 export default function useJobData(id: number) {
   return useQuery({
-    queryKey: ['job'],
-    queryFn: getJobById,
+    queryKey: ['job', id],
+    queryFn: () => getJobById(id),
   })
 }
