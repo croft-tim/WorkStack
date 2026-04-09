@@ -25,7 +25,7 @@ export async function getJobById(
   return job as Job | undefined
 }
 
-export async function addJob(newJob: JobData): Promise<Job> {
+export async function addJob(newJob: JobData): Promise<number> {
   const newJobArr = await db('jobs')
     .insert({
       tradie_id: newJob.tradieId,
@@ -38,7 +38,7 @@ export async function addJob(newJob: JobData): Promise<Job> {
       end_date: newJob.endDate,
     })
     .returning(columns)
-  return newJobArr[0]
+  return newJobArr[0].id
 }
 
 export async function updateJobById(
