@@ -2,20 +2,20 @@ import { Customer } from '../../models/customer'
 
 interface Props {
   customer: Customer
-  onClick: () => void
+  // onClick: () => void
 }
 
-export default function CustomerCard({ customer, onClick }: Props) {
+export default function CustomerCard({ customer }: Props) {
   return (
-    <button onClick={onClick}>
-      <div className="group relative flex max-w-sm flex-col gap-3 rounded-lg border border-zinc-800 bg-zinc-900 p-4 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-black/20">
+    <button className="h-full w-full">
+      <div className="group relative flex h-full w-full min-h-[120px] min-w-[260px] flex-col gap-3 rounded-lg border border-zinc-800 bg-zinc-900 p-4 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-black/20">
         <div className="flex items-start justify-between">
 
           <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-amber-500">
             {customer.name}
           </h3>
-          <span className="rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-500">
-            Rating: {customer.rating}
+          <span className="rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold tracking-wider text-amber-500">
+            ⭐ &nbsp;{customer.rating}
           </span>
         </div>
 

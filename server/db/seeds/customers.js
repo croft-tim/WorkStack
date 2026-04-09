@@ -4,24 +4,22 @@ export async function seed(knex) {
   // Deletes ALL existing entries
   await knex('customers').del()
 
-  // Inserts seed entries
-  // await knex('customers').insert([
-  //   {
-  //     id: 1,
-  //     name: 'Jessie',
-  //     address: '69 place over there',
-  //     phone: '0210231212',
-  //     email: 'real@beanmail.com',
-  //     notes: '',
-  //     rating: 7.5,
-  //   },
-  // ])
+  // Hard coded customer 0
+  const people = [{
+    id: 0,
+    name: 'Jessie Wakefield',
+    address: '47 Shortland Street, Auckland',
+    phone: '0210231212',
+    email: 'jessie_wakefield@beanmail.com',
+    notes: 'Recommended by Jim, wanting to do a kitchen upgrade.',
+    rating: 7.5,
+  }]
 
   // Insert seeds
-  const people = Array.from({ length: 15 }).map((_, i) => {
+  const randomPeople = Array.from({ length: 15 }).map((_, i) => {
     const name = faker.person.fullName()
     return {
-      id: i,
+      id: i + 1,
       name: name,
       address: faker.location.streetAddress(),
       phone: faker.phone.number({ style: 'international' }),
@@ -30,5 +28,9 @@ export async function seed(knex) {
       rating: faker.number.float({ multipleOf: 0.25, min: 0, max: 10 }),
     }
   })
+
+  people.push(...randomPeople)
+  console.log(people)
+
   await knex('customers').insert(people)
 }

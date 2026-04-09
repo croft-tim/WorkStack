@@ -48,7 +48,7 @@ export default function CustomerView() {
           {customer.phone}
         </div>
         {customer.notes && (
-          <p className="mt-1 text-[11px] text-zinc-400 italic">"{customer.notes}"</p>
+          <p className="mt-1 text-[11px] text-zinc-400 italic">{customer.notes}</p>
         )}
       </div>
     </div>

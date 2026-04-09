@@ -4,6 +4,7 @@ import { Customer } from '../../models/customer.ts'
 
 const rootURL = new URL(`/api/v1`, document.baseURI)
 
+// Jobs
 export async function getJobs() {
   const response = await request.get(`${rootURL}/jobs`)
   return response.body.jobs as Job[]
@@ -31,8 +32,16 @@ export async function updateJobById(updatedJob: Job): Promise<Job> {
   return response.body as Job
 }
 
+
+// Customers
+const customerURL = `${rootURL}/customers`
+
 export async function getCustomerById(id: number) {
-  const url = `${rootURL}/customer/${id}`
-  const res = await request.get(url)
-  return res.body as Customer
+  const response = await request.get(`${customerURL}/${id}`)
+  return response.body as Customer
+}
+
+export async function getCustomers() {
+  const response = await request.get(`${customerURL}`)
+  return response.body as Customer[]
 }
