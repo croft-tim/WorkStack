@@ -26,7 +26,7 @@ export default function KanbanCard({ job }: Props) {
         <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-amber-500">
           {job.title}
         </h3>
-        <p className="mt-1 text-xs text-zinc-400 line-clamp-2">{job.client}</p>
+        <p className="mt-1 text-xs text-zinc-400">{job.client}</p>
       </div>
 
       <div className="mt-2 flex flex-col gap-2 border-t border-zinc-800 pt-3">
@@ -52,6 +52,7 @@ export default function KanbanCard({ job }: Props) {
           </svg>
           {job.location}
         </div>
+
         <div className="flex items-center gap-2 text-[11px] text-zinc-500">
           <svg
             className="h-3.5 w-3.5"
@@ -68,6 +69,16 @@ export default function KanbanCard({ job }: Props) {
           </svg>
           Due: {new Date(job.dueDate).toLocaleDateString()}
         </div>
+      </div>
+
+      <div className="mt-2 flex gap-2">
+        <button className="rounded-md border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-xs text-zinc-200 transition hover:bg-zinc-700">
+          Change Status
+        </button>
+
+        <button className="rounded-md border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-xs text-zinc-200 transition hover:bg-zinc-700">
+          Open
+        </button>
       </div>
     </div>
   )
