@@ -4,11 +4,11 @@ import { Customer } from "../../models/customer";
 export const mockCustomer: Customer[] = [
   {
     id: 1,
-    name: 'Jessie',
-    address: '69 place over there',
+    name: 'Jessie Wakefield',
+    address: '47 Shortland Street, Auckland',
     phone: '0210231212',
-    email: 'real@beanmail.com',
-    notes: '',
+    email: 'jessie_wakefield@beanmail.com',
+    notes: 'Recommended by Jim, wanting to do a kitchen upgrade.',
     rating: 7.5,
   },
 ]
