@@ -43,10 +43,19 @@ export default function ViewJob() {
       <div className="grid gap-6 md:grid-cols-3">
         <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-5 md:col-span-2">
           <h2 className="mb-3 text-xl font-semibold">Job Overview</h2>
-          <p className="mb-4 text-zinc-300">{job.notes}</p>
 
           <h3 className="mb-2 text-lg font-medium">Description</h3>
-          <p className="mb-5 text-zinc-400">{job.endDate}</p>
+          <p className="mb-5 text-zinc-300">{job.notes}</p>
+
+          <h3 className="mb-2 text-lg font-medium">Start Date</h3>
+          <p className="mb-5 text-zinc-400">
+            {new Date(job.startDate).toLocaleDateString()}
+          </p>
+
+          <h3 className="mb-2 text-lg font-medium">End Date</h3>
+          <p className="text-zinc-400">
+            {new Date(job.endDate).toLocaleDateString()}
+          </p>
         </div>
 
         <div className="space-y-6">
@@ -56,6 +65,11 @@ export default function ViewJob() {
               <p>
                 <span className="font-medium text-zinc-200">Status:</span>{' '}
                 {job.status}
+              </p>
+
+              <p>
+                <span className="font-medium text-zinc-200">Quote:</span>{' '}
+                {job.quote}
               </p>
 
               <p>
