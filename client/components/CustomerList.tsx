@@ -27,12 +27,3 @@ export default function CustomerList() {
   )
 
 }
-
-// return (
-//   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-//     {data.map((customer) => (
-//       <CustomerCard key={customer.id} customer={customer} onClick={() => navigate(`/customer/${customer.id}`)} />
-//     ))}
-//     {/* <CustomerCard key={mockCustomer[0].id} customer={mockCustomer[0]} /> */}
-//   </div>
-// )
