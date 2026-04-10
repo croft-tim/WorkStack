@@ -54,7 +54,7 @@ export default function KanbanCard({ job }: Props) {
               d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
             />
           </svg>
-          {job.location}
+          {job.address}
         </div>
 
         <div className="flex items-center gap-2 text-[11px] text-zinc-500">
