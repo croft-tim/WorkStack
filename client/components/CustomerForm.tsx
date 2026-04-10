@@ -13,11 +13,13 @@ const defaultCustomerData: CustomerData = {
 interface CustomerFormProps {
   initialData?: Partial<Customer>
   onSubmit: (data: CustomerData) => void
+  onCancel?: () => void
 }
 
 export default function CustomerForm({
   initialData,
   onSubmit,
+  onCancel,
 }: CustomerFormProps) {
   const [formData, setFormData] = useState<CustomerData>({
     ...defaultCustomerData,
@@ -183,6 +185,7 @@ export default function CustomerForm({
             <div className="flex justify-end gap-2 border-t border-zinc-800 pt-5">
               <button
                 type="button"
+                onClick={onCancel}
                 className="rounded-lg border border-zinc-700 px-4 py-2 text-sm
            font-medium text-zinc-400 hover:bg-zinc-800"
               >

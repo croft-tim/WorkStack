@@ -9,13 +9,13 @@ export default function NewCustomerPage() {
 
   const handleSubmit = async (data: CustomerData) => {
     const id = await addCustomer.mutateAsync(data)
-    navigate(`/customers/${id}`)
+    navigate(`/customer/${id}`)
   }
 
   return (
-    <div>
-      <h1>New Job</h1>
-      <CustomerForm onSubmit={handleSubmit} />
-    </div>
+    <CustomerForm
+      onSubmit={handleSubmit}
+      onCancel={() => navigate('/customers')}
+    />
   )
 }
