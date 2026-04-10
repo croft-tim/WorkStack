@@ -11,6 +11,7 @@ export interface JobData {
 
 export interface Job extends JobData {
   id: number
+  address: string
 }
 
 export const statuses = [

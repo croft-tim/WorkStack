@@ -18,7 +18,7 @@ export default function KanbanCard({ job }: Props) {
   return (
     <div className="group relative flex flex-col gap-3 rounded-lg border border-zinc-800 bg-zinc-900 p-4 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-black/20">
       <div className="flex items-start justify-between">
-        <span className="text-xs font-medium text-zinc-500">{job.id}</span>
+        {/* <span className="text-xs font-medium text-zinc-500">{job.id}</span> */}
         <span
           className={`rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${priorityColors[job.priority]}`}
         >
@@ -54,7 +54,7 @@ export default function KanbanCard({ job }: Props) {
               d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
             />
           </svg>
-          {job.location}
+          {job.address}
         </div>
 
         <div className="flex items-center gap-2 text-[11px] text-zinc-500">
