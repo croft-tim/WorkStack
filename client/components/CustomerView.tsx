@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { useCustomerById } from "../hooks/useCustomer";
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useEffect, useState } from 'react'
 
@@ -102,10 +102,8 @@ export default function CustomerView() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker position={position}>
-              <Popup>
-                {customer.name}<br></br>
-                {customer.address}
-              </Popup>
+              <Popup>{customer.name}<br></br>{customer.address}</Popup>
+              <Tooltip>{customer.name}<br></br>{customer.address}</Tooltip>
             </Marker>
           </MapContainer>
         ) : (
