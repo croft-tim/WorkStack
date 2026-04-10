@@ -8,10 +8,11 @@ interface Props {
 
 export default function KanbanColumn({ status, jobs }: Props) {
   const statusColors = {
-    New: 'bg-zinc-500',
+    New: 'bg-red-500',
     Quoted: 'bg-amber-500',
-    'Awaiting Inspection': 'bg-blue-500',
-    Done: 'bg-emerald-500',
+    'In Progress': 'bg-blue-500',
+    Invoiced: 'bg-purple-500',
+    Completed: 'bg-emerald-500',
   }
 
   return (
