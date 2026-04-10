@@ -49,7 +49,7 @@ export default function CustomerView() {
     <div className="min-h-screen p-8">
       <div className="p-8 mx-auto max-w-2xl mt-5 rounded-lg border border-zinc-800 bg-zinc-900 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-black/20">
         <div className="flex items-start justify-between">
-          <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-amber-500">
+          <h3 className="text-sm font-semibold text-zinc-300 group-hover:text-amber-500">
             {customer.name}
           </h3>
           <span className="flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-500">

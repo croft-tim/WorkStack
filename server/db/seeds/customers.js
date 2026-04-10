@@ -28,7 +28,7 @@ export async function seed(knex) {
   // Hard coded addresses
   const addresses = [
     '101 Queen Street, Auckland CBD, Auckland 1010',
-    '47 Shortland Street, Auckland CBD, Auckland 1010',
+    '60 Cashel Street, Christchurch 8013',
     '152 Willis Street, Te Aro, Wellington 6011',
     '89 Courtenay Place, Te Aro, Wellington 6011',
     '23 Worcester Boulevard, Christchurch Central City, Christchurch 8011',
