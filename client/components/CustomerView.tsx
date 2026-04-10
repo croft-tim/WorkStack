@@ -2,10 +2,45 @@ import { useParams } from "react-router";
 import { useCustomerById } from "../hooks/useCustomer";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
+import { useEffect, useState } from 'react'
 
 export default function CustomerView() {
   const { id } = useParams()
   const { data: customer, isPending, isError, error } = useCustomerById(Number(id))
+
+  const [position, setPosition] = useState<[number, number] | null>(null)
+  const [loadingMap, setLoadingMap] = useState(true)
+
+  useEffect(() => {
+    async function fetchCoordinates() {
+      try {
+        // Use Nominatim API to get coordinates from address
+        if (!customer?.address) return
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(customer.address)}&format=json&limit=1`,
+          {
+            headers: {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
+            }
+          }
+        )
+        console.log(response.body)
+        const data = await response.json()
+        if (data && data.length > 0) {
+          setPosition([parseFloat(data[0].lat), parseFloat(data[0].lon)])
+        } else {
+          console.warn("No results found for address")
+        }
+      } catch (error) {
+        console.error("Geocoding failed", error)
+      } finally {
+        setLoadingMap(false)
+      }
+    }
+
+    if (!customer?.address) return
+    fetchCoordinates()
+  }, [customer?.address])
 
   if (isPending) return <p>Loading...</p>
   if (isError) return <p>Error: {error.message}</p>
@@ -66,25 +101,29 @@ export default function CustomerView() {
         </MapContainer>
       </div> */}
 
-      <div className="h-[480px] w-[1000px]">
-        <MapContainer
-          center={[51.505, -0.09]}
-          zoom={13}
-          scrollWheelZoom={false}
-          className="h-full w-full" // Add this
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={[51.505, -0.09]}>
-            <Popup>
-              Customer Location.
-            </Popup>
-          </Marker>
-        </MapContainer>
+      {/* <div className="mx-auto mt-8 h-[480px] w-full max-w-2xl overflow-hidden rounded-lg border border-zinc-800">
+        {position && ( */}
+      <div className="mx-auto mt-8 h-[480px] w-full max-w-2xl overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900 flex items-center
+   justify-center">
+        {loadingMap ? (
+          <p className="text-zinc-500 text-sm">Loading map...</p>
+        ) : position ? (
+          <MapContainer center={position} zoom={13} scrollWheelZoom={false} className="h-full w-full" >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={position}>
+              <Popup>
+                {customer.name}<br></br>
+                {customer.address}
+              </Popup>
+            </Marker>
+          </MapContainer>
+        ) : (
+          <p className="text-zinc-500 text-sm">Location not found</p>
+        )}
       </div>
-
 
     </div >
   )
