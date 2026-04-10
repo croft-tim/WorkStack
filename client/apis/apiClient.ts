@@ -46,3 +46,8 @@ export async function getCustomers() {
   const response = await request.get(`${customerURL}`)
   return response.body as Customer[]
 }
+
+export async function addCustomer(newCustomer: CustomerData) {
+  const response = await request.post(`${rootURL}/customers`).send(newCustomer)
+  return response.body as number
+}
