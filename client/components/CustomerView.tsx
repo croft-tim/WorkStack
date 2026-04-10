@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { useCustomerById } from "../hooks/useCustomer";
-import { VscStarEmpty } from "react-icons/vsc";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
 
 export default function CustomerView() {
   const { id } = useParams()
@@ -24,7 +25,7 @@ export default function CustomerView() {
           </span>
         </div>
 
-        <div className="mt-2 flex flex-col mt-5 gap-2 border-t border-zinc-800 pt-3">
+        <div className="mt-5 flex flex-col gap-2 border-t border-zinc-800 pt-3">
           <div className="flex items-center gap-2 text-[11px] text-zinc-500">
             <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -49,6 +50,42 @@ export default function CustomerView() {
           )}
         </div>
       </div>
-    </div>
+
+      {/* <div id='map' className="h-[680px]">
+
+        <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={[51.505, -0.09]}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+        </MapContainer>
+      </div> */}
+
+      <div className="h-[480px] w-[1000px]">
+        <MapContainer
+          center={[51.505, -0.09]}
+          zoom={13}
+          scrollWheelZoom={false}
+          className="h-full w-full" // Add this
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={[51.505, -0.09]}>
+            <Popup>
+              Customer Location.
+            </Popup>
+          </Marker>
+        </MapContainer>
+      </div>
+
+
+    </div >
   )
 }
