@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { useCustomerById } from "../hooks/useCustomer";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useEffect, useState } from 'react'
 
@@ -86,29 +86,17 @@ export default function CustomerView() {
         </div>
       </div>
 
-      {/* <div id='map' className="h-[680px]">
-
-        <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={[51.505, -0.09]}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
-        </MapContainer>
-      </div> */}
-
       {/* <div className="mx-auto mt-8 h-[480px] w-full max-w-2xl overflow-hidden rounded-lg border border-zinc-800">
         {position && ( */}
-      <div className="mx-auto mt-8 h-[480px] w-full max-w-2xl overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900 flex items-center
+      <div className="mx-auto mt-16 h-[480px] w-full max-w-2xl overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900 flex items-center
    justify-center">
         {loadingMap ? (
-          <p className="text-zinc-500 text-sm">Loading map...</p>
+          <div className="flex flex-col items-center gap-4">
+            <p className="text-zinc-500 text-sm">Loading OpenStreetMap...</p>
+            <img src="/osm_logo.svg" alt="OpenStreetMap Logo" className="h-11 w-11" />
+          </div>
         ) : position ? (
-          <MapContainer center={position} zoom={13} scrollWheelZoom={false} className="h-full w-full" >
+          <MapContainer center={position} zoom={14} scrollWheelZoom={false} className="h-full w-full" >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

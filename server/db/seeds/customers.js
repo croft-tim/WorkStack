@@ -24,6 +24,35 @@ export async function seed(knex) {
     'Has a gated driveway; security code for entry is 1234.',
     'Looking for routine plumbing maintenance and drain clearing.'
   ]
+
+  // Hard coded addresses
+  const addresses = [
+    '101 Queen Street, Auckland CBD, Auckland 1010',
+    '47 Shortland Street, Auckland CBD, Auckland 1010',
+    '152 Willis Street, Te Aro, Wellington 6011',
+    '89 Courtenay Place, Te Aro, Wellington 6011',
+    '23 Worcester Boulevard, Christchurch Central City, Christchurch 8011',
+    '75 Riccarton Road, Riccarton, Christchurch 8041',
+    '33 George Street, Dunedin Central, Dunedin 9016',
+    '109 Princes Street, Dunedin Central, Dunedin 9016',
+    '55 Victoria Street, Hamilton Central, Hamilton 3204',
+    '200 Grey Street, Hamilton East, Hamilton 3216',
+    '18 Marine Parade, Mount Maunganui, Tauranga 3116',
+    '42 Cameron Road, Tauranga Central, Tauranga 3110',
+    '88 High Street, Lower Hutt, Wellington 5010',
+    '15 Paraparaumu Beach Road, Paraparaumu 5032',
+    '62 Bridge Street, Nelson Central, Nelson 7010',
+    '9 Trafalgar Street, Nelson Central, Nelson 7010',
+    '25 Emerson Street, Napier South, Napier 4110',
+    '11 Marine Parade, Napier South, Napier 4110',
+    '90 Devon Street West, New Plymouth Central, New Plymouth 4310',
+    '1 Ariki Street, New Plymouth Central, New Plymouth 4310',
+    '58 Dee Street, Invercargill Central, Invercargill 9810',
+    '21 Tay Street, Invercargill Central, Invercargill 9810',
+    '45 Whangaparaoa Road, Red Beach, Whangaparaoa 0932',
+    '103 Great North Road, Winton, Southland 9720'
+  ]
+
   // Hard coded customer 0
   const people = [{
     id: 1,
@@ -42,7 +71,7 @@ export async function seed(knex) {
     return {
       id: currentId,
       name: name,
-      address: faker.location.streetAddress(),
+      address: (addresses[i]),
       phone: faker.phone.number({ style: 'international' }),
       email: faker.internet.email({ firstName: name }),
       notes: (currentId < 17 ? notes[i] : ''),
