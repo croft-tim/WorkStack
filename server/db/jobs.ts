@@ -14,18 +14,6 @@ const selectColumns = [
   'customers.address',
 ]
 
-const returnColumns = [
-  'id',
-  'tradie_id as tradieId',
-  'customer_id as customerId',
-  'status',
-  'title',
-  'quote',
-  'notes',
-  'start_date as startDate',
-  'end_date as endDate',
-]
-
 export async function getJobs() {
   const jobs = await db('jobs')
     .join('customers', 'jobs.customer_id', 'customers.id')
@@ -56,7 +44,7 @@ export async function addJob(newJob: JobData): Promise<number> {
       start_date: newJob.startDate,
       end_date: newJob.endDate,
     })
-    .returning(returnColumns)
+    .returning('id')
   return newJobArr[0].id
 }
 
@@ -76,7 +64,17 @@ export async function updateJobById(
       start_date: newProperties.startDate,
       end_date: newProperties.endDate,
     })
-    .returning(returnColumns)
+    .returning([
+      'id',
+      'tradie_id as tradieId',
+      'customer_id as customerId',
+      'status',
+      'title',
+      'quote',
+      'notes',
+      'start_date as startDate',
+      'end_date as endDate',
+    ])
   return updatedJobArr[0]
 }
 
