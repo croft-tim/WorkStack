@@ -1,6 +1,6 @@
 import request from 'superagent'
 import { Job, JobData } from '../../models/job.ts'
-import { Customer } from '../../models/customer.ts'
+import { Customer, CustomerData } from '../../models/customer.ts'
 
 const rootURL = new URL(`/api/v1`, document.baseURI)
 
@@ -45,4 +45,9 @@ export async function getCustomerById(id: number) {
 export async function getCustomers() {
   const response = await request.get(`${customerURL}`)
   return response.body as Customer[]
+}
+
+export async function addCustomer(newCustomer: CustomerData) {
+  const response = await request.post(`${rootURL}/customers`).send(newCustomer)
+  return response.body as number
 }
