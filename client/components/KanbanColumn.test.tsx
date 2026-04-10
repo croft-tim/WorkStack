@@ -46,4 +46,36 @@ describe('KanbanColumn', () => {
 
     expect(screen.getByText('No jobs in Done')).toBeInTheDocument()
   })
+
+  it('does not render the empty message when jobs exist', () => {
+    const jobs = [
+      {
+        id: 1,
+        title: 'Kitchen renovation',
+        status: 'Quoted',
+        quote: 2000,
+        notes: 'Needs a quote update',
+        startDate: '2026-04-01',
+        endDate: '2026-04-10',
+      },
+    ]
+
+    render(<KanbanColumn status="Quoted" jobs={jobs} />)
+
+    expect(screen.queryByText('No jobs in Quoted')).not.toBeInTheDocument()
+  })
+
+  it('renders the status as an h2 heading', () => {
+    render(<KanbanColumn status="Done" jobs={[]} />)
+
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'Done' }),
+    ).toBeInTheDocument()
+  })
+
+  it('renders the action button', () => {
+    render(<KanbanColumn status="New" jobs={[]} />)
+
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
 })
