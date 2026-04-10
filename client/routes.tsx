@@ -14,8 +14,8 @@ export default createRoutesFromElements(
     <Route path="kanban" element={<KanbanBoard />} />
     <Route path="customers" element={<CustomerList />} />
     <Route path="customer/:id" element={<CustomerView />} />
-    <Route path="/jobs/new" element={<NewJobPage />} />
-    <Route path="/jobs/:id" element={<ViewJob />} />
-    <Route path="/customers/new" element={<NewCustomerPage />} />
+    <Route path="jobs/new" element={<NewJobPage />} />
+    <Route path="jobs/:id" element={<ViewJob />} />
+    <Route path="customers/new" element={<NewCustomerPage />} />
   </Route>,
 )
