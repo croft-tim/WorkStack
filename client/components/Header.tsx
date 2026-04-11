@@ -92,33 +92,65 @@ export default function Header({ showToolbar = true }: Props) {
           </Link>
         </div>
 
-        {/* Centered Button Group */}
-        <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1">
-          <Link
-            to="/kanban"
-            className="flex items-center rounded-l-lg bg-amber-500 px-4 py-2 text-sm font-bold text-white transition-all hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
-          >
-            Jobs
-          </Link>
-          <Link
-            to="/jobs/new"
-            className="flex items-center rounded-r-lg bg-amber-500 px-2 py-2 text-sm font-bold text-white transition-all hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
-            aria-label="New Job"
-          >
-            <svg
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+        {/* Centered Button Groups */}
+        <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-12">
+          {/* Jobs Group */}
+          <div className="flex items-center gap-1">
+            <Link
+              to="/kanban"
+              className="flex items-center rounded-l-lg bg-amber-500 px-4 py-2 text-sm font-bold text-white transition-all hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2.5}
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              />
-            </svg>
-          </Link>
+              Jobs
+            </Link>
+            <Link
+              to="/jobs/new"
+              className="flex items-center rounded-r-lg bg-amber-500 px-2 py-2 text-sm font-bold text-white transition-all hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
+              aria-label="New Job"
+            >
+              <svg
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                />
+              </svg>
+            </Link>
+          </div>
+
+          {/* Customers Group */}
+          <div className="flex items-center gap-1">
+            <Link
+              to="/customers"
+              className="flex items-center rounded-l-lg bg-slate-500 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-slate-600 pink:bg-pink-400 pink:hover:bg-pink-500"
+            >
+              Customers
+            </Link>
+            <Link
+              to="/customers/new"
+              className="flex items-center rounded-r-lg bg-slate-500 px-2 py-2 text-sm font-bold text-white transition-colors hover:bg-slate-600 pink:bg-pink-400 pink:hover:bg-pink-500"
+              aria-label="New Customer"
+            >
+              <svg
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
 
         {/* Right side actions */}
