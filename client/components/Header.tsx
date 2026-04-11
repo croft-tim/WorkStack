@@ -8,13 +8,13 @@ interface Props {
 }
 
 const navLinks = [
-  { label: 'Dashboard', to: '/' },
-  { label: 'Board', to: '/kanban' },
-  { label: 'Jobs', to: '/jobs' },
+  // { label: 'Dashboard', to: '/' },
+  // { label: 'Board', to: '/kanban' },
+  { label: 'Jobs', to: '/kanban' },
   { label: 'Customers', to: '/customers' },
-  { label: 'Costs', to: '/costs' },
-  { label: 'Invoices', to: '/invoices' },
-  { label: 'Analytics', to: '/analytics' },
+  // { label: 'Costs', to: '/costs' },
+  { label: 'Invoices', to: '/' },
+  // { label: 'Analytics', to: '/analytics' },
 ]
 
 export default function Header({ showToolbar = true }: Props) {
