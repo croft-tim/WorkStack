@@ -53,7 +53,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
   }
 
   return (
-    <div className="min-h-screen p-8 transition-colors duration-300 bg-white dark:bg-zinc-950 pink:bg-pink-50">
+    <div className="min-h-screen p-8 transition-colors duration-300 bg-white dark:bg-zinc-900 pink:bg-pink-50">
       <div className="mx-auto max-w-2xl">
         <div className="mb-6">
           <p className="text-xs text-slate-500 dark:text-zinc-500 pink:text-pink-500">
@@ -64,7 +64,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
           </h1>
         </div>
 
-        <div className="rounded-xl border transition-colors border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-900 pink:border-pink-200 pink:bg-pink-50 px-8 py-6 shadow-sm dark:shadow-none pink:shadow-pink-500/5">
+        <div className="rounded-xl border transition-colors border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-800/50 pink:border-pink-200 pink:bg-pink-50 px-8 py-6 shadow-sm dark:shadow-none pink:shadow-pink-500/5">
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div className="flex flex-col gap-1.5">
               <label
@@ -80,7 +80,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                 placeholder="e.g. Fix leaking tap at 42 Main St"
                 onChange={handleChange}
                 value={formData.title}
-                className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder:text-zinc-600 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:placeholder:text-pink-300 pink:focus:border-pink-500"
+                className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-600 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:placeholder:text-pink-300 pink:focus:border-pink-500"
               />
             </div>
 
@@ -98,7 +98,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                 placeholder="Describe the job…"
                 onChange={handleChange}
                 value={formData.notes}
-                className="resize-y rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder:text-zinc-600 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:placeholder:text-pink-300 pink:focus:border-pink-500"
+                className="resize-y rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-600 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:placeholder:text-pink-300 pink:focus:border-pink-500"
               />
             </div>
 
@@ -114,7 +114,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                 name="customerId"
                 value={formData.customerId}
                 onChange={handleChange}
-                className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
+                className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
               >
                 <option value={0} disabled>
                   Select a customer…
@@ -148,7 +148,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                     step={0.01}
                     onChange={handleChange}
                     value={formData.quote}
-                    className="w-full rounded-lg border py-2 pl-7 pr-3 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder:text-zinc-600 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:placeholder:text-pink-300 pink:focus:border-pink-500"
+                    className="w-full rounded-lg border py-2 pl-7 pr-3 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-600 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:placeholder:text-pink-300 pink:focus:border-pink-500"
                   />
                 </div>
               </div>
@@ -165,7 +165,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                   name="status"
                   value={formData.status}
                   onChange={handleChange}
-                  className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
+                  className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
                 >
                   {statuses.map((status) => (
                     <option key={status} value={status}>
@@ -190,7 +190,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                   name="startDate"
                   onChange={handleChange}
                   value={formData.startDate}
-                  className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:[color-scheme:dark] pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
+                  className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:[color-scheme:dark] pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
                 />
               </div>
 
@@ -207,7 +207,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                   name="endDate"
                   onChange={handleChange}
                   value={formData.endDate}
-                  className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:[color-scheme:dark] pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
+                  className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:[color-scheme:dark] pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
                 />
               </div>
             </div>

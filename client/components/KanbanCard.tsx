@@ -19,7 +19,7 @@ export default function KanbanCard({ job }: Props) {
   return (
     <div
       onClick={() => navigate(`/jobs/${job.id}`)}
-      className="group relative flex cursor-pointer flex-col gap-3 rounded-lg border transition-all duration-200 border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-900 pink:border-pink-200 pink:bg-pink-50 p-4 hover:shadow-lg hover:shadow-black/5 dark:hover:border-zinc-700 dark:hover:shadow-black/20 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10"
+      className="group relative flex cursor-pointer flex-col gap-3 rounded-lg border transition-all duration-200 border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-800/50 pink:border-pink-200 pink:bg-pink-50 p-4 hover:shadow-lg hover:shadow-black/5 dark:hover:border-zinc-700 dark:hover:shadow-black/20 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10"
     >
       <div className="flex items-start justify-between">
         {/* <span className="text-xs font-medium text-zinc-500">{job.id}</span> */}

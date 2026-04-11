@@ -8,7 +8,7 @@ interface Props {
 export default function CustomerCard({ customer }: Props) {
   return (
     <button className="h-full w-full">
-      <div className="group relative flex h-full w-full min-h-[120px] min-w-[260px] flex-col gap-3 rounded-lg border transition-all duration-200 border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-900 pink:border-pink-200 pink:bg-pink-50 p-4 hover:shadow-lg hover:shadow-black/5 dark:hover:border-zinc-700 dark:hover:shadow-black/20 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10">
+      <div className="group relative flex h-full w-full min-h-[120px] min-w-[260px] flex-col gap-3 rounded-lg border transition-all duration-200 border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-800/50 pink:border-pink-200 pink:bg-pink-50 p-4 hover:shadow-lg hover:shadow-black/5 dark:hover:border-zinc-700 dark:hover:shadow-black/20 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10">
         <div className="flex items-start justify-between">
           <h3 className="text-sm font-semibold transition-colors text-slate-800 dark:text-zinc-300 pink:text-pink-900 group-hover:text-amber-500 pink:group-hover:text-pink-600">
             {customer.name}

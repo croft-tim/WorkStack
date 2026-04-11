@@ -55,8 +55,8 @@ export default function CustomerView() {
   if (!customer) return <p>Customer not found</p>
 
   return (
-    <div className="min-h-screen p-8 transition-colors duration-300 bg-white dark:bg-zinc-950 pink:bg-pink-50">
-      <div className="mx-auto mt-5 max-w-2xl rounded-lg border transition-all duration-200 border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-900 pink:border-pink-200 pink:bg-pink-50 p-8 hover:border-slate-300 hover:shadow-lg hover:shadow-black/5 dark:hover:border-zinc-700 dark:hover:shadow-black/20 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10">
+    <div className="min-h-screen p-8 transition-colors duration-300 bg-white dark:bg-zinc-900 pink:bg-pink-50">
+      <div className="mx-auto mt-5 max-w-2xl rounded-lg border transition-all duration-200 border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-800/50 pink:border-pink-200 pink:bg-pink-50 p-8 hover:border-slate-300 hover:shadow-lg hover:shadow-black/5 dark:hover:border-zinc-700 dark:hover:shadow-black/20 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
             <h3 className="text-sm font-semibold transition-colors text-slate-800 dark:text-zinc-300 pink:text-pink-900">
@@ -154,7 +154,7 @@ export default function CustomerView() {
 
       {/* <div className="mx-auto mt-8 h-[480px] w-full max-w-2xl overflow-hidden rounded-lg border border-zinc-800">
         {position && ( */}
-      <div className="mx-auto mt-16 flex h-[480px] w-full max-w-2xl items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-zinc-800 dark:bg-zinc-900 pink:border-pink-200 pink:bg-pink-100">
+      <div className="mx-auto mt-16 flex h-[480px] w-full max-w-2xl items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-zinc-800 dark:bg-zinc-800/50 pink:border-pink-200 pink:bg-pink-100">
         {loadingMap ? (
           <div className="flex flex-col items-center gap-4">
             <p className="text-sm text-slate-400 dark:text-zinc-500 pink:text-pink-500">

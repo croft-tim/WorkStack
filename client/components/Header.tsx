@@ -39,7 +39,7 @@ export default function Header({ showToolbar = true }: Props) {
   }
 
   return (
-    <div className="flex flex-col border-b border-slate-200 dark:border-zinc-800 pink:border-pink-200 bg-white dark:bg-zinc-950 pink:bg-pink-100 transition-colors">
+    <div className="flex flex-col border-b border-slate-200 dark:border-zinc-800 pink:border-pink-200 bg-white dark:bg-zinc-900 pink:bg-pink-100 transition-colors">
       {/* Header bar */}
       <header className="flex h-16 shrink-0 items-center justify-between px-8">
         <div className="flex items-center gap-4">
@@ -66,7 +66,7 @@ export default function Header({ showToolbar = true }: Props) {
                   onClick={() => setMenuOpen(false)}
                   onKeyDown={() => setMenuOpen(false)}
                 />
-                <nav className="absolute left-0 top-full z-50 mt-1 w-48 rounded border border-slate-200 dark:border-zinc-800 pink:border-pink-200 bg-white dark:bg-zinc-900 pink:bg-pink-50 shadow-lg">
+                <nav className="absolute left-0 top-full z-50 mt-1 w-48 rounded border border-slate-200 dark:border-zinc-800 pink:border-pink-200 bg-white dark:bg-zinc-800 pink:bg-pink-50 shadow-lg">
                   {navLinks.map(({ label, to }) => (
                     <Link
                       key={label}
@@ -190,7 +190,7 @@ export default function Header({ showToolbar = true }: Props) {
 
       {/* Toolbar */}
       {showToolbar && (
-        <div className="flex items-center justify-between border-t border-slate-200 dark:border-zinc-800 pink:border-pink-200 bg-white px-8 py-3 dark:bg-zinc-950 pink:bg-pink-600">
+        <div className="flex items-center justify-between border-t border-slate-200 dark:border-zinc-800 pink:border-pink-200 bg-white px-8 py-3 dark:bg-zinc-900 pink:bg-pink-600">
           <div className="flex items-center gap-4">
             <div className="relative">
               <svg
@@ -209,10 +209,10 @@ export default function Header({ showToolbar = true }: Props) {
               <input
                 type="text"
                 placeholder="Search jobs, clients..."
-                className="w-64 rounded-lg border py-2 pl-10 pr-4 text-xs transition-colors focus:border-amber-500/50 focus:outline-none border-slate-200 bg-slate-50 text-slate-900 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-100 pink:border-pink-700 pink:bg-pink-950/50 pink:text-pink-50 pink:placeholder:text-pink-400"
+                className="w-64 rounded-lg border py-2 pl-10 pr-4 text-xs transition-colors focus:border-amber-500/50 focus:outline-none border-slate-200 bg-slate-50 text-slate-900 dark:border-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-100 pink:border-pink-700 pink:bg-pink-950/50 pink:text-pink-50 pink:placeholder:text-pink-400"
               />
             </div>
-            <button className="flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium transition-colors border-slate-200 bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 pink:border-pink-700 pink:bg-pink-950/50 pink:text-pink-300 pink:hover:bg-pink-800 pink:hover:text-pink-100">
+            <button className="flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium transition-colors border-slate-200 bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700 dark:border-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 pink:border-pink-700 pink:bg-pink-950/50 pink:text-pink-300 pink:hover:bg-pink-800 pink:hover:text-pink-100">
               <svg
                 className="h-4 w-4"
                 fill="none"
@@ -231,7 +231,7 @@ export default function Header({ showToolbar = true }: Props) {
           </div>
           <div className="flex items-center gap-2 text-xs font-medium text-zinc-500 pink:text-pink-200">
             <span>Sort by:</span>
-            <button className="flex items-center gap-1 text-zinc-400 dark:text-zinc-200 pink:text-zinc-600 hover:text-amber-500 pink:text-pink-100 pink:hover:text-pink-400">
+            <button className="flex items-center gap-1 text-zinc-400 dark:text-zinc-300/70 pink:text-zinc-600 hover:text-amber-500 pink:text-pink-100 pink:hover:text-pink-400">
               Priority
               <svg
                 className="h-3 w-3"
