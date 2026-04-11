@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 
-function App() {
+
+export default function App() {
   return (
     <div className="flex h-full flex-col items-center justify-center p-8 text-zinc-100">
       <h1 className="mb-8 text-4xl font-extrabold tracking-tight text-amber-500">
@@ -18,5 +19,3 @@ function App() {
     </div>
   )
 }
-
-export default App

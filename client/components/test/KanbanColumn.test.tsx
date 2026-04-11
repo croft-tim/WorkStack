@@ -4,7 +4,7 @@
 import '@testing-library/jest-dom/vitest'
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { render, screen, cleanup } from '@testing-library/react'
-import KanbanColumn from './KanbanColumn'
+import KanbanColumn from '../KanbanColumn'
 
 afterEach(() => {
   cleanup()
