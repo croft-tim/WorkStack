@@ -97,9 +97,8 @@ export default function Header({ showToolbar = true }: Props) {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setTheme('pink')}
-              className={`h-10 w-16 overflow-hidden rounded border transition-opacity duration-300 ${
-                theme === 'pink' ? 'opacity-100' : 'opacity-0 hover:opacity-100'
-              }`}
+              className={`h-10 w-16 overflow-hidden rounded border transition-opacity duration-300 ${theme === 'pink' ? 'opacity-100' : 'opacity-0 hover:opacity-100'
+                }`}
               aria-label="Pink mode"
             >
               <img
