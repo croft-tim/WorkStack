@@ -26,3 +26,21 @@ export async function addCustomer(newCustomer: CustomerData): Promise<number> {
     .returning('id')
   return newCustomerArr[0].id
 }
+
+export async function updateCustomerById(
+  id: number,
+  updatedCustomer: Customer,
+): Promise<Customer | undefined> {
+  const updatedCustomerArr = await db('customers')
+    .where('id', id)
+    .update({
+      name: updatedCustomer.name,
+      address: updatedCustomer.address,
+      phone: updatedCustomer.phone,
+      email: updatedCustomer.email,
+      notes: updatedCustomer.notes,
+      rating: updatedCustomer.rating,
+    })
+    .returning('*')
+  return updatedCustomerArr[0]
+}
