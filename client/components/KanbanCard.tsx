@@ -17,7 +17,10 @@ export default function KanbanCard({ job }: Props) {
   }
 
   return (
-    <div onClick={() => navigate(`/jobs/${job.id}`)} className="group relative flex flex-col gap-3 rounded-lg border border-zinc-800 bg-zinc-900 p-4 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-black/20 cursor-pointer">
+    <div
+      onClick={() => navigate(`/jobs/${job.id}`)}
+      className="group relative flex cursor-pointer flex-col gap-3 rounded-lg border transition-all duration-200 border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-900 pink:border-pink-200 pink:bg-pink-50 p-4 hover:shadow-lg hover:shadow-black/5 dark:hover:border-zinc-700 dark:hover:shadow-black/20 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10"
+    >
       <div className="flex items-start justify-between">
         {/* <span className="text-xs font-medium text-zinc-500">{job.id}</span> */}
         <span
@@ -28,14 +31,16 @@ export default function KanbanCard({ job }: Props) {
       </div>
 
       <div>
-        <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-amber-500">
+        <h3 className="text-sm font-semibold transition-colors text-slate-800 dark:text-zinc-100 pink:text-pink-900 group-hover:text-amber-500 pink:group-hover:text-pink-600">
           {job.title}
         </h3>
-        <p className="mt-1 text-xs text-zinc-400">{job.client}</p>
+        <p className="mt-1 text-xs text-slate-500 dark:text-zinc-400 pink:text-pink-700">
+          {job.client}
+        </p>
       </div>
 
-      <div className="mt-2 flex flex-col gap-2 border-t border-zinc-800 pt-3">
-        <div className="flex items-center gap-2 text-[11px] text-zinc-500">
+      <div className="mt-2 flex flex-col gap-2 border-t pt-3 border-slate-100 dark:border-zinc-800 pink:border-pink-100">
+        <div className="flex items-center gap-2 text-[11px] text-slate-400 dark:text-zinc-500 pink:text-pink-500">
           <svg
             className="h-3.5 w-3.5"
             fill="none"
@@ -58,7 +63,7 @@ export default function KanbanCard({ job }: Props) {
           {job.address}
         </div>
 
-        <div className="flex items-center gap-2 text-[11px] text-zinc-500">
+        <div className="flex items-center gap-2 text-[11px] text-slate-400 dark:text-zinc-500 pink:text-pink-500">
           <svg
             className="h-3.5 w-3.5"
             fill="none"
@@ -77,7 +82,7 @@ export default function KanbanCard({ job }: Props) {
       </div>
 
       <div className="mt-2 flex gap-2">
-        <button className="rounded-md border border-zinc-700 bg-zinc-800 px-3 py-1.5 text-xs text-zinc-200 transition hover:bg-zinc-700">
+        <button className="rounded-md border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs text-slate-600 transition hover:bg-slate-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700 pink:border-pink-200 pink:bg-pink-100 pink:text-pink-700 pink:hover:bg-pink-200">
           Change Status
         </button>
 
@@ -88,7 +93,7 @@ export default function KanbanCard({ job }: Props) {
               deleteJob(job.id)
             }
           }}
-          className="rounded-md border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-xs text-rose-400 transition hover:bg-rose-500/20"
+          className="rounded-md border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-xs text-rose-400 transition hover:bg-rose-500/20 pink:border-rose-300 pink:bg-rose-50 pink:text-rose-600 pink:hover:bg-rose-100"
         >
           Delete
         </button>

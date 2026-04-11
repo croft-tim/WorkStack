@@ -55,17 +55,16 @@ export default function CustomerView() {
   if (!customer) return <p>Customer not found</p>
 
   return (
-    <div className="min-h-screen p-8">
-      <div className="mx-auto mt-5 max-w-2xl rounded-lg border border-zinc-800 bg-zinc-900 p-8 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-black/20">
+    <div className="min-h-screen p-8 transition-colors duration-300 bg-white dark:bg-zinc-950 pink:bg-pink-50">
+      <div className="mx-auto mt-5 max-w-2xl rounded-lg border transition-all duration-200 border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-900 pink:border-pink-200 pink:bg-pink-50 p-8 hover:border-slate-300 hover:shadow-lg hover:shadow-black/5 dark:hover:border-zinc-700 dark:hover:shadow-black/20 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-amber-500">
+            <h3 className="text-sm font-semibold transition-colors text-slate-800 dark:text-zinc-300 pink:text-pink-900">
               {customer.name}
             </h3>
-
-            <span className="flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-500">
+            <span className="flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-500 pink:border-pink-500/20 pink:bg-pink-500/10 pink:text-pink-600">
               <svg
-                className="h-3 w-3 text-zinc-500"
+                className="h-3 w-3 text-zinc-500 pink:text-pink-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -90,8 +89,8 @@ export default function CustomerView() {
           </button>
         </div>
 
-        <div className="mt-5 flex flex-col gap-2 border-t border-zinc-800 pt-3">
-          <div className="flex items-center gap-2 text-[11px] text-zinc-500">
+        <div className="mt-5 flex flex-col gap-2 border-t pt-3 border-slate-100 dark:border-zinc-800 pink:border-pink-100">
+          <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-zinc-500 pink:text-pink-500">
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -113,7 +112,7 @@ export default function CustomerView() {
             </svg>
             {customer.address}
           </div>
-          <div className="flex items-center gap-2 text-[11px] text-zinc-500">
+          <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-zinc-500 pink:text-pink-500">
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -129,7 +128,7 @@ export default function CustomerView() {
             </svg>
             {customer.email}
           </div>
-          <div className="flex items-center gap-2 text-[11px] text-zinc-500">
+          <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-zinc-500 pink:text-pink-500">
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -146,7 +145,7 @@ export default function CustomerView() {
             {customer.phone}
           </div>
           {customer.notes && (
-            <p className="mt-6 text-[13px] italic text-zinc-400">
+            <p className="mt-6 text-[13px] italic text-slate-600 dark:text-zinc-400 pink:text-pink-800">
               {customer.notes}
             </p>
           )}
@@ -155,17 +154,16 @@ export default function CustomerView() {
 
       {/* <div className="mx-auto mt-8 h-[480px] w-full max-w-2xl overflow-hidden rounded-lg border border-zinc-800">
         {position && ( */}
-      <div
-        className="mx-auto mt-16 flex h-[480px] w-full max-w-2xl items-center justify-center overflow-hidden rounded-lg border border-zinc-800
-   bg-zinc-900"
-      >
+      <div className="mx-auto mt-16 flex h-[480px] w-full max-w-2xl items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-zinc-800 dark:bg-zinc-900 pink:border-pink-200 pink:bg-pink-100">
         {loadingMap ? (
           <div className="flex flex-col items-center gap-4">
-            <p className="text-sm text-zinc-500">Loading OpenStreetMap...</p>
+            <p className="text-sm text-slate-400 dark:text-zinc-500 pink:text-pink-500">
+              Loading OpenStreetMap...
+            </p>
             <img
               src="/osm_logo.svg"
               alt="OpenStreetMap Logo"
-              className="h-11 w-11"
+              className="h-11 w-11 opacity-50 dark:opacity-100 pink:brightness-125"
             />
           </div>
         ) : position ? (
@@ -193,7 +191,9 @@ export default function CustomerView() {
             </Marker>
           </MapContainer>
         ) : (
-          <p className="text-sm text-zinc-500">Location not found</p>
+          <p className="text-sm text-slate-400 dark:text-zinc-500 pink:text-pink-500">
+            Location not found
+          </p>
         )}
       </div>
     </div>

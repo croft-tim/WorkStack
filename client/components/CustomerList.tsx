@@ -10,14 +10,16 @@ export default function CustomerList() {
   if (isError) return <p>Error: {error.message}</p>
 
   return (
-    <div className="mx-auto max-w-[1600px] pt-8">
+    <div className="mx-auto max-w-[1600px] pt-8 px-8">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-zinc-200">Customers</h1>
+        <h1 className="text-2xl font-semibold text-slate-800 dark:text-zinc-200 pink:text-pink-900">
+          Customers
+        </h1>
 
         <button
           type="button"
           onClick={() => navigate('/customers/new')}
-          className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-medium text-white hover:bg-amber-400"
+          className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-medium text-white transition-all hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
         >
           Add customer
         </button>
