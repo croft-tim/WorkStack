@@ -55,13 +55,19 @@ router.patch('/:id', async (req, res, next) => {
     const id = Number(req.params.id)
 
     if (Number.isNaN(id)) {
-      res.status(400).json({ message: 'Invalid job id' })
+      res.status(400).json({ message: 'Invalid customer id' })
       return
     }
 
-    const updatedJobData = req.body
-    const updatedJob = await db.updateCustomerById(id, updatedJobData)
-    res.json(updatedJob)
+    const updatedCustomerData = req.body
+    const updatedCustomer = await db.updateCustomerById(id, updatedCustomerData)
+
+    if (!updatedCustomer) {
+      res.status(404).json({ message: 'Customer not found' })
+      return
+    }
+
+    res.json(updatedCustomer)
     // .setHeader('Location', `${req.baseUrl}/${id}`)
     // .sendStatus(StatusCodes.NO_CONTENT)
   } catch (err) {

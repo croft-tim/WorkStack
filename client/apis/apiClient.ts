@@ -51,3 +51,12 @@ export async function addCustomer(newCustomer: CustomerData) {
   const response = await request.post(`${rootURL}/customers`).send(newCustomer)
   return response.body as number
 }
+
+export async function updateCustomerById(
+  updatedCustomer: Customer,
+): Promise<Customer> {
+  const response = await request
+    .patch(`${rootURL}/customers/${updatedCustomer.id}`)
+    .send(updatedCustomer)
+  return response.body as Customer
+}
