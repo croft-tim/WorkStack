@@ -10,7 +10,7 @@ afterEach(() => {
   cleanup()
 })
 
-vi.mock('./KanbanCard', () => ({
+vi.mock('../KanbanCard', () => ({
   default: ({ job }: { job: { title: string } }) => <div>{job.title}</div>,
 }))
 
