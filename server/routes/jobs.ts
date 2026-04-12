@@ -43,7 +43,7 @@ router.post('/', async (req, res, next) => {
   try {
     const newJob = req.body
     const job = await db.addJob(newJob)
-    res.json(job)
+    res.status(201).json(job)
     // .setHeader('Location', `${req.baseUrl}/${id}`)
     // .sendStatus(StatusCodes.CREATED)
   } catch (err) {
