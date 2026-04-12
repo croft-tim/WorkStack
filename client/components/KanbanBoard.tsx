@@ -1,6 +1,7 @@
 import { statuses } from '../../models/job'
 import { useJobs } from '../hooks/useJobs'
 import KanbanColumn from './KanbanColumn'
+import KanbanAccordion from './KanbanAccordion'
 
 export default function KanbanBoard() {
   const { data, isPending, isError } = useJobs()
@@ -12,8 +13,10 @@ export default function KanbanBoard() {
   return (
     <div className="flex h-full flex-col bg-zinc-950 font-sans text-zinc-100">
       {/* Board Content */}
-      <main className="flex-1 overflow-x-auto overflow-y-hidden bg-zinc-950 px-8 py-6">
-        <div className="flex h-full gap-6">
+      <main className="flex-1 overflow-y-hidden bg-zinc-950 px-8 py-6">
+
+        {/* Desktop: Kanban columns — hidden on mobile */}
+        <div className="hidden md:flex h-full gap-6">
           {statuses.map((status) => (
             <KanbanColumn
               key={status}
@@ -22,6 +25,12 @@ export default function KanbanBoard() {
             />
           ))}
         </div>
+
+        {/* Mobile: Tile + cards — hidden on desktop */}
+        <div className="flex flex-col gap-3 md:hidden">
+          <KanbanAccordion statuses={statuses} jobs={jobs} />
+        </div>
+
       </main>
     </div>
   )
