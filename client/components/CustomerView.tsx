@@ -1,10 +1,46 @@
 import { useParams } from "react-router";
 import { useCustomerById } from "../hooks/useCustomer";
-import { VscStarEmpty } from "react-icons/vsc";
+import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import { useEffect, useState } from 'react'
 
 export default function CustomerView() {
   const { id } = useParams()
   const { data: customer, isPending, isError, error } = useCustomerById(Number(id))
+
+  const [position, setPosition] = useState<[number, number] | null>(null)
+  const [loadingMap, setLoadingMap] = useState(true)
+
+  useEffect(() => {
+    async function fetchCoordinates() {
+      try {
+        // Use Nominatim API to get coordinates from address
+        if (!customer?.address) return
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(customer.address)}&format=json&limit=1`,
+          {
+            headers: {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
+            }
+          }
+        )
+        console.log(response.body)
+        const data = await response.json()
+        if (data && data.length > 0) {
+          setPosition([parseFloat(data[0].lat), parseFloat(data[0].lon)])
+        } else {
+          console.warn("No results found for address")
+        }
+      } catch (error) {
+        console.error("Geocoding failed", error)
+      } finally {
+        setLoadingMap(false)
+      }
+    }
+
+    if (!customer?.address) return
+    fetchCoordinates()
+  }, [customer?.address])
 
   if (isPending) return <p>Loading...</p>
   if (isError) return <p>Error: {error.message}</p>
@@ -13,7 +49,7 @@ export default function CustomerView() {
     <div className="min-h-screen p-8">
       <div className="p-8 mx-auto max-w-2xl mt-5 rounded-lg border border-zinc-800 bg-zinc-900 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-black/20">
         <div className="flex items-start justify-between">
-          <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-amber-500">
+          <h3 className="text-sm font-semibold text-zinc-300 group-hover:text-amber-500">
             {customer.name}
           </h3>
           <span className="flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-500">
@@ -24,7 +60,7 @@ export default function CustomerView() {
           </span>
         </div>
 
-        <div className="mt-2 flex flex-col mt-5 gap-2 border-t border-zinc-800 pt-3">
+        <div className="mt-5 flex flex-col gap-2 border-t border-zinc-800 pt-3">
           <div className="flex items-center gap-2 text-[11px] text-zinc-500">
             <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -49,6 +85,32 @@ export default function CustomerView() {
           )}
         </div>
       </div>
-    </div>
+
+      {/* <div className="mx-auto mt-8 h-[480px] w-full max-w-2xl overflow-hidden rounded-lg border border-zinc-800">
+        {position && ( */}
+      <div className="mx-auto mt-16 h-[480px] w-full max-w-2xl overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900 flex items-center
+   justify-center">
+        {loadingMap ? (
+          <div className="flex flex-col items-center gap-4">
+            <p className="text-zinc-500 text-sm">Loading OpenStreetMap...</p>
+            <img src="/osm_logo.svg" alt="OpenStreetMap Logo" className="h-11 w-11" />
+          </div>
+        ) : position ? (
+          <MapContainer center={position} zoom={14} scrollWheelZoom={false} className="h-full w-full" >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={position}>
+              <Popup>{customer.name}<br></br>{customer.address}</Popup>
+              <Tooltip>{customer.name}<br></br>{customer.address}</Tooltip>
+            </Marker>
+          </MapContainer>
+        ) : (
+          <p className="text-zinc-500 text-sm">Location not found</p>
+        )}
+      </div>
+
+    </div >
   )
 }
