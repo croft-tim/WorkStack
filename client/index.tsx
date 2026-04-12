@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
      * TODO: replace domain, clientId, and audience
      */
     <Auth0Provider
-      domain=""
-      clientId=""
+      domain="raumati-2026-austin.au.auth0.com"
+      clientId="MAYO7Z0624gwiUq1MDRXLDJWu39dORde"
       authorizationParams={{
         redirect_uri: window.location.origin,
-        audience: '',
+        audience: 'https://workstack/api',
       }}
     >
       <QueryClientProvider client={queryClient}>
