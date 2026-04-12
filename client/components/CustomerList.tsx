@@ -12,7 +12,7 @@ export default function CustomerList() {
   return (
     <div className="mx-auto max-w-[1600px] pt-8">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-zinc-100">Customers</h1>
+        <h1 className="text-2xl font-semibold text-zinc-200">Customers</h1>
 
         <button
           type="button"

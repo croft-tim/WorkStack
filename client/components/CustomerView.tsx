@@ -1,6 +1,8 @@
 import { useParams, useNavigate } from 'react-router'
 import { useCustomerById } from '../hooks/useCustomer'
-import { VscStarEmpty } from 'react-icons/vsc'
+import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import { useEffect, useState } from 'react'
 
 export default function CustomerView() {
   const { id } = useParams()
@@ -13,6 +15,40 @@ export default function CustomerView() {
 
   const navigate = useNavigate()
 
+  const [position, setPosition] = useState<[number, number] | null>(null)
+  const [loadingMap, setLoadingMap] = useState(true)
+
+  useEffect(() => {
+    async function fetchCoordinates() {
+      try {
+        // Use Nominatim API to get coordinates from address
+        if (!customer?.address) return
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(customer.address)}&format=json&limit=1`,
+          {
+            headers: {
+              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36'
+            }
+          }
+        )
+        console.log(response.body)
+        const data = await response.json()
+        if (data && data.length > 0) {
+          setPosition([parseFloat(data[0].lat), parseFloat(data[0].lon)])
+        } else {
+          console.warn("No results found for address")
+        }
+      } catch (error) {
+        console.error("Geocoding failed", error)
+      } finally {
+        setLoadingMap(false)
+      }
+    }
+
+    if (!customer?.address) return
+    fetchCoordinates()
+  }, [customer?.address])
+
   if (isPending) return <p>Loading...</p>
   if (isError) return <p>Error: {error.message}</p>
   if (!customer) return <p>Customer not found</p>
@@ -21,45 +57,40 @@ export default function CustomerView() {
     <div className="min-h-screen p-8">
       <div className="mx-auto mt-5 max-w-2xl rounded-lg border border-zinc-800 bg-zinc-900 p-8 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-black/20">
         <div className="flex items-start justify-between">
-          <div className="flex items-center gap-3">
-            <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-amber-500">
-              {customer.name}
-            </h3>
+<div className="flex items-start justify-between">
+  <div className="flex items-center gap-3">
+    <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-amber-500">
+      {customer.name}
+    </h3>
 
-            <span
-              className="flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold
-  uppercase tracking-wider text-amber-500"
-            >
-              <svg
-                className="h-3 w-3 text-zinc-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0
-  00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-
-  1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0
-  00.951-.69l1.519-4.674z"
-                />
-              </svg>
-              {customer.rating}
-            </span>
-          </div>
+    <span className="flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-500">
+      <svg
+        className="h-3 w-3 text-zinc-500"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+        />
+      </svg>
+      {customer.rating}
+    </span>
+  </div>
 
-          <button
-            type="button"
-            onClick={() => navigate(`/customer/${customer.id}/edit`)}
-            className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-medium text-white hover:bg-amber-400"
-          >
-            Edit customer
-          </button>
-        </div>
+  <button
+    type="button"
+    onClick={() => navigate(`/customer/${customer.id}/edit`)}
+    className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-medium text-white hover:bg-amber-400"
+  >
+    Edit customer
+  </button>
+</div>
 
-        <div className="mt-2 mt-5 flex flex-col gap-2 border-t border-zinc-800 pt-3">
+<div className="mt-5 flex flex-col gap-2 border-t border-zinc-800 pt-3">
           <div className="flex items-center gap-2 text-[11px] text-zinc-500">
             <svg
               className="h-3.5 w-3.5"
@@ -121,6 +152,32 @@ export default function CustomerView() {
           )}
         </div>
       </div>
-    </div>
+
+      {/* <div className="mx-auto mt-8 h-[480px] w-full max-w-2xl overflow-hidden rounded-lg border border-zinc-800">
+        {position && ( */}
+      <div className="mx-auto mt-16 h-[480px] w-full max-w-2xl overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900 flex items-center
+   justify-center">
+        {loadingMap ? (
+          <div className="flex flex-col items-center gap-4">
+            <p className="text-zinc-500 text-sm">Loading OpenStreetMap...</p>
+            <img src="/osm_logo.svg" alt="OpenStreetMap Logo" className="h-11 w-11" />
+          </div>
+        ) : position ? (
+          <MapContainer center={position} zoom={14} scrollWheelZoom={false} className="h-full w-full" >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={position}>
+              <Popup>{customer.name}<br></br>{customer.address}</Popup>
+              <Tooltip>{customer.name}<br></br>{customer.address}</Tooltip>
+            </Marker>
+          </MapContainer>
+        ) : (
+          <p className="text-zinc-500 text-sm">Location not found</p>
+        )}
+      </div>
+
+    </div >
   )
 }

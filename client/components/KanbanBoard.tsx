@@ -3,7 +3,8 @@ import { useJobs } from '../hooks/useJobs'
 import KanbanColumn from './KanbanColumn'
 
 export default function KanbanBoard() {
-  const { data: jobs = [], isPending, isError } = useJobs()
+  const { data, isPending, isError } = useJobs()
+  const jobs = Array.isArray(data) ? data : []
 
   if (isPending) return <div className="p-8 text-zinc-400">Loading jobs...</div>
   if (isError) return <div className="p-8 text-rose-400">Failed to load jobs.</div>

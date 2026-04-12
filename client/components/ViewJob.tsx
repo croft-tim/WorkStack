@@ -6,41 +6,42 @@ import { useJobs } from '../hooks/useJob'
 export default function ViewJob() {
   const { id } = useParams()
   const navigate = useNavigate()
-  const jobobj = useJobs(Number(id))
+  const jobDetails = useJobs(Number(id))
 
-  const [formstate, setformstate] = useState(true)
-  const [formdata, setformdata] = useState({})
+  const [formState, setFormState] = useState(true)
+  const [formData, setFormData] = useState({})
 
-  const { data: job, isPending, isError, error } = jobobj
+  const { data: job, isPending, isError, error } = jobDetails
 
-  function inputhandler(
+  function inputHandler(
     e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>,
   ) {
     const { name, value } = e.target
-    setformdata({
-      ...formdata,
+    setFormData({
+      ...formData,
       [name]: value,
     })
-    console.log(formdata)
+    console.log(formData)
   }
 
-  function edithandler() {
-    setformdata({ ...job })
-    if (formstate == true) {
-      setformstate(false)
+  function editHandler() {
+    setFormData({ ...job })
+    if (formState == true) {
+      setFormState(false)
     } else {
-      setformstate(true)
+      setFormState(true)
     }
   }
 
   const handleEdit = async (job) => {
-    jobobj.update.mutate(job)
+    jobDetails.update.mutate(job)
+    setFormState(true)
   }
 
   const handleDelete = async (id: number) => {
-    jobobj.delete.mutate(id)
+    jobDetails.delete.mutate(id)
     setTimeout(() => {
       navigate('/kanban')
     }, 500)
@@ -68,13 +69,13 @@ export default function ViewJob() {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <p className="text-sm text-zinc-500">{job.id}</p>
-          {formstate ? (
+          {formState ? (
             <h1 className="text-3xl font-semibold">{job.title}</h1>
           ) : (
             <input
               name="title"
-              onChange={inputhandler}
-              value={formdata.title}
+              onChange={inputHandler}
+              value={formData.title}
               type="text"
               className="mb-5 w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3
            py-2 text-sm
@@ -85,7 +86,7 @@ export default function ViewJob() {
         </div>
         <div className="flex gap-2 rounded-md bg-zinc-900 p-2">
           <button
-            onClick={edithandler}
+            onClick={editHandler}
             className="rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-sm text-zinc-200 transition hover:bg-zinc-700"
           >
             Edit
@@ -109,13 +110,13 @@ export default function ViewJob() {
         <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-5 md:col-span-2">
           <h2 className="mb-3 text-xl font-semibold">Job Overview</h2>
 
-          {formstate ? (
+          {formState ? (
             <p className="mb-5 text-zinc-300">{job.notes}</p>
           ) : (
             <input
               name="notes"
-              onChange={inputhandler}
-              value={formdata.notes}
+              onChange={inputHandler}
+              value={formData.notes}
               type="text"
               className="mb-5 w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3
            py-2 text-sm
@@ -125,7 +126,7 @@ export default function ViewJob() {
           {/*
           <h3 className="mb-2 text-lg font-medium">Inspection</h3>
 
-          {formstate ? (
+          {formState ? (
             <p className="mb-5 text-zinc-300">{job.inspection}</p>
           ) : (
             <input
@@ -138,15 +139,15 @@ export default function ViewJob() {
           )}
         */}
           <h3 className="mb-2 text-lg font-medium">Start Date</h3>
-          {formstate ? (
+          {formState ? (
             <p className="mb-5 text-zinc-400">
               {new Date(job.startDate).toLocaleDateString()}
             </p>
           ) : (
             <input
               name="start_date"
-              onChange={inputhandler}
-              value={formdata.startDate}
+              onChange={inputHandler}
+              value={formData.startDate}
               type="date"
               className="mb-5 w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3
            py-2 text-sm
@@ -156,15 +157,15 @@ export default function ViewJob() {
 
           <h3 className="mb-2 text-lg font-medium">End Date</h3>
 
-          {formstate ? (
+          {formState ? (
             <p className="mb-5 text-zinc-400">
               {new Date(job.endDate).toLocaleDateString()}
             </p>
           ) : (
             <input
               name="end_date"
-              onChange={inputhandler}
-              value={formdata.endDate}
+              onChange={inputHandler}
+              value={formData.endDate}
               type="date"
               className="mb-5 w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3
            py-2 text-sm
@@ -174,7 +175,7 @@ export default function ViewJob() {
           {/*
           <h3 className="mb-2 text-lg font-medium">Notes</h3>
 
-          {formstate ? (
+          {formState ? (
             <p className="mb-5 text-zinc-300">{job.notes}</p>
           ) : (
             <input
@@ -186,13 +187,13 @@ export default function ViewJob() {
             ></input>
           )}
 */}
-          {!formstate && (
+          {!formState && (
             <button
-              onClick={() => handleEdit({ ...formdata })}
+              onClick={() => handleEdit({ ...formData })}
               type="submit"
               className="rounded-lg bg-amber-500 px-5 py-2 text-sm font-medium text-black hover:bg-amber-400"
             >
-              Submit edit
+              Save Changes
             </button>
           )}
         </div>
@@ -203,13 +204,14 @@ export default function ViewJob() {
             <div className="space-y-2 text-sm text-zinc-400">
               <div className="flex items-center gap-1">
                 <span className="font-medium text-zinc-200">Status:</span>
-                {formstate ? (
+                {formState ? (
                   <p>{job.status}</p>
                 ) : (
                   <select
-                    onChange={inputhandler}
+                    onChange={inputHandler}
                     id="status"
                     name="status"
+                    value={formData.status}
                     className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm
            text-zinc-100 placeholder:text-zinc-600
            focus:border-amber-500 focus:outline-none"
@@ -225,13 +227,13 @@ export default function ViewJob() {
               </div>
               <div className="flex items-center gap-1">
                 <span className="font-medium text-zinc-200">Quote:</span>{' '}
-                {formstate ? (
+                {formState ? (
                   <p>{job.quote}</p>
                 ) : (
                   <input
-                    onChange={inputhandler}
+                    onChange={inputHandler}
                     name="quote"
-                    value={formdata.quote}
+                    value={formData.quote}
                     type="text"
                     className=" w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3
            py-2 text-sm
