@@ -2,6 +2,8 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { Job, JobData, statuses } from '../../models/job.ts'
 import { useCustomer } from '../hooks/useCustomer.ts'
 import { Link } from 'react-router'
+import toast from 'react-hot-toast'
+
 
 const defaultJobData: JobData = {
   tradieId: 1,
@@ -16,7 +18,7 @@ const defaultJobData: JobData = {
 
 interface JobFormProps {
   initialData?: Partial<Job>
-  onSubmit: (data: JobData) => void
+  onSubmit: (data: JobData) => Promise<unknown>
 }
 
 export default function JobForm({ initialData, onSubmit }: JobFormProps) {
@@ -41,9 +43,13 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
     }))
   }
 
-  function handleSubmit(evt: FormEvent) {
+  async function handleSubmit(evt: FormEvent) {
     evt.preventDefault()
-    onSubmit(formData)
+    await toast.promise(onSubmit(formData), {
+      loading: 'Saving job...',
+      success: 'Job saved.',
+      error: 'Failed to save job!',
+    })
   }
 
   return (
