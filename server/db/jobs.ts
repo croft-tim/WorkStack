@@ -53,22 +53,43 @@ export async function addJob(newJob: JobData): Promise<number> {
   return newJobArr[0].id
 }
 
-export async function updateJobById(
-  id: number,
-  newProperties: Job,
-): Promise<Job | undefined> {
+export async function updateJobById(id: number, newProperties: Partial<Job>) {
+  const updates: Record<string, unknown> = {}
+  if (newProperties.tradieId !== undefined) {
+    updates.tradie_id = newProperties.tradieId
+  }
+
+  if (newProperties.customerId !== undefined) {
+    updates.customer_id = newProperties.customerId
+  }
+
+  if (newProperties.status !== undefined) {
+    updates.status = newProperties.status
+  }
+
+  if (newProperties.title !== undefined) {
+    updates.title = newProperties.title
+  }
+
+  if (newProperties.quote !== undefined) {
+    updates.quote = newProperties.quote
+  }
+
+  if (newProperties.notes !== undefined) {
+    updates.notes = newProperties.notes
+  }
+
+  if (newProperties.startDate !== undefined) {
+    updates.start_date = newProperties.startDate
+  }
+
+  if (newProperties.endDate !== undefined) {
+    updates.end_date = newProperties.endDate
+  }
+
   const updatedJobArr = await db('jobs')
     .where('id', id)
-    .update({
-      tradie_id: newProperties.tradieId,
-      customer_id: newProperties.customerId,
-      status: newProperties.status,
-      title: newProperties.title,
-      quote: newProperties.quote,
-      notes: newProperties.notes,
-      start_date: newProperties.startDate,
-      end_date: newProperties.endDate,
-    })
+    .update(updates)
     .returning([
       'id',
       'tradie_id as tradieId',

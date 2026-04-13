@@ -27,7 +27,7 @@ export async function deleteJobById(id: number) {
   return
 }
 
-export async function updateJobById(updatedJob: Job): Promise<Job> {
+export async function updateJobById(updatedJob: Partial<Job>): Promise<Job> {
   const response = await request
     .patch(`${rootURL}/jobs/${updatedJob.id}`)
     .send(updatedJob)
