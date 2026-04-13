@@ -77,6 +77,13 @@ export default function CustomerView() {
             </svg>
             {customer.rating}
           </span>
+          <button
+            type="button"
+            onClick={() => navigate(`/customer/${customer.id}/edit`)}
+            className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-bold text-white transition-all hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
+          >
+            Edit customer
+          </button>
         </div>
 
         <div className="mt-5 flex flex-col gap-2 border-t pt-3 border-slate-100 dark:border-zinc-800 pink:border-pink-100">
