@@ -4,7 +4,6 @@ import { useCustomer } from '../hooks/useCustomer.ts'
 import { Link } from 'react-router'
 import toast from 'react-hot-toast'
 
-
 const defaultJobData: JobData = {
   tradieId: 1,
   customerId: 0,
@@ -45,6 +44,10 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
 
   async function handleSubmit(evt: FormEvent) {
     evt.preventDefault()
+    if (!formData.customerId) {
+      toast.error('Please select a customer')
+      return
+    }
     await toast.promise(onSubmit(formData), {
       loading: 'Saving job...',
       success: 'Job saved.',
@@ -80,6 +83,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                 placeholder="e.g. Fix leaking tap at 42 Main St"
                 onChange={handleChange}
                 value={formData.title}
+                required
                 className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm
            text-zinc-100 placeholder:text-zinc-600
            focus:border-amber-500 focus:outline-none"
@@ -117,6 +121,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                 id="customerId"
                 name="customerId"
                 value={formData.customerId}
+                required
                 onChange={handleChange}
                 className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm
       text-zinc-100 focus:border-amber-500 focus:outline-none"
