@@ -83,7 +83,7 @@ export default function CustomerView() {
           <button
             type="button"
             onClick={() => navigate(`/customer/${customer.id}/edit`)}
-            className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-medium text-white hover:bg-amber-400"
+            className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-bold text-white transition-all hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
           >
             Edit customer
           </button>
