@@ -8,7 +8,7 @@ interface Props {
 }
 
 const navLinks = [
-  { label: 'Dashboard', to: '/' },
+  // { label: 'Dashboard', to: '/' },
   // { label: 'Board', to: '/kanban' },
   { label: 'Jobs', to: '/kanban' },
   { label: 'Customers', to: '/customers' },
