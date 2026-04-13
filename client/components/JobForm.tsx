@@ -56,23 +56,23 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 p-8">
+    <div className="min-h-screen p-8 transition-colors duration-300 bg-white dark:bg-zinc-900 pink:bg-pink-50">
       <div className="mx-auto max-w-2xl">
         <div className="mb-6">
-          <p className="text-xs text-zinc-500">
+          <p className="text-xs text-slate-500 dark:text-zinc-500 pink:text-pink-500">
             Jobs / {isEditing ? 'Edit' : 'New'}
           </p>
-          <h1 className="text-xl font-medium text-zinc-50">
+          <h1 className="text-xl font-medium text-slate-800 dark:text-zinc-50 pink:text-pink-900">
             {isEditing ? 'Edit job' : 'Create job'}
           </h1>
         </div>
 
-        <div className="rounded-xl border border-zinc-800 bg-zinc-900 px-8 py-6">
+        <div className="rounded-xl border transition-colors border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-800/50 pink:border-pink-200 pink:bg-pink-50 px-8 py-6 shadow-sm dark:shadow-none pink:shadow-pink-500/5">
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="title"
-                className="text-xs font-medium text-zinc-400"
+                className="text-xs font-medium text-slate-500 dark:text-zinc-400 pink:text-pink-700"
               >
                 Job title
               </label>
@@ -84,16 +84,14 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                 onChange={handleChange}
                 value={formData.title}
                 required
-                className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm
-           text-zinc-100 placeholder:text-zinc-600
-           focus:border-amber-500 focus:outline-none"
+                className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-600 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:placeholder:text-pink-300 pink:focus:border-pink-500"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="notes"
-                className="text-xs font-medium text-zinc-400"
+                className="text-xs font-medium text-slate-500 dark:text-zinc-400 pink:text-pink-700"
               >
                 Notes
               </label>
@@ -104,16 +102,14 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                 placeholder="Describe the job…"
                 onChange={handleChange}
                 value={formData.notes}
-                className="resize-y rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm
-           text-zinc-100 placeholder:text-zinc-600
-           focus:border-amber-500 focus:outline-none"
+                className="resize-y rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-600 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:placeholder:text-pink-300 pink:focus:border-pink-500"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="customerId"
-                className="text-xs font-medium text-zinc-400"
+                className="text-xs font-medium text-slate-500 dark:text-zinc-400 pink:text-pink-700"
               >
                 Customer
               </label>
@@ -123,8 +119,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                 value={formData.customerId}
                 required
                 onChange={handleChange}
-                className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm
-      text-zinc-100 focus:border-amber-500 focus:outline-none"
+                className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
               >
                 <option value={0} disabled>
                   Select a customer…
@@ -141,12 +136,12 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="quote"
-                  className="text-xs font-medium text-zinc-400"
+                  className="text-xs font-medium text-slate-500 dark:text-zinc-400 pink:text-pink-700"
                 >
                   Quote
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-zinc-400">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-slate-400 dark:text-zinc-400 pink:text-pink-400">
                     $
                   </span>
                   <input
@@ -158,9 +153,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                     step={0.01}
                     onChange={handleChange}
                     value={formData.quote}
-                    className="rounded-lg border border-zinc-700 bg-zinc-950 py-2 pl-7 pr-3 text-sm
-           text-zinc-100 placeholder:text-zinc-600
-           focus:border-amber-500 focus:outline-none"
+                    className="w-full rounded-lg border py-2 pl-7 pr-3 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-600 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:placeholder:text-pink-300 pink:focus:border-pink-500"
                   />
                 </div>
               </div>
@@ -168,7 +161,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="status"
-                  className="text-xs font-medium text-zinc-400"
+                  className="text-xs font-medium text-slate-500 dark:text-zinc-400 pink:text-pink-700"
                 >
                   Status
                 </label>
@@ -177,9 +170,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                   name="status"
                   value={formData.status}
                   onChange={handleChange}
-                  className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm
-           text-zinc-100 placeholder:text-zinc-600
-           focus:border-amber-500 focus:outline-none"
+                  className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
                 >
                   {statuses.map((status) => (
                     <option key={status} value={status}>
@@ -194,7 +185,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="startDate"
-                  className="text-xs font-medium text-zinc-400"
+                  className="text-xs font-medium text-slate-500 dark:text-zinc-400 pink:text-pink-700"
                 >
                   Start date
                 </label>
@@ -204,16 +195,14 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                   name="startDate"
                   onChange={handleChange}
                   value={formData.startDate}
-                  className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm
-           text-zinc-100 [color-scheme:dark]
-           placeholder:text-zinc-600 focus:border-amber-500 focus:outline-none"
+                  className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:[color-scheme:dark] pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="endDate"
-                  className="text-xs font-medium text-zinc-400"
+                  className="text-xs font-medium text-slate-500 dark:text-zinc-400 pink:text-pink-700"
                 >
                   End date
                 </label>
@@ -223,25 +212,21 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                   name="endDate"
                   onChange={handleChange}
                   value={formData.endDate}
-                  className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm
-           text-zinc-100 [color-scheme:dark]
-           placeholder:text-zinc-600 focus:border-amber-500 focus:outline-none"
+                  className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:[color-scheme:dark] pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
                 />
               </div>
             </div>
 
-            <div className="flex justify-end gap-2 border-t border-zinc-800 pt-5">
+            <div className="flex justify-end gap-2 border-t pt-5 border-slate-100 dark:border-zinc-800 pink:border-pink-100">
               <Link
                 to="/kanban"
-                type="button"
-                className="rounded-lg border border-zinc-700 px-4 py-2 text-sm
-           font-medium text-zinc-400 hover:bg-zinc-800"
+                className="rounded-lg border px-4 py-2 text-sm font-medium transition-colors border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700 pink:border-pink-200 pink:bg-pink-100 pink:text-pink-700 pink:hover:bg-pink-200"
               >
                 Cancel
               </Link>
               <button
                 type="submit"
-                className="rounded-lg bg-amber-500 px-5 py-2 text-sm font-medium text-white hover:bg-amber-400"
+                className="rounded-lg bg-amber-500 px-5 py-2 text-sm font-medium text-white transition-all hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
               >
                 {isEditing ? 'Save changes' : 'Create job'}
               </button>
