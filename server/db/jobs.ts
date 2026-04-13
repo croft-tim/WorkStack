@@ -12,6 +12,7 @@ const selectColumns = [
   'jobs.start_date as startDate',
   'jobs.end_date as endDate',
   'customers.address',
+  'customers.name',
 ]
 
 export async function getJobs() {
