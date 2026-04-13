@@ -1,3 +1,4 @@
+import { useAuth0 } from '@auth0/auth0-react'
 import { useState } from 'react'
 import { Link } from 'react-router'
 
@@ -17,6 +18,23 @@ const navLinks = [
 
 export default function Header({ showToolbar = true }: Props) {
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const auth = useAuth0()
+  const user = auth.user
+  const logout = auth.logout
+  const loginWithRedirect = auth.loginWithRedirect
+
+  const handleSignOut = () => {
+    logout()
+  }
+
+  const handleSignIn = () => {
+    loginWithRedirect({
+      authorizationParams: {
+        redirectUri: `${window.location.origin}`,
+      },
+    })
+  }
 
   return (
     <div className="flex flex-col border-b border-slate-200 bg-white">
@@ -97,19 +115,34 @@ export default function Header({ showToolbar = true }: Props) {
           </Link>
 
           {/* Profile avatar placeholder */}
-          <button
-            className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-slate-200 transition-shadow hover:ring-2 hover:ring-amber-400 focus:outline-none"
-            aria-label="View profile"
-          >
-            <svg
-              className="h-6 w-6 text-slate-500"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
+          {!user ? (
+            <button
+              onClick={handleSignIn}
+              className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100"
             >
-              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-            </svg>
-          </button>
+              Login
+            </button>
+          ) : (
+            <div className="flex items-center gap-3">
+              {/* Avatar */}
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-500 text-sm font-bold text-white">
+                {user.given_name?.charAt(0)}
+              </div>
+
+              {/* Name */}
+              <span className="text-sm font-medium text-slate-700">
+                {user.given_name}
+              </span>
+
+              {/* Logout */}
+              <button
+                onClick={handleSignOut}
+                className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-800"
+              >
+                Log out
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
