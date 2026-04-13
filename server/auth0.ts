@@ -5,8 +5,8 @@ import { JwtPayload } from 'jsonwebtoken'
 import jwks from 'jwks-rsa'
 
 // TODO: set the domain and audience (API Identifier)
-const domain = 'https://'
-const audience = 'https://'
+const domain = 'https://raumati-2026-austin.au.auth0.com'
+const audience = 'https://workstack/api'
 
 const checkJwt = jwt({
   secret: jwks.expressJwtSecret({
@@ -23,7 +23,10 @@ const checkJwt = jwt({
 export default checkJwt
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface JwtRequest<TReq = any, TRes = any>
-  extends Request<ParamsDictionary, TRes, TReq> {
+export interface JwtRequest<TReq = any, TRes = any> extends Request<
+  ParamsDictionary,
+  TRes,
+  TReq
+> {
   auth?: JwtPayload
 }

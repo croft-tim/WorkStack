@@ -11,12 +11,11 @@ const queryClient = new QueryClient()
 
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
-    /**
-     * TODO: replace domain, clientId, and audience
-     */
     <Auth0Provider
       domain="raumati-2026-austin.au.auth0.com"
       clientId="MAYO7Z0624gwiUq1MDRXLDJWu39dORde"
+      cacheLocation="localstorage"
+      useRefreshTokens={true}
       authorizationParams={{
         redirect_uri: window.location.origin,
         audience: 'https://workstack/api',
