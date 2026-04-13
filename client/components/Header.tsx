@@ -39,7 +39,7 @@ export default function Header({ showToolbar = true }: Props) {
   }
 
   return (
-    <div className="flex flex-col border-b border-slate-200 dark:border-zinc-800 pink:border-pink-200 bg-white dark:bg-zinc-900 pink:bg-pink-100 transition-colors">
+    <div className="flex flex-col border-b border-slate-200 pink:border-pink-200 bg-white pink:bg-pink-100 transition-colors">
       {/* Header bar */}
       <header className="flex h-16 shrink-0 items-center justify-between px-8">
         <div className="flex items-center gap-4">
