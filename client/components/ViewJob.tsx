@@ -119,7 +119,7 @@ export default function ViewJob() {
               className="mb-5 w-full rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-600 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:placeholder:text-pink-300 pink:focus:border-pink-500"
             ></input>
           )}
-
+          {/*
           {formState ? (
             <p className="mb-5 text-zinc-300">{job.inspection}</p>
           ) : (
@@ -131,7 +131,7 @@ export default function ViewJob() {
            text-zinc-100 placeholder:text-zinc-600 focus:border-amber-500 focus:outline-none"
             ></input>
           )}
-        */}
+          */}
           <h3 className="mb-2 text-lg font-medium">Start Date</h3>
           {formState ? (
             <p className="mb-5 text-slate-500 dark:text-zinc-400 pink:text-pink-600">
@@ -162,7 +162,7 @@ export default function ViewJob() {
               className="mb-5 w-full rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:[color-scheme:dark] pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
             ></input>
           )}
-
+          {/*
           {formState ? (
             <p className="mb-5 text-zinc-300">{job.notes}</p>
           ) : (
@@ -174,7 +174,7 @@ export default function ViewJob() {
            text-zinc-100 placeholder:text-zinc-600 focus:border-amber-500 focus:outline-none"
             ></input>
           )}
-*/}
+          */}
           {!formState && (
             <button
               onClick={() => handleEdit({ ...formData })}
