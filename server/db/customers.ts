@@ -13,6 +13,13 @@ export async function getCustomers() {
   return customer as Customer[]
 }
 
+export async function getCustomersSearch(query: string) {
+  const customer = await db('customers')
+    .whereLike('name', `%${query}%`)
+    .select()
+  return customer as Customer[]
+}
+
 export async function addCustomer(newCustomer: CustomerData): Promise<number> {
   const newCustomerArr = await db('customers')
     .insert({

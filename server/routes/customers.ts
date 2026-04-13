@@ -16,6 +16,23 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.get('/search/:term', async (req, res, next) => {
+  try {
+    const query = req.params.term
+
+    const customers = await db.getCustomersSearch(query)
+
+    if (customers == null) {
+      res.status(204).json({ message: 'No results' })
+      return
+    } else {
+      res.json(customers)
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get('/:id', async (req, res, next) => {
   try {
     const id = Number(req.params.id)
@@ -28,7 +45,7 @@ router.get('/:id', async (req, res, next) => {
     const job = await db.getCustomerById(id)
 
     if (job == null) {
-      res.status(404).json({ message: 'Job not found' })
+      res.status(204).json({ message: 'Job not found' })
       return
     } else {
       res.json(job)
