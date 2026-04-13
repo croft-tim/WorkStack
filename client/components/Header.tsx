@@ -92,7 +92,7 @@ export default function Header({ showToolbar = true }: Props) {
         {/* Centered Button Groups */}
         <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-12">
           {/* Jobs Group */}
-          <div className="flex items-center gap-0.5">
+          <div className="hidden nav:flex items-center gap-0.5">
             <Link
               to="/kanban"
               className="flex items-center rounded-l-lg bg-amber-500 px-4 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20 pink:bg-pink-600 pink:text-white pink:hover:bg-pink-400 pink:hover:shadow-pink-500/20"
@@ -121,7 +121,7 @@ export default function Header({ showToolbar = true }: Props) {
           </div>
 
           {/* Customers Group */}
-          <div className="flex items-center gap-0.5">
+          <div className="hidden nav:flex items-center gap-0.5">
             <Link
               to="/customers"
               className="flex items-center rounded-l-lg bg-slate-500 px-4 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-slate-600 hover:shadow-lg hover:shadow-slate-500/20 pink:bg-pink-500/90 pink:text-white pink:hover:bg-pink-500 pink:hover:shadow-pink-500/20"

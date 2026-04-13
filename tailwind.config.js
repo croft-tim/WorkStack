@@ -5,7 +5,11 @@ export default {
   darkMode: 'class',
   content: ['./index.html', './client/**/*.tsx'],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        nav: '880px',
+      },
+    },
   },
   plugins: [
     plugin(function ({ addVariant }) {
