@@ -1,6 +1,8 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { useState } from 'react'
 import { Link } from 'react-router'
+import SearchCard from './SearchCard'
+import Search from './SearchCard'
 
 interface Props {
   showToolbar?: boolean
@@ -164,11 +166,7 @@ export default function Header({ showToolbar = true }: Props) {
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
-              <input
-                type="text"
-                placeholder="Search jobs, clients..."
-                className="w-64 rounded-lg border border-zinc-800 bg-zinc-900/50 py-2 pl-10 pr-4 text-xs text-zinc-100 transition-colors focus:border-amber-500/50 focus:outline-none"
-              />
+              <Search />
             </div>
             <button className="flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 px-3 py-2 text-xs font-medium text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-200">
               <svg
