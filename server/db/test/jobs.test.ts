@@ -120,3 +120,13 @@ describe('PATCH /api/v1/jobs/:id', () => {
     expect(res.body.quote).toBe(999)
   })
 })
+
+describe('DELETE /api/v1/jobs/:id', () => {
+  it('deletes a job', async () => {
+    const deleteRes = await request(server).delete('/api/v1/jobs/1')
+    expect(deleteRes.statusCode).toBe(StatusCodes.OK)
+
+    const getRes = await request(server).get('/api/v1/jobs/1')
+    expect(getRes.statusCode).toBe(StatusCodes.NOT_FOUND)
+  })
+})
