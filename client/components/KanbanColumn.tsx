@@ -1,5 +1,6 @@
 import { Job, JobStatus } from '../../models/job'
 import KanbanCard from './KanbanCard'
+import { useNavigate } from 'react-router'
 
 interface Props {
   status: JobStatus
@@ -7,6 +8,12 @@ interface Props {
 }
 
 export default function KanbanColumn({ status, jobs }: Props) {
+  const navigate = useNavigate()
+
+  function handleAddJob() {
+    navigate(`/jobs/new?status=${encodeURIComponent(status)}`)
+  }
+
   const statusColors = {
     New: 'bg-red-500',
     Quoted: 'bg-amber-500',
@@ -16,18 +23,22 @@ export default function KanbanColumn({ status, jobs }: Props) {
   }
 
   return (
-    <div className="flex min-w-48 flex-1 flex-col gap-4 rounded-xl transition-colors bg-slate-100/70 dark:bg-zinc-800/50 pink:bg-pink-100/50 p-3">
+    <div className="flex min-w-48 flex-1 flex-col gap-4 rounded-xl bg-slate-100/70 p-3 transition-colors pink:bg-pink-100/50 dark:bg-zinc-800/50">
       <div className="flex items-center justify-between px-2">
         <div className="flex items-center gap-2">
           <span className={`h-2 w-2 rounded-full ${statusColors[status]}`} />
-          <h2 className="text-sm font-bold tracking-wide text-slate-700 dark:text-zinc-200 pink:text-pink-800">
+          <h2 className="text-sm font-bold tracking-wide text-slate-700 pink:text-pink-800 dark:text-zinc-200">
             {status}
           </h2>
-          <span className="ml-1 rounded-full bg-slate-200 dark:bg-zinc-800 pink:bg-pink-200 px-2 py-0.5 text-[10px] font-bold text-slate-500 dark:text-zinc-400 pink:text-pink-600">
+          <span className="ml-1 rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-bold text-slate-500 pink:bg-pink-200 pink:text-pink-600 dark:bg-zinc-800 dark:text-zinc-400">
             {jobs.length}
           </span>
         </div>
-        <button className="rounded-md p-1 text-slate-400 dark:text-zinc-500 pink:text-pink-400 hover:bg-slate-200 dark:hover:bg-zinc-800 pink:hover:bg-pink-200 hover:text-slate-600 dark:hover:text-zinc-300 pink:hover:text-pink-600">
+        <button
+          type="button"
+          onClick={handleAddJob}
+          className="rounded-md p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-600 pink:text-pink-400 pink:hover:bg-pink-200 pink:hover:text-pink-600 dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+        >
           <svg
             className="h-4 w-4"
             fill="none"
