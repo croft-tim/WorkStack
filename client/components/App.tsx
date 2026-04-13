@@ -1,9 +1,7 @@
 import { Link } from 'react-router'
 import { useTheme } from './ThemeContext'
-import PinkThemeBackground from './PinkThemeBackground'
 
 export default function App() {
-  const { theme } = useTheme()
 
   return (
     <div className="relative flex h-full flex-col items-center justify-center p-8 transition-colors duration-300">
@@ -18,7 +16,6 @@ export default function App() {
           Open Kanban Board
         </Link>
       </div>
-      {theme === 'pink' && <PinkThemeBackground />}
     </div>
   )
 }
