@@ -104,9 +104,7 @@ export default function KanbanCard({ job }: Props) {
               e.stopPropagation()
               handleStatusChange(e.target.value as JobStatus)
             }}
-            className="pink:border-pink-200 pink:bg-pink-100 pink:text-pink-700 pink:hover:bg-pink-200 dark:hover:bg- zinc-700 rounded-md border
-  border-slate-200 bg-slate-50 px-3 py-1.5 text-xs text-slate-600 transition hover:bg-slate-100 dark:border-zinc-700 dark:bg-zinc-800
-  dark:text-zinc-200"
+            className="pink:border-pink-200 pink:bg-pink-100 pink:text-pink-700 pink:hover:bg-pink-200 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-600 transition hover:bg-slate-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
           >
             {statuses.map((status) => (
               <option key={status} value={status}>
