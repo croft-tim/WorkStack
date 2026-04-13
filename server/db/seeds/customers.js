@@ -1,12 +1,12 @@
 import { faker } from '@faker-js/faker'
 
-// Create 25 customers, the first one [1] is hard coded. Customers [2] to [16] have hard coded notes.
+// Create 85 customers, the first one [1] is hard coded. Customers [2] to [76] have hard coded notes.
 
 export async function seed(knex) {
   // Deletes ALL existing entries
   await knex('customers').del()
 
-  // Hard coded notes
+  // Hard coded notes (75 total)
   const notes = [
     'Interested in a bathroom remodel, specifically looking for modern fixtures.',
     'Regular customer, always prefers morning appointments.',
@@ -22,10 +22,70 @@ export async function seed(knex) {
     'Planning a backyard landscaping project, looking for paving quotes.',
     'Previous work done was excellent; specifically requested the same tradie.',
     'Has a gated driveway; security code for entry is 1234.',
-    'Looking for routine plumbing maintenance and drain clearing.'
+    'Looking for routine plumbing maintenance and drain clearing.',
+    'Needs a quote for a new deck; mentioned they had a bad experience with a previous builder.',
+    'Looking for a reliable plumber for ongoing maintenance of an old villa.',
+    'First time home owner, very nervous about structural repairs.',
+    'Prefers sustainable materials whenever possible.',
+    'Has a specific budget for the kitchen renovation and needs to stick to it.',
+    'Recommended by a friend; looking for a long-term tradie relationship.',
+    'Building an extension and needs advice on the best layout.',
+    'Reported some dampness in the guest bedroom; needs a thorough inspection.',
+    'Interested in upgrading all light fixtures to energy-efficient LEDs.',
+    'Mentioned they work from home and need quiet periods during the day.',
+    'Wants to install a heat pump in the main living area before next winter.',
+    'Has a collection of antique furniture; needs extra care during renovations.',
+    'Looking for a skilled painter for decorative trim work.',
+    'Reported a loose tile on the roof; worried about potential leaks.',
+    'Needs a new garden gate installed for better security.',
+    'Planning to sell the house soon and wants to do some cosmetic touch-ups.',
+    'Interested in a full rewire of their 1950s bungalow.',
+    'Mentioned they have a young child and need work done during school hours.',
+    'Looking for a quote to replace all the windows with double glazing.',
+    'Reported a strange noise coming from the water heater.',
+    'Wants to build a bespoke bookshelf in the study.',
+    'Considering a loft conversion and needs a feasibility assessment.',
+    'Recommended for high-quality finish; willing to wait for the right tradie.',
+    'Has a small garden and wants to maximize the space with clever landscaping.',
+    'Looking for someone to help with regular maintenance tasks around the house.',
+    'Reported a cracked pavement on the driveway.',
+    'Wants to install a new security system with smart cameras.',
+    'Interested in a deck extension for outdoor entertaining.',
+    'Needs a new fence built along the boundary line.',
+    'Reported a problem with the garage door opener.',
+    'Wants to renovate the laundry room to include more storage.',
+    'Looking for a professional to clean and seal their natural stone patio.',
+    'Reported some peeling paint on the exterior walls.',
+    'Wants to install a new kitchen island with a breakfast bar.',
+    'Interested in a walk-in wardrobe conversion for the master bedroom.',
+    'Needs a new vanity unit installed in the family bathroom.',
+    'Reported a dripping tap in the utility room.',
+    'Wants to replace the old carpet with hardwood flooring.',
+    'Looking for a quote to build a new carport.',
+    'Reported a loose handle on the front door.',
+    'Wants to install new outdoor lighting for the garden path.',
+    'Interested in a small extension for a sunroom.',
+    'Needs a new toilet installed in the downstairs cloakroom.',
+    'Reported a cracked mirror in the bathroom.',
+    'Wants to paint the entire interior of the house.',
+    'Looking for a professional to hang some heavy artwork.',
+    'Reported a squeaky floorboard in the hallway.',
+    'Wants to install a new backsplash in the kitchen.',
+    'Interested in a garden shed assembly and installation.',
+    'Needs a new front door fitted.',
+    'Reported a problem with the doorbell.',
+    'Wants to upgrade the insulation in the walls.',
+    'Looking for a quote to renovate the basement.',
+    'Reported a broken latch on the window.',
+    'Wants to install a new shower screen.',
+    'Interested in a built-in wardrobe for the second bedroom.',
+    'Needs a new kitchen tap installed.',
+    'Reported a flickering light in the bathroom.',
+    'Wants to replace the old fence with a more modern design.',
+    'Looking for a professional to sand and polish the wooden floors.'
   ]
 
-  // Hard coded addresses
+  // Hard coded addresses (84 unique NZ addresses)
   const addresses = [
     '101 Queen Street, Auckland CBD, Auckland 1010',
     '60 Cashel Street, Christchurch 8013',
@@ -50,7 +110,68 @@ export async function seed(knex) {
     '58 Dee Street, Invercargill Central, Invercargill 9810',
     '21 Tay Street, Invercargill Central, Invercargill 9810',
     '45 Whangaparaoa Road, Red Beach, Whangaparaoa 0932',
-    '103 Great North Road, Winton, Southland 9720'
+    '103 Great North Road, Winton, Southland 9720',
+    '120 Karangahape Road, Auckland CBD, Auckland 1010',
+    '5 Ponsonby Road, Grey Lynn, Auckland 1011',
+    '88 Federal Street, Auckland CBD, Auckland 1010',
+    '17 Customs Street West, Auckland CBD, Auckland 1010',
+    '4 Pacific Rise, Mount Wellington, Auckland 1060',
+    '200 Victoria Street West, Auckland CBD, Auckland 1010',
+    '1 Teed Street, Newmarket, Auckland 1023',
+    '52 High Street, Auckland CBD, Auckland 1010',
+    '77 St Georges Bay Road, Parnell, Auckland 1010',
+    '1 Jervois Quay, Wellington Central, Wellington 6011',
+    '101 Wakefield Street, Wellington Central, Wellington 6011',
+    '2 Cable Street, Te Aro, Wellington 6011',
+    '113 The Terrace, Wellington Central, Wellington 6011',
+    '40 Taranaki Street, Te Aro, Wellington 6011',
+    '60 Oriental Parade, Oriental Bay, Wellington 6011',
+    '18 Kent Terrace, Mount Victoria, Wellington 6011',
+    '22 Riddiford Street, Newtown, Wellington 6021',
+    '55 Jackson Street, Petone, Lower Hutt 5012',
+    '10 Main Road, Tawa, Wellington 5028',
+    '50 Cathedral Square, Christchurch Central City, Christchurch 8011',
+    '161 Cashel Street, Christchurch Central City, Christchurch 8011',
+    '20 Colombo Street, Cashmere, Christchurch 8022',
+    '10 Papanui Road, Merivale, Christchurch 8014',
+    '12 Moorehouse Avenue, Addington, Christchurch 8011',
+    '33 New Regent Street, Christchurch Central City, Christchurch 8011',
+    '5 Fendalton Road, Fendalton, Christchurch 8014',
+    '80 Bealey Avenue, Christchurch Central City, Christchurch 8013',
+    '420 Ferry Road, Woolston, Christchurch 8023',
+    '1 Garden Place, Hamilton Central, Hamilton 3204',
+    '201 Victoria Street, Hamilton Central, Hamilton 3204',
+    '50 Rostrevor Street, Hamilton Central, Hamilton 3204',
+    '10 Grey Street, Hamilton East, Hamilton 3216',
+    '88 Tristram Street, Hamilton Central, Hamilton 3204',
+    '120 Peachgrove Road, Claudelands, Hamilton 3214',
+    '5 Te Rapa Road, Beerescourt, Hamilton 3200',
+    '33 Ohaupo Road, Melville, Hamilton 3206',
+    '17 2nd Avenue, Tauranga South, Tauranga 3112',
+    '2 Wharf Street, Tauranga Central, Tauranga 3110',
+    '80 Maunganui Road, Mount Maunganui, Tauranga 3116',
+    '50 Elizabeth Street, Tauranga Central, Tauranga 3110',
+    '120 Girven Road, Bayfair, Tauranga 3116',
+    '5 Tara Road, Papamoa Beach, Tauranga 3118',
+    '1 Octagon, Dunedin Central, Dunedin 9016',
+    '20 George Street, Dunedin Central, Dunedin 9016',
+    '100 Princes Street, Dunedin Central, Dunedin 9016',
+    '55 Hillside Road, South Dunedin, Dunedin 9012',
+    '12 Union Street East, Dunedin Central, Dunedin 9016',
+    '100 Hastings Street, Napier South, Napier 4110',
+    '5 Marine Parade, Napier South, Napier 4110',
+    '20 Heretaunga Street West, Hastings Central, Hastings 4122',
+    '50 Karamu Road North, Hastings Central, Hastings 4122',
+    '1 Trafalgar Street, Nelson Central, Nelson 7010',
+    '20 Hardy Street, Nelson Central, Nelson 7010',
+    '55 Bridge Street, Nelson Central, Nelson 7010',
+    '1 The Square, Palmerston North Central, Palmerston North 4410',
+    '50 Main Street, Palmerston North Central, Palmerston North 4410',
+    '88 Broadway Avenue, Palmerston North Central, Palmerston North 4410',
+    '100 Courtenay Street, New Plymouth Central, New Plymouth 4310',
+    '1 Esk Street, Invercargill Central, Invercargill 9810',
+    '1 Bank Street, Whangarei Central, Whangarei 0110',
+    '1 Fenton Street, Rotorua Central, Rotorua 3010'
   ]
 
   // Hard coded customer 0
@@ -64,18 +185,18 @@ export async function seed(knex) {
     rating: 7.5,
   }]
 
-  // Faker data for 24 customers
-  const randomPeople = Array.from({ length: 24 }).map((_, i) => {
+  // Faker data for 84 customers
+  const randomPeople = Array.from({ length: 84 }).map((_, i) => {
     const currentId = i + 2
     const name = faker.person.fullName()
     return {
       id: currentId,
       name: name,
-      address: (addresses[i]),
+      address: addresses[i],
       phone: faker.phone.number({ style: 'international' }),
       email: faker.internet.email({ firstName: name }),
-      notes: (currentId < 17 ? notes[i] : ''),
-      rating: faker.number.float({ multipleOf: 0.25, min: 3, max: 10 }),
+      notes: (currentId < 77 ? notes[i] : ''),
+      rating: faker.number.float({ multipleOf: 0.5, min: 4, max: 10 }),
     }
   })
 
