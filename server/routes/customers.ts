@@ -110,22 +110,4 @@ router.delete('/:id', async (req, res, next) => {
   }
 })
 
-//Do later
-// router.post('/', checkJwt, async (req: JwtRequest, res, next) => {
-//   if (!req.auth?.sub) {
-//     res.sendStatus(StatusCodes.UNAUTHORIZED)
-//     return
-//   }
-
-//   try {
-//     const { owner, name } = req.body
-//     const id = await db.addFruit({ owner, name })
-//     res
-//       .setHeader('Location', `${req.baseUrl}/${id}`)
-//       .sendStatus(StatusCodes.CREATED)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
-
 export default router
