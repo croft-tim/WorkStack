@@ -75,7 +75,7 @@ export async function seed(knex) {
       phone: faker.phone.number({ style: 'international' }),
       email: faker.internet.email({ firstName: name }),
       notes: (currentId < 17 ? notes[i] : ''),
-      rating: faker.number.float({ multipleOf: 0.25, min: 3, max: 10 }),
+      rating: faker.number.float({ multipleOf: 0.5, min: 4, max: 10 }),
     }
   })
 
