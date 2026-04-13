@@ -5,7 +5,7 @@ import * as API from '../apis/apiClient'
 
 export function useJobs(id: number) {
   const query = useQuery({
-    queryKey: ['jobs'],
+    queryKey: ['job', id],
     queryFn: () => API.getJobById(id),
   })
 
@@ -24,8 +24,12 @@ export function useJobMutation<TData = unknown, TVariables = unknown>(
 
   const mutation = useMutation({
     mutationFn,
-    onSuccess: () => {
+    onSuccess: (_data, variables) => {
       queryClient.invalidateQueries({ queryKey: ['jobs'] })
+
+      if (variables && typeof variables === 'object' && 'id' in variables) {
+        queryClient.invalidateQueries({ queryKey: ['job', variables.id] })
+      }
     },
   })
 
