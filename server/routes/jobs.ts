@@ -16,6 +16,23 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.get('/search/:term', async (req, res, next) => {
+  try {
+    const query = req.params.term
+
+    const customers = await db.getJobsSearch(query)
+
+    if (customers == null) {
+      res.status(204).json({ message: 'No results' })
+      return
+    } else {
+      res.json(customers)
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get('/:id', async (req, res, next) => {
   try {
     const id = Number(req.params.id)
@@ -87,23 +104,5 @@ router.delete('/:id', async (req, res, next) => {
     next(err)
   }
 })
-
-//Do later
-// router.post('/', checkJwt, async (req: JwtRequest, res, next) => {
-//   if (!req.auth?.sub) {
-//     res.sendStatus(StatusCodes.UNAUTHORIZED)
-//     return
-//   }
-
-//   try {
-//     const { owner, name } = req.body
-//     const id = await db.addFruit({ owner, name })
-//     res
-//       .setHeader('Location', `${req.baseUrl}/${id}`)
-//       .sendStatus(StatusCodes.CREATED)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
 
 export default router

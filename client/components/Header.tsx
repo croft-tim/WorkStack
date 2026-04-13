@@ -1,6 +1,8 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { useState } from 'react'
 import { Link } from 'react-router'
+import SearchCard from './SearchCard'
+import Search from './SearchCard'
 import { useTheme } from './ThemeContext'
 
 interface Props {
@@ -39,7 +41,7 @@ export default function Header({ showToolbar = true }: Props) {
   }
 
   return (
-    <div className="sticky top-0 z-50 flex flex-col border-b border-slate-200 dark:border-zinc-800 pink:border-pink-200 bg-white dark:bg-zinc-900 pink:bg-pink-200 transition-colors">
+    <div className="sticky top-0 z-50 flex flex-col border-b border-slate-200 bg-white transition-colors pink:border-pink-200 pink:bg-pink-200 dark:border-zinc-800 dark:bg-zinc-900">
       {/* Header bar */}
       <header className="flex h-16 shrink-0 items-center justify-between px-8">
         <div className="flex items-center gap-4">
@@ -47,13 +49,13 @@ export default function Header({ showToolbar = true }: Props) {
           <div className="relative">
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="flex flex-col justify-center gap-1 rounded p-2 hover:bg-slate-100 dark:hover:bg-zinc-800 pink:hover:bg-pink-200 focus:outline-none"
+              className="flex flex-col justify-center gap-1 rounded p-2 hover:bg-slate-100 focus:outline-none pink:hover:bg-pink-200 dark:hover:bg-zinc-800"
               aria-label="Open navigation menu"
               aria-expanded={menuOpen}
             >
-              <span className="block h-0.5 w-5 bg-slate-700 dark:bg-zinc-400 pink:bg-pink-700" />
-              <span className="block h-0.5 w-5 bg-slate-700 dark:bg-zinc-400 pink:bg-pink-700" />
-              <span className="block h-0.5 w-5 bg-slate-700 dark:bg-zinc-400 pink:bg-pink-700" />
+              <span className="block h-0.5 w-5 bg-slate-700 pink:bg-pink-700 dark:bg-zinc-400" />
+              <span className="block h-0.5 w-5 bg-slate-700 pink:bg-pink-700 dark:bg-zinc-400" />
+              <span className="block h-0.5 w-5 bg-slate-700 pink:bg-pink-700 dark:bg-zinc-400" />
             </button>
 
             {menuOpen && (
@@ -66,12 +68,12 @@ export default function Header({ showToolbar = true }: Props) {
                   onClick={() => setMenuOpen(false)}
                   onKeyDown={() => setMenuOpen(false)}
                 />
-                <nav className="absolute left-0 top-full z-50 mt-1 w-48 rounded border border-slate-200 dark:border-zinc-800 pink:border-pink-200 bg-white dark:bg-zinc-800 pink:bg-pink-50 shadow-lg">
+                <nav className="absolute left-0 top-full z-50 mt-1 w-48 rounded border border-slate-200 bg-white shadow-lg pink:border-pink-200 pink:bg-pink-50 dark:border-zinc-800 dark:bg-zinc-800">
                   {navLinks.map(({ label, to }) => (
                     <Link
                       key={label}
                       to={to}
-                      className="block px-4 py-2 text-sm text-slate-700 dark:text-zinc-300 pink:text-pink-800 hover:bg-slate-100 dark:hover:bg-zinc-800 pink:hover:bg-pink-100"
+                      className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 pink:text-pink-800 pink:hover:bg-pink-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
                       onClick={() => setMenuOpen(false)}
                     >
                       {label}
@@ -87,7 +89,7 @@ export default function Header({ showToolbar = true }: Props) {
             <img
               src="/workstack-logo.svg"
               alt="WorkStack"
-              className="h-14 transition-all dark:brightness-125 pink:hue-rotate-180"
+              className="h-14 transition-all pink:hue-rotate-180 dark:brightness-125"
             />
           </Link>
         </div>
@@ -158,8 +160,9 @@ export default function Header({ showToolbar = true }: Props) {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setTheme('pink')}
-              className={`h-10 w-16 overflow-hidden rounded border transition-opacity duration-300 ${theme === 'pink' ? 'opacity-100' : 'opacity-0 hover:opacity-100'
-                }`}
+              className={`h-10 w-16 overflow-hidden rounded border transition-opacity duration-300 ${
+                theme === 'pink' ? 'opacity-100' : 'opacity-0 hover:opacity-100'
+              }`}
               aria-label="Pink mode"
             >
               <img
@@ -175,12 +178,32 @@ export default function Header({ showToolbar = true }: Props) {
               aria-label="Toggle light/dark mode"
             >
               {theme === 'dark' ? (
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                  />
                 </svg>
               ) : (
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                  />
                 </svg>
               )}
             </button>
@@ -220,7 +243,7 @@ export default function Header({ showToolbar = true }: Props) {
 
       {/* Toolbar */}
       {showToolbar && (
-        <div className="flex items-center justify-between border-t border-slate-200 dark:border-zinc-800 pink:border-pink-200 bg-white px-8 py-3 dark:bg-zinc-900 pink:bg-pink-600">
+        <div className="flex items-center justify-between border-t border-slate-200 bg-white px-8 py-3 pink:border-pink-200 pink:bg-pink-600 dark:border-zinc-800 dark:bg-zinc-900">
           <div className="flex items-center gap-4">
             <div className="relative">
               <svg
@@ -236,13 +259,9 @@ export default function Header({ showToolbar = true }: Props) {
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
-              <input
-                type="text"
-                placeholder="Search jobs, clients..."
-                className="w-64 rounded-lg border py-2 pl-10 pr-4 text-xs transition-colors focus:border-amber-500/50 focus:outline-none border-slate-200 bg-slate-50 text-slate-900 dark:border-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-100 pink:border-pink-700 pink:bg-pink-950/50 pink:text-pink-50 pink:placeholder:text-pink-400"
-              />
+              <Search />
             </div>
-            <button className="flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-medium transition-colors border-slate-200 bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700 dark:border-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 pink:border-pink-700 pink:bg-pink-950/50 pink:text-pink-300 pink:hover:bg-pink-800 pink:hover:text-pink-100">
+            <button className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 pink:border-pink-700 pink:bg-pink-950/50 pink:text-pink-300 pink:hover:bg-pink-800 pink:hover:text-pink-100 dark:border-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200">
               <svg
                 className="h-4 w-4"
                 fill="none"
@@ -261,7 +280,7 @@ export default function Header({ showToolbar = true }: Props) {
           </div>
           <div className="flex items-center gap-2 text-xs font-medium text-zinc-500 pink:text-pink-200">
             <span>Sort by:</span>
-            <button className="flex items-center gap-1 text-zinc-400 dark:text-zinc-300/70 pink:text-zinc-600 hover:text-amber-500 pink:text-pink-100 pink:hover:text-pink-400">
+            <button className="flex items-center gap-1 text-zinc-400 hover:text-amber-500 pink:text-pink-100 pink:text-zinc-600 pink:hover:text-pink-400 dark:text-zinc-300/70">
               Priority
               <svg
                 className="h-3 w-3"

@@ -2,11 +2,15 @@ import { Link, useNavigate, useParams } from 'react-router'
 import { Job, JobStatus, statuses } from '../../models/job'
 import { useState } from 'react'
 import { useJobs } from '../hooks/useJob'
+import { useQueryClient } from '@tanstack/react-query'
 
 export default function ViewJob() {
+  const queryClient = useQueryClient()
   const { id } = useParams()
   const navigate = useNavigate()
   const jobDetails = useJobs(Number(id))
+
+  queryClient.invalidateQueries({ queryKey: ['jobs'] })
 
   const [formState, setFormState] = useState(true)
   const [formData, setFormData] = useState({})

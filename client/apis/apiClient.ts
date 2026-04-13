@@ -60,3 +60,13 @@ export async function updateCustomerById(
     .send(updatedCustomer)
   return response.body as Customer
 }
+
+export async function getQueryJobs(query: string) {
+  const response = await request.get(`${rootURL}/jobs/search/${query}`)
+  return response.body as Job[]
+}
+
+export async function getQueryCustomers(query: string) {
+  const response = await request.get(`${rootURL}/customers/search/${query}`)
+  return response.body as Customer[]
+}
