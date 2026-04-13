@@ -11,7 +11,8 @@ import EditCustomerPage from './components/EditCustomerPage.tsx'
 
 export default createRoutesFromElements(
   <Route path="/" element={<Layout />}>
-    <Route index element={<App />} />
+    {/* <Route index element={<App />} /> */}
+    <Route index element={<KanbanBoard />} />
     <Route path="kanban" element={<KanbanBoard />} />
     <Route path="customers" element={<CustomerList />} />
     <Route path="customer/:id" element={<CustomerView />} />

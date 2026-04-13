@@ -67,7 +67,7 @@ describe('NewJobPage', () => {
 
     expect(screen.getByLabelText(/job title/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/notes/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/customer/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/^customer$/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/quote/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/status/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/start date/i)).toBeInTheDocument()

@@ -26,11 +26,14 @@ export default function KanbanCard({ job }: Props) {
   }
 
   return (
-    <div
+    <button
       onClick={() => navigate(`/jobs/${job.id}`)}
-      className="pink:border-pink-200 pink:bg-pink-50 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10 group relative flex cursor-pointer flex-col gap-3 rounded-lg border border-slate-200
-  bg-white p-4 transition-all duration-200 hover:shadow-lg hover:shadow-black/5
-  dark:border-zinc-800 dark:bg-zinc-800/50 dark:hover:border-zinc-700 dark:hover:shadow-black/20"
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          navigate(`/jobs/${job.id}`)
+        }
+      }}
+      className="group relative flex cursor-pointer flex-col gap-3 rounded-lg border transition-all duration-200 border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-800/50 pink:border-pink-200 pink:bg-pink-50 p-4 hover:shadow-lg hover:shadow-black/5 dark:hover:border-zinc-700 dark:hover:shadow-black/20 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10 text-left"
     >
       <div className="flex items-start justify-between">
         {/* <span className="text-xs font-medium text-zinc-500">{job.id}</span> */}
@@ -101,9 +104,7 @@ export default function KanbanCard({ job }: Props) {
               e.stopPropagation()
               handleStatusChange(e.target.value as JobStatus)
             }}
-            className="pink:border-pink-200 pink:bg-pink-100 pink:text-pink-700 pink:hover:bg-pink-200 dark:hover:bg- zinc-700 rounded-md border
-  border-slate-200 bg-slate-50 px-3 py-1.5 text-xs text-slate-600 transition hover:bg-slate-100 dark:border-zinc-700 dark:bg-zinc-800
-  dark:text-zinc-200"
+            className="pink:border-pink-200 pink:bg-pink-100 pink:text-pink-700 pink:hover:bg-pink-200 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-xs text-slate-600 transition hover:bg-slate-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
           >
             {statuses.map((status) => (
               <option key={status} value={status}>
@@ -125,6 +126,6 @@ export default function KanbanCard({ job }: Props) {
           Delete
         </button>
       </div>
-    </div>
+    </button>
   )
 }
