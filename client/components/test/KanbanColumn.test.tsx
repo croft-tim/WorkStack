@@ -5,6 +5,7 @@ import '@testing-library/jest-dom/vitest'
 import { describe, it, expect, vi, afterEach } from 'vitest'
 import { render, screen, cleanup } from '@testing-library/react'
 import KanbanColumn from '../KanbanColumn'
+import { MemoryRouter } from 'react-router'
 
 afterEach(() => {
   cleanup()
@@ -13,6 +14,10 @@ afterEach(() => {
 vi.mock('../KanbanCard', () => ({
   default: ({ job }: { job: { title: string } }) => <div>{job.title}</div>,
 }))
+
+function renderKanbanColumn(ui: React.ReactNode) {
+  return render(<MemoryRouter>{ui}</MemoryRouter>)
+}
 
 describe('KanbanColumn', () => {
   it('renders the status, job count, and job titles', () => {
@@ -37,7 +42,7 @@ describe('KanbanColumn', () => {
       },
     ]
 
-    render(<KanbanColumn status="Quoted" jobs={jobs} />)
+    renderKanbanColumn(<KanbanColumn status="Quoted" jobs={jobs} />)
 
     expect(screen.getByText('Quoted')).toBeInTheDocument()
     expect(screen.getByText('2')).toBeInTheDocument()
@@ -46,9 +51,9 @@ describe('KanbanColumn', () => {
   })
 
   it('renders the empty message when there are no jobs', () => {
-    render(<KanbanColumn status="Done" jobs={[]} />)
+    renderKanbanColumn(<KanbanColumn status="Completed" jobs={[]} />)
 
-    expect(screen.getByText('No jobs in Done')).toBeInTheDocument()
+    expect(screen.getByText('No jobs in Completed')).toBeInTheDocument()
   })
 
   it('does not render the empty message when jobs exist', () => {
@@ -64,21 +69,21 @@ describe('KanbanColumn', () => {
       },
     ]
 
-    render(<KanbanColumn status="Quoted" jobs={jobs} />)
+    renderKanbanColumn(<KanbanColumn status="Quoted" jobs={jobs} />)
 
     expect(screen.queryByText('No jobs in Quoted')).not.toBeInTheDocument()
   })
 
   it('renders the status as an h2 heading', () => {
-    render(<KanbanColumn status="Done" jobs={[]} />)
+    renderKanbanColumn(<KanbanColumn status="Completed" jobs={[]} />)
 
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Done' }),
+      screen.getByRole('heading', { level: 2, name: 'Completed' }),
     ).toBeInTheDocument()
   })
 
   it('renders the action button', () => {
-    render(<KanbanColumn status="New" jobs={[]} />)
+    renderKanbanColumn(<KanbanColumn status="New" jobs={[]} />)
 
     expect(screen.getByRole('button')).toBeInTheDocument()
   })
