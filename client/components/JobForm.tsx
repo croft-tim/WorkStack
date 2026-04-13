@@ -4,7 +4,6 @@ import { useCustomer } from '../hooks/useCustomer.ts'
 import { Link } from 'react-router'
 import toast from 'react-hot-toast'
 
-
 const defaultJobData: JobData = {
   tradieId: 1,
   customerId: 0,
@@ -45,6 +44,10 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
 
   async function handleSubmit(evt: FormEvent) {
     evt.preventDefault()
+    if (!formData.customerId) {
+      toast.error('Please select a customer')
+      return
+    }
     await toast.promise(onSubmit(formData), {
       loading: 'Saving job...',
       success: 'Job saved.',
@@ -80,6 +83,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                 placeholder="e.g. Fix leaking tap at 42 Main St"
                 onChange={handleChange}
                 value={formData.title}
+                required
                 className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:placeholder:text-zinc-600 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:placeholder:text-pink-300 pink:focus:border-pink-500"
               />
             </div>
@@ -113,6 +117,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                 id="customerId"
                 name="customerId"
                 value={formData.customerId}
+                required
                 onChange={handleChange}
                 className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
               >
