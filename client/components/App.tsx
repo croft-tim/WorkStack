@@ -2,7 +2,6 @@ import { Link } from 'react-router'
 import { useTheme } from './ThemeContext'
 
 export default function App() {
-
   return (
     <div className="relative flex h-full flex-col items-center justify-center p-8 transition-colors duration-300">
       <h1 className="relative z-10 mb-8 text-4xl font-extrabold tracking-tight text-amber-500 pink:text-pink-600">

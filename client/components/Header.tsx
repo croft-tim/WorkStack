@@ -22,11 +22,7 @@ const navLinks = [
 export default function Header({ showToolbar = true }: Props) {
   const [menuOpen, setMenuOpen] = useState(false)
   const { theme, toggleTheme, setTheme } = useTheme()
-
-  const auth = useAuth0()
-  const user = auth.user
-  const logout = auth.logout
-  const loginWithRedirect = auth.loginWithRedirect
+  const { user, logout, loginWithRedirect } = useAuth0()
 
   const handleSignOut = () => {
     logout()
