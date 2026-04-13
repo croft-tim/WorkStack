@@ -39,7 +39,7 @@ export default function Header({ showToolbar = true }: Props) {
   }
 
   return (
-    <div className="sticky top-0 z-50 flex flex-col border-b border-slate-200 dark:border-zinc-800 pink:border-pink-200 bg-white dark:bg-zinc-900 pink:bg-pink-100 transition-colors">
+    <div className="sticky top-0 z-50 flex flex-col border-b border-slate-200 dark:border-zinc-800 pink:border-pink-200 bg-white dark:bg-zinc-900 pink:bg-pink-200 transition-colors">
       {/* Header bar */}
       <header className="flex h-16 shrink-0 items-center justify-between px-8">
         <div className="flex items-center gap-4">
@@ -95,16 +95,16 @@ export default function Header({ showToolbar = true }: Props) {
         {/* Centered Button Groups */}
         <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-12">
           {/* Jobs Group */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5">
             <Link
               to="/kanban"
-              className="flex items-center rounded-l-lg bg-amber-500 px-4 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20 pink:bg-pink-500 pink:text-white pink:hover:bg-pink-400 pink:hover:shadow-pink-500/20"
+              className="flex items-center rounded-l-lg bg-amber-500 px-4 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20 pink:bg-pink-600 pink:text-white pink:hover:bg-pink-400 pink:hover:shadow-pink-500/20"
             >
               Jobs
             </Link>
             <Link
               to="/jobs/new"
-              className="flex items-center rounded-r-lg bg-amber-500 px-2 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20 pink:bg-pink-500 pink:text-white pink:hover:bg-pink-400 pink:hover:shadow-pink-500/20"
+              className="flex items-center rounded-r-lg bg-amber-500 px-2 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20 pink:bg-pink-600 pink:text-white pink:hover:bg-pink-400 pink:hover:shadow-pink-500/20"
               aria-label="New Job"
             >
               <svg
@@ -124,16 +124,16 @@ export default function Header({ showToolbar = true }: Props) {
           </div>
 
           {/* Customers Group */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5">
             <Link
               to="/customers"
-              className="flex items-center rounded-l-lg bg-slate-500 px-4 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-slate-600 hover:shadow-lg hover:shadow-slate-500/20 pink:bg-pink-400 pink:text-white pink:hover:bg-pink-500 pink:hover:shadow-pink-500/20"
+              className="flex items-center rounded-l-lg bg-slate-500 px-4 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-slate-600 hover:shadow-lg hover:shadow-slate-500/20 pink:bg-pink-500/90 pink:text-white pink:hover:bg-pink-500 pink:hover:shadow-pink-500/20"
             >
               Customers
             </Link>
             <Link
               to="/customers/new"
-              className="flex items-center rounded-r-lg bg-slate-500 px-2 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-slate-600 hover:shadow-lg hover:shadow-slate-500/20 pink:bg-pink-400 pink:text-white pink:hover:bg-pink-500 pink:hover:shadow-pink-500/20"
+              className="flex items-center rounded-r-lg bg-slate-500 px-2 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-slate-600 hover:shadow-lg hover:shadow-slate-500/20 pink:bg-pink-500/90 pink:text-white pink:hover:bg-pink-500 pink:hover:shadow-pink-500/20"
               aria-label="New Customer"
             >
               <svg
@@ -185,13 +185,6 @@ export default function Header({ showToolbar = true }: Props) {
               )}
             </button>
           </div>
-
-          <Link
-            to="/customers"
-            className="rounded-lg bg-slate-500 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-slate-600 pink:bg-pink-400 pink:hover:bg-pink-500"
-          >
-            Customers
-          </Link>
 
           {/* Profile avatar placeholder */}
           {!user ? (
