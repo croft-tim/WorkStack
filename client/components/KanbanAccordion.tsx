@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router'
 import { Job, JobStatus } from '../../models/job'
 import KanbanCard from './KanbanCard'
 
@@ -24,6 +25,44 @@ export default function KanbanAccordion({ statuses, jobs }: Props) {
 
   return (
     <div className="flex flex-col gap-4">
+      {/* Quick nav buttons */}
+      <div className="flex items-center gap-2">
+        <div className="flex items-center gap-0.5">
+          <Link
+            to="/kanban"
+            className="flex items-center rounded-l-lg bg-amber-500 px-4 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-amber-400 pink:bg-pink-600 pink:text-white pink:hover:bg-pink-400"
+          >
+            Jobs
+          </Link>
+          <Link
+            to="/jobs/new"
+            className="flex items-center rounded-r-lg bg-amber-500 px-2 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-amber-400 pink:bg-pink-600 pink:text-white pink:hover:bg-pink-400"
+            aria-label="New Job"
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+          </Link>
+        </div>
+        <div className="flex items-center gap-0.5">
+          <Link
+            to="/customers"
+            className="flex items-center rounded-l-lg bg-slate-500 px-4 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-slate-600 pink:bg-pink-500/90 pink:text-white pink:hover:bg-pink-500"
+          >
+            Customers
+          </Link>
+          <Link
+            to="/customers/new"
+            className="flex items-center rounded-r-lg bg-slate-500 px-2 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-slate-600 pink:bg-pink-500/90 pink:text-white pink:hover:bg-pink-500"
+            aria-label="New Customer"
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+          </Link>
+        </div>
+      </div>
+
       {/* Status tiles */}
       <div className="grid grid-cols-1 gap-3">
         {statuses.map((status) => {
