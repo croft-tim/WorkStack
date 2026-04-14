@@ -12,7 +12,7 @@ export default function NewJobPage() {
   const initialStatus: JobStatus =
     statuses.find((status) => status === statusParam) ?? 'New'
 
-  const handleSubmit = async (data: JobData) => {
+  const handleSubmit = async (data: Partial<JobData>) => {
     const id = await addJob.mutateAsync(data)
     navigate(`/jobs/${id}`)
   }
