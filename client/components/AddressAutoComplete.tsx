@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { AddressSuggestions } from '../../models/AddressAutoComplete'
 
 interface Props {
   value: string
@@ -14,7 +15,7 @@ export default function AddressAutocomplete({
   label = 'Address',
 }: Props) {
   const [inputValue, setInputValue] = useState(value)
-  const [suggestions, setSuggestions] = useState<any[]>([])
+  const [suggestions, setSuggestions] = useState<AddressSuggestions[]>([])
   const [isSelected, setIsSelected] = useState(false)
   const hasMounted = useRef(false)
 
@@ -70,14 +71,16 @@ export default function AddressAutocomplete({
       />
 
       {suggestions.length > 0 && (
-        <ul className="absolute top-full z-10 mt-1 max-h-48 w-full overflow-y-auto rounded-lg border border-slate-200 bg-white text-slate-900 shadow-md dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 pink:border-pink-200 pink:bg-pink-50 pink:text-pink-900">
+        <ul className="absolute top-full z-10 mt-1 max-h-48 w-full overflow-y-auto rounded-lg border border-slate-200 bg-white text-slate-900 shadow-md pink:border-pink-200 pink:bg-pink-50 pink:text-pink-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100">
           {suggestions.map((item, index) => (
-            <li
-              key={index}
-              onClick={() => handleSelect(item.properties.formatted)}
-              className="cursor-pointer px-3 py-2 hover:bg-slate-100 dark:hover:bg-zinc-700 pink:hover:bg-pink-100"
-            >
-              {item.properties.formatted}
+            <li key={index}>
+              <button
+                type="button"
+                onClick={() => handleSelect(item.properties.formatted)}
+                className="w-full cursor-pointer px-3 py-2 text-left hover:bg-slate-100"
+              >
+                {item.properties.formatted}
+              </button>
             </li>
           ))}
         </ul>
