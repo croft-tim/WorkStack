@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { AddressSuggestions } from '../../models/AddressAutoComplete'
 
 interface Props {
   value: string
@@ -14,7 +15,7 @@ export default function AddressAutocomplete({
   label = 'Address',
 }: Props) {
   const [inputValue, setInputValue] = useState(value)
-  const [suggestions, setSuggestions] = useState<any[]>([])
+  const [suggestions, setSuggestions] = useState<AddressSuggestions[]>([])
   const [isSelected, setIsSelected] = useState(false)
   const hasMounted = useRef(false)
 
@@ -72,12 +73,14 @@ export default function AddressAutocomplete({
       {suggestions.length > 0 && (
         <ul className="absolute top-full z-10 mt-1 max-h-48 w-full overflow-y-auto rounded-lg border bg-white text-slate-900 shadow-md">
           {suggestions.map((item, index) => (
-            <li
-              key={index}
-              onClick={() => handleSelect(item.properties.formatted)}
-              className="cursor-pointer px-3 py-2 hover:bg-slate-100"
-            >
-              {item.properties.formatted}
+            <li key={index}>
+              <button
+                type="button"
+                onClick={() => handleSelect(item.properties.formatted)}
+                className="w-full cursor-pointer px-3 py-2 text-left hover:bg-slate-100"
+              >
+                {item.properties.formatted}
+              </button>
             </li>
           ))}
         </ul>
