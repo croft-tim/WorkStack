@@ -23,7 +23,7 @@ export default function KanbanColumn({ status, jobs }: Props) {
   }
 
   return (
-    <div className="flex min-w-48 flex-1 flex-col gap-4 rounded-xl bg-slate-100/70 p-3 transition-colors pink:bg-pink-100/50 dark:bg-zinc-800/50">
+    <div className="flex min-w-60 flex-1 flex-col gap-4 rounded-xl bg-slate-100/70 p-3 transition-colors pink:bg-pink-100/50 dark:bg-zinc-800/50">
       <div className="flex items-center justify-between px-2">
         <div className="flex items-center gap-2">
           <span className={`h-2 w-2 rounded-full ${statusColors[status]}`} />
