@@ -72,6 +72,11 @@ export async function getQueryJobs(query: string) {
   return response.body as Job[]
 }
 
+export async function getQueryCustomerJobs(id: number) {
+  const response = await request.get(`${rootURL}/jobs/customer/${id}`)
+  return response.body as Job[]
+}
+
 export async function getQueryCustomers(query: string) {
   const response = await request.get(`${rootURL}/customers/search/${query}`)
   return response.body as Customer[]

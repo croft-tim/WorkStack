@@ -1,5 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
-import { getQueryCustomers, getQueryJobs } from '../apis/apiClient'
+import {
+  getQueryCustomers,
+  getQueryJobs,
+  getQueryCustomerJobs,
+} from '../apis/apiClient'
 
 export function useJobSearch(query: string) {
   return useQuery({
@@ -12,5 +16,12 @@ export function useCustomerSearch(query: string) {
   return useQuery({
     queryKey: ['customersearch'],
     queryFn: () => getQueryCustomers(query),
+  })
+}
+
+export function useCustomerJobSearch(id: number) {
+  return useQuery({
+    queryKey: ['customerjobsearch'],
+    queryFn: () => getQueryCustomerJobs(id),
   })
 }
