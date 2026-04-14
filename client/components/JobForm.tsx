@@ -48,6 +48,18 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
       toast.error('Please select a customer')
       return
     }
+    if (!formData.startDate) {
+      toast.error('Please select a start date')
+      return
+    }
+    if (!formData.endDate) {
+      toast.error('Please select an end date')
+      return
+    }
+    if (formData.endDate < formData.startDate) {
+      toast.error('End date cannot be before start date')
+      return
+    }
     await toast.promise(onSubmit(formData), {
       loading: 'Saving job...',
       success: 'Job saved.',
@@ -195,6 +207,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                   name="startDate"
                   onChange={handleChange}
                   value={formData.startDate}
+                  required
                   className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:[color-scheme:dark] pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
                 />
               </div>
@@ -212,6 +225,8 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                   name="endDate"
                   onChange={handleChange}
                   value={formData.endDate}
+                  required
+                  min={formData.startDate}
                   className="rounded-lg border px-3 py-2 text-sm transition-colors border-slate-200 bg-slate-50 text-slate-900 focus:border-amber-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:[color-scheme:dark] pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500"
                 />
               </div>

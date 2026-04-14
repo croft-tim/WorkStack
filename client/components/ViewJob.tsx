@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router'
 import { Job, JobStatus, statuses } from '../../models/job'
 import { useState } from 'react'
+import toast from 'react-hot-toast'
 import { useJobs } from '../hooks/useJob'
 import { useQueryClient } from '@tanstack/react-query'
 
@@ -40,6 +41,10 @@ export default function ViewJob() {
   }
 
   const handleEdit = async (job) => {
+    if (job.endDate < job.startDate) {
+      toast.error('End date cannot be before start date')
+      return
+    }
     jobDetails.update.mutate(job)
     setFormState(true)
   }
@@ -177,6 +182,7 @@ export default function ViewJob() {
               name="endDate"
               onChange={inputHandler}
               value={formData.endDate}
+              min={formData.startDate}
               type="date"
               className="mb-5 w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 transition-colors focus:border-amber-500 focus:outline-none pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:[color-scheme:dark]"
             ></input>
