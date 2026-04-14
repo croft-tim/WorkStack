@@ -12,12 +12,14 @@ const selectColumns = [
   'jobs.start_date as startDate',
   'jobs.end_date as endDate',
   'customers.address',
-  'customers.name',
+  'customers.name as customerName',
+  'tradies.name as tradieName',
 ]
 
 export async function getJobs() {
   const jobs = await db('jobs')
     .join('customers', 'jobs.customer_id', 'customers.id')
+    .join('tradies', 'jobs.tradie_id', 'tradies.id')
     .select(selectColumns)
   return jobs as Job[]
 }
@@ -32,6 +34,7 @@ export async function getJobById(
 ): Promise<Job | undefined> {
   const job = await db('jobs')
     .join('customers', 'jobs.customer_id', 'customers.id')
+    .join('tradies', 'jobs.tradie_id', 'tradies.id')
     .select(selectColumns)
     .first()
     .where('jobs.id', id)

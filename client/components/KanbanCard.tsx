@@ -33,12 +33,10 @@ export default function KanbanCard({ job }: Props) {
         <h3 className="text-sm font-semibold text-slate-800 transition-colors group-hover:text-amber-500 pink:text-pink-900 pink:group-hover:text-pink-600 dark:text-zinc-100">
           {job.title}
         </h3>
-      </div>
 
-      <div className="mt-2 flex flex-col gap-2 border-t border-slate-100 pt-3 pink:border-pink-100 dark:border-zinc-800">
-        <div className="flex items-center gap-2 text-[11px] text-slate-400 pink:text-pink-500 dark:text-zinc-500">
+        <p className="mt-1 flex items-center gap-1 text-xs text-slate-500 pink:text-pink-700 dark:text-zinc-300">
           <svg
-            className="h-3.5 w-3.5"
+            className="h-3.5 w-3.5 shrink-0"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -56,10 +54,30 @@ export default function KanbanCard({ job }: Props) {
               d="M12 11a4 4 0 100-8 4 4 0 000 8z"
             />
           </svg>
-          {job.name}
+
+          {job.customerName}
+        </p>
+      </div>
+
+      <div className="mt-2 flex flex-col gap-2 border-t border-slate-100 pt-3 pink:border-pink-100 dark:border-zinc-800">
+        <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-300">
+          <svg
+            className="h-3.5 w-3.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"
+            />
+          </svg>
+          {job.tradieName}
         </div>
 
-        <div className="flex items-center gap-2 text-[11px] text-slate-400 pink:text-pink-500 dark:text-zinc-500">
+        <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-300">
           <svg
             className="h-3.5 w-3.5"
             fill="none"
@@ -82,7 +100,7 @@ export default function KanbanCard({ job }: Props) {
           {job.address}
         </div>
 
-        <div className="flex items-center gap-2 text-[11px] text-slate-400 pink:text-pink-500 dark:text-zinc-500">
+        <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-300">
           <svg
             className="h-3.5 w-3.5"
             fill="none"

@@ -7,7 +7,8 @@ export interface JobData {
   notes: string
   startDate: string
   endDate: string
-  name: string
+  customerName: string
+  tradieName: string
 }
 
 export interface Job extends JobData {
