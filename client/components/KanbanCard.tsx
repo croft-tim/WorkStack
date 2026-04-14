@@ -12,12 +12,6 @@ export default function KanbanCard({ job }: Props) {
   const { mutate: updateJob } = useUpdateJob()
   const navigate = useNavigate()
 
-  const priorityColors = {
-    High: 'bg-rose-500/10 text-rose-500 border-rose-500/20',
-    Medium: 'bg-amber-500/10 text-amber-500 border-amber-500/20',
-    Low: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20',
-  }
-
   const handleStatusChange = (nextStatus: JobStatus) => {
     updateJob({
       ...job,
@@ -35,28 +29,14 @@ export default function KanbanCard({ job }: Props) {
       }}
       className="group relative flex cursor-pointer flex-col gap-3 rounded-lg border border-slate-200 bg-white p-4 text-left transition-all duration-200 hover:shadow-lg hover:shadow-black/5 pink:border-pink-200 pink:bg-pink-50 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10 dark:border-zinc-800 dark:bg-zinc-800/50 dark:hover:border-zinc-700 dark:hover:shadow-black/20"
     >
-      <div className="flex items-start justify-between">
-        {/* <span className="text-xs font-medium text-zinc-500">{job.id}</span> */}
-        <span
-          className={`rounded-full border px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${priorityColors[job.priority]}`}
-        >
-          {job.priority}
-        </span>
-      </div>
-
       <div>
         <h3 className="text-sm font-semibold text-slate-800 transition-colors group-hover:text-amber-500 pink:text-pink-900 pink:group-hover:text-pink-600 dark:text-zinc-100">
           {job.title}
         </h3>
-        <p className="mt-1 text-xs text-slate-500 pink:text-pink-700 dark:text-zinc-400">
-          {job.customerName}
-        </p>
-      </div>
 
-      <div className="mt-2 flex flex-col gap-2 border-t border-slate-100 pt-3 pink:border-pink-100 dark:border-zinc-800">
-        <div className="flex items-center gap-2 text-[11px] text-slate-400 pink:text-pink-500 dark:text-zinc-500">
+        <p className="mt-1 flex items-center gap-1 text-xs text-slate-500 pink:text-pink-700 dark:text-zinc-300">
           <svg
-            className="h-3.5 w-3.5"
+            className="h-3.5 w-3.5 shrink-0"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -74,10 +54,30 @@ export default function KanbanCard({ job }: Props) {
               d="M12 11a4 4 0 100-8 4 4 0 000 8z"
             />
           </svg>
+
+          {job.customerName}
+        </p>
+      </div>
+
+      <div className="mt-2 flex flex-col gap-2 border-t border-slate-100 pt-3 pink:border-pink-100 dark:border-zinc-800">
+        <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-300">
+          <svg
+            className="h-3.5 w-3.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"
+            />
+          </svg>
           {job.tradieName}
         </div>
 
-        <div className="flex items-center gap-2 text-[11px] text-slate-400 pink:text-pink-500 dark:text-zinc-500">
+        <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-300">
           <svg
             className="h-3.5 w-3.5"
             fill="none"
@@ -100,7 +100,7 @@ export default function KanbanCard({ job }: Props) {
           {job.address}
         </div>
 
-        <div className="flex items-center gap-2 text-[11px] text-slate-400 pink:text-pink-500 dark:text-zinc-500">
+        <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-300">
           <svg
             className="h-3.5 w-3.5"
             fill="none"
