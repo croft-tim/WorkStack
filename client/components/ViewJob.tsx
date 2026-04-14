@@ -153,7 +153,7 @@ export default function ViewJob() {
 
       <div className="grid gap-6 md:grid-cols-3">
         <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition-colors pink:border-pink-200 pink:bg-pink-50 dark:border-zinc-800 dark:bg-zinc-800/50 dark:shadow-none md:col-span-2">
-          <h2 className="mb-3 text-xl font-semibold">Job Overview</h2>
+          <h2 className="mb-3 text-xl font-semibold">Notes</h2>
 
           {formState ? (
             <p className="mb-5 text-slate-600 pink:text-pink-800 dark:text-zinc-300">
