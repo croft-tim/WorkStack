@@ -4,8 +4,10 @@ import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { useJobs } from '../hooks/useJob'
 import { useQueryClient } from '@tanstack/react-query'
+import { useCustomer } from '../hooks/useCustomer'
 
 export default function ViewJob() {
+  const { data: customers } = useCustomer()
   const queryClient = useQueryClient()
   const { id } = useParams()
   const navigate = useNavigate()
@@ -200,6 +202,25 @@ export default function ViewJob() {
                   {job.customerName}
                 </Link>
               </div>
+              {!formState && (
+                <select
+                  id="customerId"
+                  name="customerId"
+                  value={formData.customerId}
+                  required
+                  onChange={inputHandler}
+                  className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-900 transition-colors focus:border-amber-500 focus:outline-none pink:border-pink-200 pink:bg-white pink:text-pink-900 pink:focus:border-pink-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+                >
+                  <option value={0} disabled>
+                    Select a customer…
+                  </option>
+                  {customers?.map((customer) => (
+                    <option key={customer.id} value={customer.id}>
+                      {customer.name}
+                    </option>
+                  ))}
+                </select>
+              )}
               <div className="flex items-center gap-1">
                 <span className="font-medium text-slate-700 pink:text-pink-900 dark:text-zinc-200">
                   Tradie:
