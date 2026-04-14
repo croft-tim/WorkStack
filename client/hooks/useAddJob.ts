@@ -8,7 +8,7 @@ export function useAddJob() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: async (data: JobData) => {
+    mutationFn: async (data: Partial<JobData>) => {
       let token = undefined
       if (isAuthenticated) {
         token = await getAccessTokenSilently()

@@ -1,5 +1,4 @@
 import { Link } from 'react-router'
-import { useTheme } from './ThemeContext'
 
 export default function App() {
   return (
