@@ -1,10 +1,12 @@
 import { Link, useNavigate, useParams } from 'react-router'
-import { Job, JobStatus, statuses } from '../../models/job'
-import { useState } from 'react'
+import { statuses } from '../../models/job'
+import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useJobs } from '../hooks/useJob'
 import { useQueryClient } from '@tanstack/react-query'
 import { useCustomer } from '../hooks/useCustomer'
+import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
 
 export default function ViewJob() {
   const { data: customers } = useCustomer()
@@ -17,8 +19,41 @@ export default function ViewJob() {
 
   const [formState, setFormState] = useState(true)
   const [formData, setFormData] = useState({})
+  const [position, setPosition] = useState<[number, number] | null>(null)
+  const [loadingMap, setLoadingMap] = useState(true)
 
   const { data: job, isPending, isError, error } = jobDetails
+
+  useEffect(() => {
+    async function fetchCoordinates() {
+      try {
+        if (!job?.address) return
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(job.address)}&format=json&limit=1`,
+          {
+            headers: {
+              'User-Agent':
+                'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+            },
+          },
+        )
+        console.log(response.body)
+        const data = await response.json()
+        if (data && data.length > 0) {
+          setPosition([parseFloat(data[0].lat), parseFloat(data[0].lon)])
+        } else {
+          console.warn('No results found for address')
+        }
+      } catch (error) {
+        console.error('Geocoding failed', error)
+      } finally {
+        setLoadingMap(false)
+      }
+    }
+
+    if (!job?.address) return
+    fetchCoordinates()
+  }, [job?.address])
 
   function inputHandler(
     e:
@@ -276,6 +311,48 @@ dark:text-zinc-100"
             </div>
           </div>
         </div>
+      </div>
+      <div className="mx-auto mt-16 flex h-[480px] w-full max-w-2xl items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 pink:border-pink-200 pink:bg-pink-100 dark:border-zinc-800 dark:bg-zinc-800/50">
+        {loadingMap ? (
+          <div className="flex flex-col items-center gap-4">
+            <p className="text-sm text-slate-400 pink:text-pink-500 dark:text-zinc-500">
+              Loading OpenStreetMap...
+            </p>
+            <img
+              src="/osm_logo.svg"
+              alt="OpenStreetMap Logo"
+              className="h-11 w-11 opacity-50 pink:brightness-125 dark:opacity-100"
+            />
+          </div>
+        ) : position ? (
+          <MapContainer
+            center={position}
+            zoom={14}
+            scrollWheelZoom={false}
+            className="h-full w-full"
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={position}>
+              <Popup>
+                {job.title}
+                <br></br>
+                {job.address}
+              </Popup>
+              <Tooltip>
+                {job.title}
+                <br></br>
+                {job.address}
+              </Tooltip>
+            </Marker>
+          </MapContainer>
+        ) : (
+          <p className="text-sm text-slate-400 pink:text-pink-500 dark:text-zinc-500">
+            Location not found
+          </p>
+        )}
       </div>
     </div>
   )
