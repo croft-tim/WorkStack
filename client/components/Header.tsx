@@ -80,7 +80,7 @@ export default function Header({ showToolbar = true }: Props) {
           </div>
 
           {/* SVG logo */}
-          <Link to="/">
+          <Link to="/" className="shrink-0">
             <img
               src="/workstack-logo.svg"
               alt="WorkStack"
