@@ -3,6 +3,8 @@ import { Router } from 'express'
 // import { StatusCodes } from 'http-status-codes'
 
 import * as db from '../db/jobs.ts'
+import * as tradieDb from '../db/tradies.ts'
+import checkJwt, { JwtRequest } from '../auth0.ts'
 
 const router = Router()
 
@@ -56,9 +58,19 @@ router.get('/:id', async (req, res, next) => {
 })
 
 //{ tradie_id, customer_id, status , title, problem , inspection , quote , notes , start_date ,  end_date}
-router.post('/', async (req, res, next) => {
+router.post('/', checkJwt, async (req: JwtRequest, res, next) => {
   try {
-    const newJob = req.body
+    const auth0Id = req.auth?.sub
+    let tradieId = 1
+
+    if (auth0Id) {
+      const tradie = await tradieDb.getTradieByAuth0Id(auth0Id)
+      if (tradie) {
+        tradieId = tradie.id
+      }
+    }
+
+    const newJob = { ...req.body, tradieId: tradieId }
     const job = await db.addJob(newJob)
     res.status(201).json(job)
     // .setHeader('Location', `${req.baseUrl}/${id}`)

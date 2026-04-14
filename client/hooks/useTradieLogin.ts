@@ -1,6 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
 
+//Create a record in tradies DB when a new user is logged in
 export function useTradieLogin() {
   const { user, getAccessTokenSilently, isAuthenticated } = useAuth0()
 
