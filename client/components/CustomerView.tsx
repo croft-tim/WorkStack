@@ -3,6 +3,7 @@ import { useCustomerById } from '../hooks/useCustomer'
 import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useEffect, useState } from 'react'
+import { useCustomerJobSearch } from '../hooks/useSearch'
 
 export default function CustomerView() {
   const { id } = useParams()
@@ -12,6 +13,12 @@ export default function CustomerView() {
     isError,
     error,
   } = useCustomerById(Number(id))
+
+  const {
+    data: jobs,
+    isPending: jobpend,
+    isError: joberror,
+  } = useCustomerJobSearch(Number(id))
 
   const navigate = useNavigate()
 
@@ -55,10 +62,10 @@ export default function CustomerView() {
   if (!customer) return <p>Customer not found</p>
 
   return (
-    <div className="min-h-screen p-8 transition-colors duration-300 bg-white dark:bg-zinc-900 pink:bg-pink-50">
-      <div className="mx-auto mt-5 max-w-2xl rounded-lg border transition-all duration-200 border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-800/50 pink:border-pink-200 pink:bg-pink-50 p-8 hover:border-slate-300 hover:shadow-lg hover:shadow-black/5 dark:hover:border-zinc-700 dark:hover:shadow-black/20 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10">
+    <div className="min-h-screen bg-white p-8 transition-colors duration-300 pink:bg-pink-50 dark:bg-zinc-900">
+      <div className="mx-auto mt-5 max-w-2xl rounded-lg border border-slate-200 bg-white p-8 transition-all duration-200 hover:border-slate-300 hover:shadow-lg hover:shadow-black/5 pink:border-pink-200 pink:bg-pink-50 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10 dark:border-zinc-800 dark:bg-zinc-800/50 dark:hover:border-zinc-700 dark:hover:shadow-black/20">
         <div className="flex items-start justify-between">
-          <h3 className="text-sm font-semibold transition-colors text-slate-800 dark:text-zinc-300 pink:text-pink-900">
+          <h3 className="text-sm font-semibold text-slate-800 transition-colors pink:text-pink-900 dark:text-zinc-300">
             {customer.name}
           </h3>
           <span className="flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-500 pink:border-pink-500/20 pink:bg-pink-500/10 pink:text-pink-600">
@@ -86,8 +93,8 @@ export default function CustomerView() {
           </button>
         </div>
 
-        <div className="mt-5 flex flex-col gap-2 border-t pt-3 border-slate-100 dark:border-zinc-800 pink:border-pink-100">
-          <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-zinc-500 pink:text-pink-500">
+        <div className="mt-5 flex flex-col gap-2 border-t border-slate-100 pt-3 pink:border-pink-100 dark:border-zinc-800">
+          <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-500">
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -109,7 +116,7 @@ export default function CustomerView() {
             </svg>
             {customer.address}
           </div>
-          <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-zinc-500 pink:text-pink-500">
+          <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-500">
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -125,7 +132,7 @@ export default function CustomerView() {
             </svg>
             {customer.email}
           </div>
-          <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-zinc-500 pink:text-pink-500">
+          <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-500">
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -142,25 +149,53 @@ export default function CustomerView() {
             {customer.phone}
           </div>
           {customer.notes && (
-            <p className="mt-6 text-[13px] italic text-slate-600 dark:text-zinc-400 pink:text-pink-800">
+            <p className="mt-6 text-[13px] italic text-slate-600 pink:text-pink-800 dark:text-zinc-400">
               {customer.notes}
             </p>
           )}
         </div>
       </div>
 
+      <div className="mx-auto mt-5 max-w-2xl rounded-lg border border-slate-200 bg-white p-8 transition-all duration-200 hover:border-slate-300 hover:shadow-lg hover:shadow-black/5 pink:border-pink-200 pink:bg-pink-50 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10 dark:border-zinc-800 dark:bg-zinc-800/50 dark:hover:border-zinc-700 dark:hover:shadow-black/20">
+        <h3 className="mb-3 text-sm font-semibold text-slate-800 transition-colors pink:text-pink-900 dark:text-zinc-300">
+          Previous jobs
+        </h3>
+        <div className="flex flex-col gap-2">
+          {jobpend && <p className=" text-zinc-400">Loading jobs</p>}
+          {joberror && <p className=" text-rose-400">No jobs found</p>}
+          {jobs &&
+            jobs.map((job) => (
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => navigate(`/jobs/${job.id}`)}
+                onKeyDown={() => navigate(`/jobs/${job.id}`)}
+                key={job.id}
+                className="group relative flex cursor-pointer flex-col gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3 transition-all duration-200 hover:bg-slate-100 pink:border-pink-200 pink:bg-pink-50 pink:hover:bg-pink-100 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:shadow-lg dark:hover:shadow-black/20"
+              >
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-semibold text-slate-800 group-hover:text-amber-500 pink:text-pink-900 dark:text-zinc-100">
+                    {job.title}
+                  </h3>
+                  <p className="mt-1 text-xs text-zinc-400">{job.status}</p>
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
+
       {/* <div className="mx-auto mt-8 h-[480px] w-full max-w-2xl overflow-hidden rounded-lg border border-zinc-800">
         {position && ( */}
-      <div className="mx-auto mt-16 flex h-[480px] w-full max-w-2xl items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 dark:border-zinc-800 dark:bg-zinc-800/50 pink:border-pink-200 pink:bg-pink-100">
+      <div className="mx-auto mt-16 flex h-[480px] w-full max-w-2xl items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 pink:border-pink-200 pink:bg-pink-100 dark:border-zinc-800 dark:bg-zinc-800/50">
         {loadingMap ? (
           <div className="flex flex-col items-center gap-4">
-            <p className="text-sm text-slate-400 dark:text-zinc-500 pink:text-pink-500">
+            <p className="text-sm text-slate-400 pink:text-pink-500 dark:text-zinc-500">
               Loading OpenStreetMap...
             </p>
             <img
               src="/osm_logo.svg"
               alt="OpenStreetMap Logo"
-              className="h-11 w-11 opacity-50 dark:opacity-100 pink:brightness-125"
+              className="h-11 w-11 opacity-50 pink:brightness-125 dark:opacity-100"
             />
           </div>
         ) : position ? (
@@ -188,7 +223,7 @@ export default function CustomerView() {
             </Marker>
           </MapContainer>
         ) : (
-          <p className="text-sm text-slate-400 dark:text-zinc-500 pink:text-pink-500">
+          <p className="text-sm text-slate-400 pink:text-pink-500 dark:text-zinc-500">
             Location not found
           </p>
         )}

@@ -29,6 +29,11 @@ export async function getJobsSearch(query: string) {
   return customer
 }
 
+export async function getJobsByCustomerId(id: string) {
+  const customer = await db('jobs').where('customer_id', id).select()
+  return customer
+}
+
 export async function getJobById(
   id: number | string,
 ): Promise<Job | undefined> {
