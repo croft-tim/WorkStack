@@ -57,10 +57,10 @@ function SearchJobItems({ jobs }: { jobs: Job[] }) {
           onClick={() => navigate(`/jobs/${job.id}`)}
           onKeyDown={() => navigate(`/jobs/${job.id}`)}
           key={job.id}
-          className="group relative flex cursor-pointer flex-col gap-3 rounded-lg border border-zinc-800 bg-zinc-900 p-3 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-black/20"
+          className="group relative flex cursor-pointer flex-col gap-3 rounded-lg border p-3 transition-all duration-200 border-slate-200 bg-slate-50 hover:bg-slate-100 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:shadow-lg dark:hover:shadow-black/20 pink:border-pink-200 pink:bg-pink-50 pink:hover:bg-pink-100"
         >
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-amber-500">
+            <h3 className="text-sm font-semibold text-slate-800 group-hover:text-amber-500 dark:text-zinc-100 pink:text-pink-900">
               {job.title}
             </h3>
             <p className="mt-1 text-xs text-zinc-400">{job.status}</p>
@@ -82,10 +82,10 @@ function SearchCustomerItems({ customers }: { customers: Customer[] }) {
           onClick={() => navigate(`/customer/${customer.id}`)}
           onKeyDown={() => navigate(`/customer/${customer.id}`)}
           key={customer.id}
-          className="group relative flex cursor-pointer flex-col gap-3 rounded-lg border border-zinc-800 bg-zinc-900 p-3 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-black/20"
+          className="group relative flex cursor-pointer flex-col gap-3 rounded-lg border p-3 transition-all duration-200 border-slate-200 bg-slate-50 hover:bg-slate-100 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:shadow-lg dark:hover:shadow-black/20 pink:border-pink-200 pink:bg-pink-50 pink:hover:bg-pink-100"
         >
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-zinc-100 group-hover:text-amber-500">
+            <h3 className="text-sm font-semibold text-slate-800 group-hover:text-amber-500 dark:text-zinc-100 pink:text-pink-900">
               {customer.name}
             </h3>
             <p className="mt-1 text-xs text-zinc-400">{}</p>
@@ -110,7 +110,7 @@ function SearchCard({ query }: { query: string }) {
 
   return (
     <div
-      className="absolute z-10 mt-2 rounded-lg border border-zinc-500 bg-zinc-950 p-3"
+      className="absolute z-10 mt-2 rounded-lg border p-3 border-slate-200 bg-white shadow-lg dark:border-zinc-500 dark:bg-zinc-950 pink:border-pink-200 pink:bg-pink-50"
       style={{
         width: '300px',
         maxHeight: '500px',
@@ -118,7 +118,7 @@ function SearchCard({ query }: { query: string }) {
       }}
     >
       <div className="text-white">
-        <h2 className="mb-3 text-sm font-bold tracking-wide text-zinc-200">
+        <h2 className="mb-3 text-sm font-bold tracking-wide text-slate-700 dark:text-zinc-200 pink:text-pink-800">
           Jobs
         </h2>
         <div>
@@ -129,7 +129,7 @@ function SearchCard({ query }: { query: string }) {
       </div>
 
       <div className="text-white">
-        <h2 className="mb-3 mt-3 text-sm font-bold tracking-wide text-zinc-200">
+        <h2 className="mb-3 mt-3 text-sm font-bold tracking-wide text-slate-700 dark:text-zinc-200 pink:text-pink-800">
           Customers
         </h2>
         <div>
