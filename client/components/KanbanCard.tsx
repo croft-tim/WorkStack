@@ -49,7 +49,7 @@ export default function KanbanCard({ job }: Props) {
           {job.title}
         </h3>
         <p className="mt-1 text-xs text-slate-500 pink:text-pink-700 dark:text-zinc-400">
-          {job.client}
+          {job.customerName}
         </p>
       </div>
 
@@ -74,7 +74,7 @@ export default function KanbanCard({ job }: Props) {
               d="M12 11a4 4 0 100-8 4 4 0 000 8z"
             />
           </svg>
-          {job.name}
+          {job.tradieName}
         </div>
 
         <div className="flex items-center gap-2 text-[11px] text-slate-400 pink:text-pink-500 dark:text-zinc-500">
