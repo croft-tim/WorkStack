@@ -95,11 +95,11 @@ export default function ViewJob() {
 
   if (!job) {
     return (
-      <div className="mx-auto max-w-4xl p-6 text-zinc-100">
+      <div className="mx-auto max-w-4xl p-6 text-slate-900 dark:text-zinc-100 pink:text-pink-900">
         <h1 className="text-2xl font-semibold">Job not found</h1>
         <Link
           to="/"
-          className="mt-4 inline-block rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-sm text-zinc-200"
+          className="mt-4 inline-block rounded-md border border-slate-300 bg-slate-100 px-4 py-2 text-sm text-slate-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 pink:border-pink-300 pink:bg-pink-50 pink:text-pink-800"
         >
           Back to Board
         </Link>

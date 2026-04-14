@@ -60,7 +60,7 @@ export default function KanbanColumn({ status, jobs }: Props) {
           <KanbanCard key={job.id} job={job} />
         ))}
         {jobs.length === 0 && (
-          <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-zinc-800/50 py-12 text-zinc-600">
+          <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-300 py-12 text-slate-400 dark:border-zinc-800/50 dark:text-zinc-600 pink:border-pink-200 pink:text-pink-400">
             <p className="text-xs">No jobs in {status}</p>
           </div>
         )}
