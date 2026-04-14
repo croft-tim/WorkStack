@@ -57,9 +57,9 @@ export default function CustomerView() {
     fetchCoordinates()
   }, [customer?.address])
 
-  if (isPending) return <p>Loading...</p>
-  if (isError) return <p>Error: {error.message}</p>
-  if (!customer) return <p>Customer not found</p>
+  if (isPending) return <p className="p-8 text-slate-400 dark:text-zinc-400 pink:text-pink-400">Loading...</p>
+  if (isError) return <p className="p-8 text-rose-500 dark:text-rose-400 pink:text-rose-500">Error: {error.message}</p>
+  if (!customer) return <p className="p-8 text-slate-500 dark:text-zinc-400 pink:text-pink-500">Customer not found</p>
 
   return (
     <div className="min-h-screen bg-white p-8 transition-colors duration-300 pink:bg-pink-50 dark:bg-zinc-900">
