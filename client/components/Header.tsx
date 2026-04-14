@@ -92,7 +92,7 @@ export default function Header({ showToolbar = true }: Props) {
         {/* Centered Button Groups */}
         <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-12">
           {/* Jobs Group */}
-          <div className="hidden nav:flex items-center gap-0.5">
+          <div className="nav:flex hidden items-center gap-0.5">
             <Link
               to="/kanban"
               className="flex items-center rounded-l-lg bg-amber-500 px-4 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20 pink:bg-pink-600 pink:text-white pink:hover:bg-pink-400 pink:hover:shadow-pink-500/20"
@@ -121,7 +121,7 @@ export default function Header({ showToolbar = true }: Props) {
           </div>
 
           {/* Customers Group */}
-          <div className="hidden nav:flex items-center gap-0.5">
+          <div className="nav:flex hidden items-center gap-0.5">
             <Link
               to="/customers"
               className="flex items-center rounded-l-lg bg-slate-500 px-4 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-slate-600 hover:shadow-lg hover:shadow-slate-500/20 pink:bg-pink-500/90 pink:text-white pink:hover:bg-pink-500 pink:hover:shadow-pink-500/20"
@@ -155,8 +155,9 @@ export default function Header({ showToolbar = true }: Props) {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setTheme('pink')}
-              className={`h-10 w-16 overflow-hidden rounded border transition-opacity duration-300 ${theme === 'pink' ? 'opacity-100' : 'opacity-0 hover:opacity-100'
-                }`}
+              className={`h-10 w-16 overflow-hidden rounded border transition-opacity duration-300 ${
+                theme === 'pink' ? 'opacity-100' : 'opacity-0 hover:opacity-100'
+              }`}
               aria-label="Pink mode"
             >
               <img
@@ -270,25 +271,6 @@ export default function Header({ showToolbar = true }: Props) {
                 />
               </svg>
               Filters
-            </button>
-          </div>
-          <div className="flex items-center gap-2 text-xs font-medium text-zinc-500 pink:text-pink-200">
-            <span>Sort by:</span>
-            <button className="flex items-center gap-1 text-zinc-400 hover:text-amber-500 pink:text-pink-100 pink:text-zinc-600 pink:hover:text-pink-400 dark:text-zinc-300/70">
-              Priority
-              <svg
-                className="h-3 w-3"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
             </button>
           </div>
         </div>
