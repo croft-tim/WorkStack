@@ -20,8 +20,8 @@ export default function KanbanBoard() {
   const visibleCount = getVisibleCount(width)
   const [startIndex, setStartIndex] = useState(0)
 
-  if (isPending) return <div className="p-8 text-zinc-400">Loading jobs...</div>
-  if (isError) return <div className="p-8 text-rose-400">Failed to load jobs.</div>
+  if (isPending) return <div className="p-8 text-slate-400 dark:text-zinc-400 pink:text-pink-400">Loading jobs...</div>
+  if (isError) return <div className="p-8 text-rose-500 dark:text-rose-400 pink:text-rose-500">Failed to load jobs.</div>
 
   const visibleStatuses = statuses.slice(startIndex, startIndex + visibleCount)
   const canGoLeft = startIndex > 0
