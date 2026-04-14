@@ -17,8 +17,14 @@ export async function getJobById(id: number) {
   return response.body as Job
 }
 
-export async function addJob(newJob: JobData) {
-  const response = await request.post(`${rootURL}/jobs`).send(newJob)
+export async function addJob(newJob: JobData, token?: string) {
+  const requestURL = request.post(`${rootURL}/jobs`)
+
+  if (token) {
+    requestURL.set('Authorization', `Bearer ${token}`)
+  }
+
+  const response = await requestURL.send(newJob)
   return response.body as number
 }
 

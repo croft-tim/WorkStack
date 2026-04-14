@@ -1,5 +1,5 @@
 export interface Tradie extends TradieData {
-  id?: string
+  id: number
 }
 
 export interface TradieData {
