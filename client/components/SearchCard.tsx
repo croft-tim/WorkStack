@@ -34,7 +34,7 @@ function Search() {
         onChange={searchhandler}
         type="text"
         placeholder="Search jobs, clients..."
-        className="w-64 rounded-lg border border-zinc-800 bg-zinc-900/50 py-2 pl-10 pr-4 text-xs text-zinc-100 transition-colors focus:border-amber-500/50 focus:outline-none"
+        className="w-64 rounded-lg border py-2 pl-10 pr-4 text-xs transition-colors focus:border-amber-500/50 focus:outline-none border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 dark:border-zinc-800 dark:bg-zinc-800/50 dark:text-white dark:placeholder:text-zinc-500 pink:border-pink-200 pink:bg-white pink:text-pink-900"
       />
       {show && <SearchCard query={input} />}
     </div>
