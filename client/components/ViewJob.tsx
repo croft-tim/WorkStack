@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from 'react-router'
-import { statuses } from '../../models/job'
+import { Job, statuses } from '../../models/job'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useJobs } from '../hooks/useJob'
@@ -18,7 +18,7 @@ export default function ViewJob() {
   queryClient.invalidateQueries({ queryKey: ['jobs'] })
 
   const [formState, setFormState] = useState(true)
-  const [formData, setFormData] = useState({})
+  const [formData, setFormData] = useState({} as Job)
   const [position, setPosition] = useState<[number, number] | null>(null)
   const [loadingMap, setLoadingMap] = useState(true)
 
@@ -68,7 +68,7 @@ export default function ViewJob() {
     console.log(formData)
   }
 
-  function editHandler() {
+  function editHandler(job: Job) {
     setFormData({ ...job })
     if (formState == true) {
       setFormState(false)
@@ -77,7 +77,7 @@ export default function ViewJob() {
     }
   }
 
-  const handleEdit = async (job) => {
+  const handleEdit = async (job: Job) => {
     if (job.endDate < job.startDate) {
       toast.error('End date cannot be before start date')
       return
@@ -95,11 +95,11 @@ export default function ViewJob() {
 
   if (!job) {
     return (
-      <div className="mx-auto max-w-4xl p-6 text-zinc-100">
+      <div className="mx-auto max-w-4xl p-6 text-slate-900 dark:text-zinc-100 pink:text-pink-900">
         <h1 className="text-2xl font-semibold">Job not found</h1>
         <Link
           to="/"
-          className="mt-4 inline-block rounded-md border border-zinc-700 bg-zinc-800 px-4 py-2 text-sm text-zinc-200"
+          className="mt-4 inline-block rounded-md border border-slate-300 bg-slate-100 px-4 py-2 text-sm text-slate-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 pink:border-pink-300 pink:bg-pink-50 pink:text-pink-800"
         >
           Back to Board
         </Link>
@@ -131,7 +131,7 @@ export default function ViewJob() {
         </div>
         <div className="flex gap-2 rounded-md border border-slate-200 bg-slate-100 p-2 pink:border-pink-200 pink:bg-pink-100 dark:border-zinc-800 dark:bg-zinc-800/50">
           <button
-            onClick={editHandler}
+            onClick={() => editHandler(job)}
             className="rounded-md border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 transition-colors hover:bg-slate-50 pink:border-pink-200 pink:bg-pink-50 pink:text-pink-700 pink:hover:bg-pink-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
           >
             Edit
@@ -204,7 +204,7 @@ export default function ViewJob() {
             {!formState && (
               <button
                 type="button"
-                onClick={editHandler}
+                onClick={() => editHandler(job)}
                 className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 pink:border-pink-200 pink:bg-pink-100 pink:text-pink-700 pink:hover:bg-pink-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
               >
                 Cancel
