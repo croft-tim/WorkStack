@@ -36,19 +36,19 @@ export default function KanbanAccordion({ statuses, jobs }: Props) {
               onClick={() => setActiveStatus(isActive ? null : status)}
               className={`flex flex-col items-start gap-1 rounded-lg border p-4 transition-all duration-200 ${
                 isActive
-                  ? 'border-zinc-600 bg-zinc-800'
-                  : 'border-zinc-800 bg-zinc-900 hover:border-zinc-700'
+                  ? 'border-slate-300 bg-slate-100 dark:border-zinc-600 dark:bg-zinc-800'
+                  : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700'
               }`}
             >
               <div className="flex items-center gap-2">
                 <span
                   className={`h-2 w-2 rounded-full ${statusColors[status]}`}
                 />
-                <span className="text-sm font-semibold text-zinc-100">
+                <span className="text-sm font-semibold text-slate-800 dark:text-zinc-100">
                   {status}
                 </span>
               </div>
-              <span className="text-xs text-zinc-400">
+              <span className="text-xs text-slate-500 dark:text-zinc-400">
                 {count} job{count !== 1 ? 's' : ''}
               </span>
             </button>
