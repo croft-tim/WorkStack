@@ -95,7 +95,7 @@ export default function Header({ showToolbar = true }: Props) {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setTheme('pink')}
-              className={`h-10 w-16 overflow-hidden rounded border transition-opacity duration-300 ${
+              className={`hidden md:block h-10 w-16 overflow-hidden rounded border transition-opacity duration-300 ${
                 theme === 'pink' ? 'opacity-100' : 'opacity-0 hover:opacity-100'
               }`}
               aria-label="Pink mode"
@@ -160,7 +160,7 @@ export default function Header({ showToolbar = true }: Props) {
               </div>
 
               {/* Name */}
-              <span className="text-sm font-medium text-slate-700 dark:text-zinc-300 pink:text-pink-800">
+              <span className="hidden md:inline text-sm font-medium text-slate-700 dark:text-zinc-300 pink:text-pink-800">
                 {user.given_name}
               </span>
 
