@@ -119,7 +119,7 @@ export default function KanbanCard({ job }: Props) {
       </div>
 
       <div className="mt-2 flex gap-2">
-        <div onClick={(e) => e.stopPropagation()}>
+        <div>
           <select
             value={job.status}
             onClick={(e) => e.stopPropagation()}
