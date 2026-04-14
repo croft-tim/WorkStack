@@ -70,12 +70,12 @@ export default function AddressAutocomplete({
       />
 
       {suggestions.length > 0 && (
-        <ul className="absolute top-full z-10 mt-1 max-h-48 w-full overflow-y-auto rounded-lg border bg-white text-slate-900 shadow-md">
+        <ul className="absolute top-full z-10 mt-1 max-h-48 w-full overflow-y-auto rounded-lg border border-slate-200 bg-white text-slate-900 shadow-md dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 pink:border-pink-200 pink:bg-pink-50 pink:text-pink-900">
           {suggestions.map((item, index) => (
             <li
               key={index}
               onClick={() => handleSelect(item.properties.formatted)}
-              className="cursor-pointer px-3 py-2 hover:bg-slate-100"
+              className="cursor-pointer px-3 py-2 hover:bg-slate-100 dark:hover:bg-zinc-700 pink:hover:bg-pink-100"
             >
               {item.properties.formatted}
             </li>

@@ -99,7 +99,7 @@ export default function KanbanAccordion({ statuses, jobs }: Props) {
       {activeStatus && (
         <div className="flex flex-col gap-3">
           {filteredJobs.length === 0 ? (
-            <div className="rounded-lg border-2 border-dashed border-zinc-800/50 py-12 text-center text-xs text-zinc-600">
+            <div className="rounded-lg border-2 border-dashed border-slate-300 py-12 text-center text-xs text-slate-400 dark:border-zinc-800/50 dark:text-zinc-600 pink:border-pink-200 pink:text-pink-400">
               No jobs in {activeStatus}
             </div>
           ) : (
