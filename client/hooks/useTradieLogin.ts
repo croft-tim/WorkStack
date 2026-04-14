@@ -16,7 +16,7 @@ export function useTradieLogin() {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ name: user.nickname }),
+          body: JSON.stringify({ name: user.name }),
         })
       }
     }
