@@ -7,6 +7,14 @@ import tradieRoutes from './routes/tradies.ts'
 
 const server = express()
 
+if (process.env.NODE_ENV !== 'production') {
+  import('dotenv')
+    .then((dotenv) => dotenv.config())
+    .catch((err) => {
+      console.error('Failed to load dotenv: ', err)
+    })
+}
+
 server.use(express.json())
 
 server.use('/api/v1/jobs', jobRoutes)
