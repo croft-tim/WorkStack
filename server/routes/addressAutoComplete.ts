@@ -1,7 +1,15 @@
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
 import express from 'express'
 
-dotenv.config()
+// dotenv.config()
+
+if (process.env.NODE_ENV !== 'production') {
+  import('dotenv')
+    .then((dotenv) => dotenv.config())
+    .catch((err) => {
+      console.error('Failed to load dotenv: ', err)
+    })
+}
 
 const router = express.Router()
 
