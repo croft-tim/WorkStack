@@ -1,8 +1,16 @@
+/**
+ * @vitest-environment jsdom
+ */
+
 import '@testing-library/jest-dom/vitest'
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import CustomerForm from '../CustomerForm'
+
+afterEach(() => {
+  cleanup()
+})
 
 vi.mock('../AddressAutoComplete', () => ({
   default: ({
@@ -30,12 +38,12 @@ describe('CustomerForm', () => {
   it('renders the create customer form fields', () => {
     render(<CustomerForm onSubmit={vi.fn()} />)
 
-    expect(screen.getAllByLabelText(/name/i)).toBeInTheDocument()
-    expect(screen.getAllByLabelText(/address/i)).toBeInTheDocument()
-    expect(screen.getAllByLabelText(/phone/i)).toBeInTheDocument()
-    expect(screen.getAllByLabelText(/email/i)).toBeInTheDocument()
-    expect(screen.getAllByLabelText(/rating/i)).toBeInTheDocument()
-    expect(screen.getAllByLabelText(/notes/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/name/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/address/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/phone/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/email/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/rating/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/notes/i)).toBeInTheDocument()
     expect(
       screen.getByRole('button', { name: /create customer/i }),
     ).toBeInTheDocument()
@@ -73,6 +81,7 @@ describe('CustomerForm', () => {
       <CustomerForm
         initialData={{
           id: 1,
+          name: 'Mark Riley',
           address: '50 Albert Street',
           phone: '0210000000',
           email: 'mark@example.com',
@@ -84,6 +93,7 @@ describe('CustomerForm', () => {
     )
 
     expect(screen.getByDisplayValue('Mark Riley')).toBeInTheDocument()
+    expect(screen.getByDisplayValue('mark@example.com')).toBeInTheDocument()
     expect(screen.getAllByDisplayValue('50 Albert Street')).toBeInTheDocument()
     expect(
       screen.getByRole('button', { name: /save changes/i }),
