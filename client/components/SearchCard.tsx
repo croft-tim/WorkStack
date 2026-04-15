@@ -31,7 +31,9 @@ function Search() {
 
   return (
     <div>
+      <label htmlFor="global-search" className="sr-only pink:text-black">Search jobs and clients</label>
       <input
+        id="global-search"
         onFocus={focusHandler}
         onBlur={unfocusHandler}
         onChange={searchhandler}
@@ -55,7 +57,7 @@ function SearchJobItems({ jobs }: { jobs: Job[] }) {
           role="button"
           tabIndex={0}
           onClick={() => navigate(`/jobs/${job.id}`)}
-          onKeyDown={() => navigate(`/jobs/${job.id}`)}
+          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/jobs/${job.id}`)}
           key={job.id}
           className="group relative flex cursor-pointer flex-col gap-3 rounded-lg border p-3 transition-all duration-200 border-slate-200 bg-slate-50 hover:bg-slate-100 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:shadow-lg dark:hover:shadow-black/20 pink:border-pink-200 pink:bg-pink-50 pink:hover:bg-pink-100"
         >
@@ -80,7 +82,7 @@ function SearchCustomerItems({ customers }: { customers: Customer[] }) {
           role="button"
           tabIndex={0}
           onClick={() => navigate(`/customer/${customer.id}`)}
-          onKeyDown={() => navigate(`/customer/${customer.id}`)}
+          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/customer/${customer.id}`)}
           key={customer.id}
           className="group relative flex cursor-pointer flex-col gap-3 rounded-lg border p-3 transition-all duration-200 border-slate-200 bg-slate-50 hover:bg-slate-100 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700 dark:hover:shadow-lg dark:hover:shadow-black/20 pink:border-pink-200 pink:bg-pink-50 pink:hover:bg-pink-100"
         >

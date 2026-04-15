@@ -30,13 +30,13 @@ export default function KanbanAccordion({ statuses, jobs }: Props) {
         <div className="flex items-center gap-0.5">
           <Link
             to="/kanban"
-            className="flex items-center rounded-l-lg bg-amber-500 px-4 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-amber-400 pink:bg-pink-600 pink:text-white pink:hover:bg-pink-400"
+            className="flex items-center rounded-l-lg bg-amber-500 px-4 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-amber-400 pink:bg-pink-700 pink:text-white pink:hover:bg-pink-600"
           >
             Jobs
           </Link>
           <Link
             to="/jobs/new"
-            className="flex items-center rounded-r-lg bg-amber-500 px-2 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-amber-400 pink:bg-pink-600 pink:text-white pink:hover:bg-pink-400"
+            className="flex items-center rounded-r-lg bg-amber-500 px-2 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-amber-400 pink:bg-pink-700 pink:text-white pink:hover:bg-pink-600"
             aria-label="New Job"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -47,13 +47,13 @@ export default function KanbanAccordion({ statuses, jobs }: Props) {
         <div className="flex items-center gap-0.5">
           <Link
             to="/customers"
-            className="flex items-center rounded-l-lg bg-slate-500 px-4 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-slate-600 pink:bg-pink-500/90 pink:text-white pink:hover:bg-pink-500"
+            className="flex items-center rounded-l-lg bg-slate-600 px-4 py-2 text-xs font-bold text-white transition-all hover:bg-slate-700 pink:bg-pink-700 pink:text-white pink:hover:bg-pink-600"
           >
             Customers
           </Link>
           <Link
             to="/customers/new"
-            className="flex items-center rounded-r-lg bg-slate-500 px-2 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-slate-600 pink:bg-pink-500/90 pink:text-white pink:hover:bg-pink-500"
+            className="flex items-center rounded-r-lg bg-slate-600 px-2 py-2 text-xs font-bold text-white transition-all hover:bg-slate-700 pink:bg-pink-700 pink:text-white pink:hover:bg-pink-600"
             aria-label="New Customer"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -73,6 +73,7 @@ export default function KanbanAccordion({ statuses, jobs }: Props) {
             <button
               key={status}
               onClick={() => setActiveStatus(isActive ? null : status)}
+              aria-expanded={isActive}
               className={`flex flex-col items-start gap-1 rounded-lg border p-4 transition-all duration-200 ${
                 isActive
                   ? 'border-slate-300 bg-slate-100 dark:border-zinc-600 dark:bg-zinc-800'

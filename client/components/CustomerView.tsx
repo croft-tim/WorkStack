@@ -58,19 +58,19 @@ export default function CustomerView() {
   }, [customer?.address])
 
   if (isPending) return <p className="p-8 text-slate-400 dark:text-zinc-400 pink:text-pink-400">Loading...</p>
-  if (isError) return <p className="p-8 text-rose-500 dark:text-rose-400 pink:text-rose-500">Error: {error.message}</p>
-  if (!customer) return <p className="p-8 text-slate-500 dark:text-zinc-400 pink:text-pink-500">Customer not found</p>
+  if (isError) return <p className="p-8 text-rose-500 dark:text-rose-400 pink:text-rose-700">Error: {error.message}</p>
+  if (!customer) return <p className="p-8 text-slate-500 dark:text-zinc-400 pink:text-pink-700">Customer not found</p>
 
   return (
     <div className="min-h-screen bg-white p-8 transition-colors duration-300 pink:bg-pink-50 dark:bg-zinc-900">
       <div className="mx-auto mt-5 max-w-2xl rounded-lg border border-slate-200 bg-white p-8 transition-all duration-200 hover:border-slate-300 hover:shadow-lg hover:shadow-black/5 pink:border-pink-200 pink:bg-pink-50 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10 dark:border-zinc-800 dark:bg-zinc-800/50 dark:hover:border-zinc-700 dark:hover:shadow-black/20">
         <div className="flex items-start justify-between">
-          <h3 className="text-sm font-semibold text-slate-800 transition-colors pink:text-pink-900 dark:text-zinc-300">
-            {customer.name}
-          </h3>
-          <span className="flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-500 pink:border-pink-500/20 pink:bg-pink-500/10 pink:text-pink-600">
+          <h1 className="text-sm font-semibold text-slate-800 transition-colors pink:text-pink-900 dark:text-zinc-300">
+            {customer.name || 'Customer'}
+          </h1>
+          <span className="flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-amber-500 pink:border-pink-500/20 pink:bg-pink-500/10 pink:text-pink-800">
             <svg
-              className="h-3 w-3 text-zinc-500 pink:text-pink-400"
+              className="h-3 w-3 text-zinc-500 pink:text-pink-700"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -87,14 +87,14 @@ export default function CustomerView() {
           <button
             type="button"
             onClick={() => navigate(`/customer/${customer.id}/edit`)}
-            className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-bold text-white transition-all hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
+            className="rounded-lg bg-amber-500 px-4 py-2 text-sm font-bold text-zinc-900 transition-all hover:bg-amber-400 pink:bg-pink-700 pink:text-white pink:hover:bg-pink-600"
           >
             Edit customer
           </button>
         </div>
 
         <div className="mt-5 flex flex-col gap-2 border-t border-slate-100 pt-3 pink:border-pink-100 dark:border-zinc-800">
-          <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-500">
+          <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-700 dark:text-zinc-500">
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -116,7 +116,7 @@ export default function CustomerView() {
             </svg>
             {customer.address}
           </div>
-          <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-500">
+          <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-700 dark:text-zinc-500">
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -132,7 +132,7 @@ export default function CustomerView() {
             </svg>
             {customer.email}
           </div>
-          <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-500">
+          <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-700 dark:text-zinc-500">
             <svg
               className="h-3.5 w-3.5"
               fill="none"
@@ -157,9 +157,9 @@ export default function CustomerView() {
       </div>
 
       <div className="mx-auto mt-5 max-w-2xl rounded-lg border border-slate-200 bg-white p-8 transition-all duration-200 hover:border-slate-300 hover:shadow-lg hover:shadow-black/5 pink:border-pink-200 pink:bg-pink-50 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10 dark:border-zinc-800 dark:bg-zinc-800/50 dark:hover:border-zinc-700 dark:hover:shadow-black/20">
-        <h3 className="mb-3 text-sm font-semibold text-slate-800 transition-colors pink:text-pink-900 dark:text-zinc-300">
+        <h2 className="mb-3 text-sm font-semibold text-slate-800 transition-colors pink:text-pink-900 dark:text-zinc-300">
           Previous jobs
-        </h3>
+        </h2>
         <div className="flex flex-col gap-2">
           {jobpend && <p className=" text-zinc-400">Loading jobs</p>}
           {joberror && <p className=" text-rose-400">No jobs found</p>}
@@ -189,7 +189,7 @@ export default function CustomerView() {
       <div className="mx-auto mt-16 flex h-[480px] w-full max-w-2xl items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 pink:border-pink-200 pink:bg-pink-100 dark:border-zinc-800 dark:bg-zinc-800/50">
         {loadingMap ? (
           <div className="flex flex-col items-center gap-4">
-            <p className="text-sm text-slate-400 pink:text-pink-500 dark:text-zinc-500">
+            <p className="text-sm text-slate-400 pink:text-pink-700 dark:text-zinc-500">
               Loading OpenStreetMap...
             </p>
             <img
@@ -223,7 +223,7 @@ export default function CustomerView() {
             </Marker>
           </MapContainer>
         ) : (
-          <p className="text-sm text-slate-400 pink:text-pink-500 dark:text-zinc-500">
+          <p className="text-sm text-slate-400 pink:text-pink-700 dark:text-zinc-500">
             Location not found
           </p>
         )}
