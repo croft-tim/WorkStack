@@ -1,10 +1,11 @@
+// This comment makes the test to run in a fake browser environment
 /**
  * @vitest-environment jsdom
  */
 
 import '@testing-library/jest-dom/vitest'
-import { describe, it, expect, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { describe, it, expect, vi, afterEach } from 'vitest'
+import { render, screen, cleanup } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import CustomerForm from '../CustomerForm'
 
@@ -69,8 +70,9 @@ describe('CustomerForm', () => {
       name: 'Jane Smith',
       address: '123 Queen Street',
       phone: '0211234567',
+      email: 'jane@example.com',
       notes: 'Prefers morning visits',
-      // Rating is converted to a number, not left as a tring
+      // Rating is converted to a number, not left as a string
       rating: 8,
     })
   })
@@ -94,7 +96,7 @@ describe('CustomerForm', () => {
 
     expect(screen.getByDisplayValue('Mark Riley')).toBeInTheDocument()
     expect(screen.getByDisplayValue('mark@example.com')).toBeInTheDocument()
-    expect(screen.getAllByDisplayValue('50 Albert Street')).toBeInTheDocument()
+    expect(screen.getByDisplayValue('50 Albert Street')).toBeInTheDocument()
     expect(
       screen.getByRole('button', { name: /save changes/i }),
     ).toBeInTheDocument()
