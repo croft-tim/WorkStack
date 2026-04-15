@@ -50,7 +50,7 @@ export default function CustomerForm({
     <div className="min-h-screen bg-white p-8 transition-colors duration-300 pink:bg-pink-50 dark:bg-zinc-900">
       <div className="mx-auto max-w-2xl">
         <div className="mb-6">
-          <p className="text-xs text-slate-500 pink:text-pink-500 dark:text-zinc-500">
+          <p className="text-xs text-slate-500 pink:text-pink-700 dark:text-zinc-500">
             Customers / {isEditing ? 'Edit' : 'New'}
           </p>
           <h1 className="text-xl font-medium text-slate-800 pink:text-pink-900 dark:text-zinc-50">
@@ -175,7 +175,7 @@ export default function CustomerForm({
               </button>
               <button
                 type="submit"
-                className="rounded-lg bg-amber-500 px-5 py-2 text-sm font-medium text-white transition-all hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
+                className="rounded-lg bg-amber-500 px-5 py-2 text-sm font-medium text-zinc-900 transition-all hover:bg-amber-400 pink:bg-pink-700 pink:text-white pink:hover:bg-pink-600"
               >
                 {isEditing ? 'Save changes' : 'Create customer'}
               </button>

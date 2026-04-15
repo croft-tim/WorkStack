@@ -138,7 +138,7 @@ export default function ViewJob() {
           </button>
           <button
             onClick={() => handleDelete(job.id)}
-            className="rounded-md border border-rose-200 bg-rose-50 px-4 py-2 text-sm text-rose-600 transition-colors hover:bg-rose-100 pink:border-rose-200 pink:bg-rose-50 pink:text-rose-600 pink:hover:bg-rose-100 dark:border-zinc-700 dark:bg-rose-500/10 dark:text-rose-400 dark:hover:bg-rose-500/20"
+            className="rounded-md border border-rose-200 bg-rose-50 px-4 py-2 text-sm text-rose-600 transition-colors hover:bg-rose-100 pink:border-rose-300 pink:bg-rose-50 pink:text-rose-700 pink:hover:bg-rose-100 dark:border-zinc-700 dark:bg-rose-500/10 dark:text-rose-400 dark:hover:bg-rose-500/20"
           >
             Delete
           </button>
@@ -171,7 +171,7 @@ export default function ViewJob() {
 
           <h3 className="mb-2 text-lg font-medium">Start Date</h3>
           {formState ? (
-            <p className="mb-5 text-slate-500 pink:text-pink-600 dark:text-zinc-400">
+            <p className="mb-5 text-slate-500 pink:text-pink-800 dark:text-zinc-400">
               {new Date(job.startDate).toLocaleDateString()}
             </p>
           ) : (
@@ -187,7 +187,7 @@ export default function ViewJob() {
           <h3 className="mb-2 text-lg font-medium">End Date</h3>
 
           {formState ? (
-            <p className="mb-5 text-slate-500 pink:text-pink-600 dark:text-zinc-400">
+            <p className="mb-5 text-slate-500 pink:text-pink-800 dark:text-zinc-400">
               {new Date(job.endDate).toLocaleDateString()}
             </p>
           ) : (
@@ -214,7 +214,7 @@ export default function ViewJob() {
               <button
                 onClick={() => handleEdit({ ...job, ...formData })}
                 type="submit"
-                className="rounded-lg bg-amber-500 px-5 py-2 text-sm font-medium text-white hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
+                className="rounded-lg bg-amber-500 px-5 py-2 text-sm font-medium text-zinc-900 hover:bg-amber-400 pink:bg-pink-700 pink:text-white pink:hover:bg-pink-600"
               >
                 Save Changes
               </button>
@@ -315,7 +315,7 @@ dark:text-zinc-100"
       <div className="mx-auto mt-16 flex h-[480px] w-full max-w-2xl items-center justify-center overflow-hidden rounded-lg border border-slate-200 bg-slate-50 pink:border-pink-200 pink:bg-pink-100 dark:border-zinc-800 dark:bg-zinc-800/50">
         {loadingMap ? (
           <div className="flex flex-col items-center gap-4">
-            <p className="text-sm text-slate-400 pink:text-pink-500 dark:text-zinc-500">
+            <p className="text-sm text-slate-400 pink:text-pink-700 dark:text-zinc-500">
               Loading OpenStreetMap...
             </p>
             <img
@@ -349,7 +349,7 @@ dark:text-zinc-100"
             </Marker>
           </MapContainer>
         ) : (
-          <p className="text-sm text-slate-400 pink:text-pink-500 dark:text-zinc-500">
+          <p className="text-sm text-slate-400 pink:text-pink-700 dark:text-zinc-500">
             Location not found
           </p>
         )}

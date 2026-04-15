@@ -58,11 +58,12 @@ export default function AddressAutocomplete({
 
   return (
     <div className="relative flex flex-col gap-1.5">
-      <label className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-400">
+      <label htmlFor="address-autocomplete" className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-400">
         {label}
       </label>
 
       <input
+        id="address-autocomplete"
         type="text"
         value={inputValue}
         placeholder={placeholder}

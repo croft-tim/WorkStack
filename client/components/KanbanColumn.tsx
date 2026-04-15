@@ -30,13 +30,14 @@ export default function KanbanColumn({ status, jobs }: Props) {
           <h2 className="text-sm font-bold tracking-wide text-slate-700 pink:text-pink-800 dark:text-zinc-200">
             {status}
           </h2>
-          <span className="ml-1 rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-bold text-slate-500 pink:bg-pink-200 pink:text-pink-600 dark:bg-zinc-800 dark:text-zinc-400">
+          <span className="ml-1 rounded-full bg-slate-200 px-2 py-0.5 text-xs font-bold text-slate-700 pink:bg-pink-200 pink:text-pink-900 dark:bg-zinc-800 dark:text-zinc-300">
             {jobs.length}
           </span>
         </div>
         <button
           type="button"
           onClick={handleAddJob}
+          aria-label={`Add new job to ${status}`}
           className="rounded-md p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-600 pink:text-pink-400 pink:hover:bg-pink-200 pink:hover:text-pink-600 dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
         >
           <svg

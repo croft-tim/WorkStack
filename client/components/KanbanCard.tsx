@@ -34,7 +34,7 @@ export default function KanbanCard({ job }: Props) {
           {job.title}
         </h3>
 
-        <p className="mt-1 flex items-center gap-1 text-xs text-slate-500 pink:text-pink-700 dark:text-zinc-300">
+        <p className="mt-1 flex items-center gap-1 text-xs text-slate-600 pink:text-pink-700 dark:text-zinc-300">
           <svg
             className="h-3.5 w-3.5 shrink-0"
             fill="none"
@@ -60,7 +60,7 @@ export default function KanbanCard({ job }: Props) {
       </div>
 
       <div className="mt-2 flex flex-col gap-2 border-t border-slate-100 pt-3 pink:border-pink-100 dark:border-zinc-800">
-        <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-300">
+        <div className="flex items-center gap-2 text-[11px] text-slate-600 pink:text-pink-800 dark:text-zinc-300">
           <svg
             className="h-3.5 w-3.5"
             fill="none"
@@ -77,7 +77,7 @@ export default function KanbanCard({ job }: Props) {
           {job.tradieName}
         </div>
 
-        <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-300">
+        <div className="flex items-center gap-2 text-[11px] text-slate-600 pink:text-pink-800 dark:text-zinc-300">
           <svg
             className="h-3.5 w-3.5"
             fill="none"
@@ -100,7 +100,7 @@ export default function KanbanCard({ job }: Props) {
           {job.address}
         </div>
 
-        <div className="flex items-center gap-2 text-[11px] text-slate-500 pink:text-pink-500 dark:text-zinc-300">
+        <div className="flex items-center gap-2 text-[11px] text-slate-600 pink:text-pink-800 dark:text-zinc-300">
           <svg
             className="h-3.5 w-3.5"
             fill="none"
@@ -120,7 +120,9 @@ export default function KanbanCard({ job }: Props) {
 
       <div className="mt-2 flex gap-2">
         <div>
+          <label htmlFor={`status-${job.id}`} className="sr-only">Job status</label>
           <select
+            id={`status-${job.id}`}
             value={job.status}
             onClick={(e) => e.stopPropagation()}
             onChange={(e) => {
@@ -144,7 +146,7 @@ export default function KanbanCard({ job }: Props) {
               deleteJob(job.id)
             }
           }}
-          className="rounded-md border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-xs text-rose-400 transition hover:bg-rose-500/20 pink:border-rose-300 pink:bg-rose-50 pink:text-rose-600 pink:hover:bg-rose-100"
+          className="rounded-md border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-xs text-rose-600 transition hover:bg-rose-500/20 pink:border-rose-300 pink:bg-rose-50 pink:text-rose-700 pink:hover:bg-rose-100 dark:text-rose-400"
         >
           Delete
         </button>

@@ -10,12 +10,12 @@ export default function CustomerCard({ customer }: Props) {
     <button className="h-full w-full">
       <div className="group relative flex h-full w-full min-h-[120px] min-w-[260px] flex-col gap-3 rounded-lg border transition-all duration-200 border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-800/50 pink:border-pink-200 pink:bg-pink-50 p-4 hover:shadow-lg hover:shadow-black/5 dark:hover:border-zinc-700 dark:hover:shadow-black/20 pink:hover:border-pink-300 pink:hover:shadow-pink-500/10">
         <div className="flex items-start justify-between">
-          <h3 className="text-sm font-semibold transition-colors text-slate-800 dark:text-zinc-300 pink:text-pink-900 group-hover:text-amber-500 pink:group-hover:text-pink-600">
+          <h2 className="text-sm font-semibold transition-colors text-slate-800 dark:text-zinc-300 pink:text-pink-900 group-hover:text-amber-500 pink:group-hover:text-pink-600">
             {customer.name}
-          </h3>
-          <span className="flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-500 pink:border-pink-500/20 pink:bg-pink-500/10 pink:text-pink-600">
+          </h2>
+          <span className="flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-2 py-0.5 text-xs font-bold uppercase tracking-wider text-amber-700 pink:border-pink-500/20 pink:bg-pink-500/10 pink:text-pink-800">
             <svg
-              className="h-3 w-3 text-zinc-500 pink:text-pink-400"
+              className="h-3 w-3 text-amber-700 pink:text-pink-800"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -33,7 +33,7 @@ export default function CustomerCard({ customer }: Props) {
 
         <div className="mt-2 flex flex-col gap-2 border-t pt-3 border-slate-100 dark:border-zinc-800 pink:border-pink-100">
           {customer.notes && (
-            <p className="mt-1 text-[11px] italic text-slate-500 dark:text-zinc-400 pink:text-pink-700">
+            <p className="mt-1 text-xs italic text-slate-500 dark:text-zinc-400 pink:text-pink-700">
               {customer.notes}
             </p>
           )}
