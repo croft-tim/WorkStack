@@ -19,7 +19,6 @@ export default function NewJobPage() {
 
   return (
     <div>
-      <h1>New Job</h1>
       <JobForm
         onSubmit={handleSubmit}
         initialData={{ status: initialStatus }}
