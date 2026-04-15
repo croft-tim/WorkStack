@@ -47,6 +47,7 @@ export default function Header({ showToolbar = true }: Props) {
               className="flex flex-col justify-center gap-1 rounded p-2 hover:bg-slate-100 focus:outline-none pink:hover:bg-pink-200 dark:hover:bg-zinc-800"
               aria-label="Open navigation menu"
               aria-expanded={menuOpen}
+              aria-controls="main-nav-menu"
             >
               <span className="block h-0.5 w-5 bg-slate-700 pink:bg-pink-700 dark:bg-zinc-400" />
               <span className="block h-0.5 w-5 bg-slate-700 pink:bg-pink-700 dark:bg-zinc-400" />
@@ -61,9 +62,9 @@ export default function Header({ showToolbar = true }: Props) {
                   tabIndex={-1}
                   aria-label="Close menu"
                   onClick={() => setMenuOpen(false)}
-                  onKeyDown={() => setMenuOpen(false)}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setMenuOpen(false)}
                 />
-                <nav className="absolute left-0 top-full z-50 mt-1 w-48 rounded border border-slate-200 bg-white shadow-lg pink:border-pink-200 pink:bg-pink-50 dark:border-zinc-800 dark:bg-zinc-800">
+                <nav id="main-nav-menu" className="absolute left-0 top-full z-50 mt-1 w-48 rounded border border-slate-200 bg-white shadow-lg pink:border-pink-200 pink:bg-pink-50 dark:border-zinc-800 dark:bg-zinc-800">
                   {navLinks.map(({ label, to }) => (
                     <Link
                       key={label}
@@ -155,7 +156,7 @@ export default function Header({ showToolbar = true }: Props) {
           ) : (
             <div className="flex items-center gap-3">
               {/* Avatar */}
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-500 text-sm font-bold text-white">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-500 text-sm font-bold text-zinc-900">
                 {user.given_name?.charAt(0)}
               </div>
 
@@ -167,7 +168,7 @@ export default function Header({ showToolbar = true }: Props) {
               {/* Logout */}
               <button
                 onClick={handleSignOut}
-                className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-800 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 pink:border-pink-300 pink:text-pink-700 pink:hover:bg-pink-100 pink:hover:text-pink-900"
+                className="rounded-lg border border-slate-300 px-3 py-2 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-800 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 pink:border-pink-400 pink:text-pink-900 pink:hover:bg-pink-300 pink:hover:text-pink-900"
               >
                 Log out
               </button>
@@ -217,13 +218,13 @@ export default function Header({ showToolbar = true }: Props) {
             <div className="hidden md:flex items-center gap-0.5">
               <Link
                 to="/kanban"
-                className="flex items-center rounded-l-lg bg-amber-500 px-4 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20 pink:bg-pink-600 pink:text-white pink:hover:bg-pink-400 pink:hover:shadow-pink-500/20"
+                className="flex items-center rounded-l-lg bg-amber-500 px-4 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20 pink:bg-pink-700 pink:text-white pink:hover:bg-pink-600 pink:hover:shadow-pink-500/20"
               >
                 Jobs
               </Link>
               <Link
                 to="/jobs/new"
-                className="flex items-center rounded-r-lg bg-amber-500 px-2 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20 pink:bg-pink-600 pink:text-white pink:hover:bg-pink-400 pink:hover:shadow-pink-500/20"
+                className="flex items-center rounded-r-lg bg-amber-500 px-2 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20 pink:bg-pink-700 pink:text-white pink:hover:bg-pink-600 pink:hover:shadow-pink-500/20"
                 aria-label="New Job"
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -236,13 +237,13 @@ export default function Header({ showToolbar = true }: Props) {
             <div className="hidden md:flex items-center gap-0.5">
               <Link
                 to="/customers"
-                className="flex items-center rounded-l-lg bg-slate-500 px-4 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-slate-600 hover:shadow-lg hover:shadow-slate-500/20 pink:bg-pink-500/90 pink:text-white pink:hover:bg-pink-500 pink:hover:shadow-pink-500/20"
+                className="flex items-center rounded-l-lg bg-slate-600 px-4 py-2 text-xs font-bold text-white transition-all hover:bg-slate-700 hover:shadow-lg hover:shadow-slate-500/20 pink:bg-pink-700 pink:text-white pink:hover:bg-pink-600 pink:hover:shadow-pink-500/20"
               >
                 Customers
               </Link>
               <Link
                 to="/customers/new"
-                className="flex items-center rounded-r-lg bg-slate-500 px-2 py-2 text-xs font-bold text-zinc-900 transition-all hover:bg-slate-600 hover:shadow-lg hover:shadow-slate-500/20 pink:bg-pink-500/90 pink:text-white pink:hover:bg-pink-500 pink:hover:shadow-pink-500/20"
+                className="flex items-center rounded-r-lg bg-slate-600 px-2 py-2 text-xs font-bold text-white transition-all hover:bg-slate-700 hover:shadow-lg hover:shadow-slate-500/20 pink:bg-pink-700 pink:text-white pink:hover:bg-pink-600 pink:hover:shadow-pink-500/20"
                 aria-label="New Customer"
               >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

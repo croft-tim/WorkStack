@@ -71,7 +71,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
     <div className="min-h-screen bg-white p-8 transition-colors duration-300 pink:bg-pink-50 dark:bg-zinc-900">
       <div className="mx-auto max-w-2xl">
         <div className="mb-6">
-          <p className="text-xs text-slate-500 pink:text-pink-500 dark:text-zinc-500">
+          <p className="text-xs text-slate-500 pink:text-pink-700 dark:text-zinc-300">
             Jobs / {isEditing ? 'Edit' : 'New'}
           </p>
           <h1 className="text-xl font-medium text-slate-800 pink:text-pink-900 dark:text-zinc-50">
@@ -84,7 +84,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="title"
-                className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-400"
+                className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-300"
               >
                 Job title
               </label>
@@ -103,7 +103,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="notes"
-                className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-400"
+                className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-300"
               >
                 Notes
               </label>
@@ -121,7 +121,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
             <div className="flex flex-col gap-1.5">
               <label
                 htmlFor="customerId"
-                className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-400"
+                className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-300"
               >
                 Customer
               </label>
@@ -148,12 +148,12 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="quote"
-                  className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-400"
+                  className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-300"
                 >
                   Quote
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-slate-400 pink:text-pink-400 dark:text-zinc-400">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-slate-500 pink:text-pink-700 dark:text-zinc-300">
                     $
                   </span>
                   <input
@@ -173,7 +173,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="status"
-                  className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-400"
+                  className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-300"
                 >
                   Status
                 </label>
@@ -197,7 +197,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="startDate"
-                  className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-400"
+                  className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-300"
                 >
                   Start date
                 </label>
@@ -215,7 +215,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="endDate"
-                  className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-400"
+                  className="text-xs font-medium text-slate-500 pink:text-pink-700 dark:text-zinc-300"
                 >
                   End date
                 </label>
@@ -241,7 +241,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
               </Link>
               <button
                 type="submit"
-                className="rounded-lg bg-amber-500 px-5 py-2 text-sm font-medium text-white transition-all hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
+                className="rounded-lg bg-amber-500 px-5 py-2 text-sm font-medium text-zinc-900 transition-all hover:bg-amber-400 pink:bg-pink-700 pink:text-white pink:hover:bg-pink-600"
               >
                 {isEditing ? 'Save changes' : 'Create job'}
               </button>

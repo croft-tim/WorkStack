@@ -17,7 +17,7 @@ export default function CustomerList() {
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-5">
+      <div className="grid items-stretch gap-4 [grid-template-columns:repeat(auto-fill,minmax(260px,1fr))]">
         {data.map((customer) => (
           <button
             key={customer.id}
