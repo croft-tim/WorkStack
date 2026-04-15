@@ -13,7 +13,7 @@ export async function up(knex) {
     table.integer('quote')
     table.string('notes')
     table.date('start_date')
-    table.date('end_date').defaultTo('null')
+    table.date('end_date')
   })
 }
 
