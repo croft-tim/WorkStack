@@ -28,8 +28,6 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
     ...initialData,
   })
 
-  const isEditing = Boolean(initialData)
-
   function handleChange(
     evt: ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -72,10 +70,10 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
       <div className="mx-auto max-w-2xl">
         <div className="mb-6">
           <p className="text-xs text-slate-500 pink:text-pink-500 dark:text-zinc-500">
-            Jobs / {isEditing ? 'Edit' : 'New'}
+            Jobs /
           </p>
           <h1 className="text-xl font-medium text-slate-800 pink:text-pink-900 dark:text-zinc-50">
-            {isEditing ? 'Edit job' : 'Create job'}
+            Create job
           </h1>
         </div>
 
@@ -243,7 +241,7 @@ export default function JobForm({ initialData, onSubmit }: JobFormProps) {
                 type="submit"
                 className="rounded-lg bg-amber-500 px-5 py-2 text-sm font-medium text-white transition-all hover:bg-amber-400 pink:bg-pink-500 pink:hover:bg-pink-400"
               >
-                {isEditing ? 'Save changes' : 'Create job'}
+                Create job
               </button>
             </div>
           </form>
