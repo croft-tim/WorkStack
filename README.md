@@ -3,13 +3,13 @@
 A CRM and job management tool built for tradespeople — tracking 
 customers, jobs, and costs in one place.
 
-Built as a group project during Dev Academy Aotearoa's full-stack bootcamp.
+Built as a group project during Dev Academy Aotearoa's Raumati 2026 intake full-stack bootcamp.
 
 ## My contributions 
 included designing the UI header and overall styling with Tailwind 
 CSS, building the animated SVG logo, accessibility work (tested and 
 refined using WAVE), writing tests, and a significant amount of code 
-cleanup and refactoring. I was responsible for close to half the 
+cleanup and refactoring, including browser re-sizing from desktop to mobile. I was responsible for close to half the 
 commits across the project.
 
 **Stack:** React · TypeScript · Node.js · Express · Knex.js · SQLite · Auth0 · TanStack Query · Vitest
