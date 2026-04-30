@@ -1,5 +1,20 @@
 # WorkStack
 
+A CRM and job management tool built for tradespeople — tracking customers, 
+jobs, and costs in one place.
+
+Built as a group project during Dev Academy Aotearoa's full-stack bootcamp.
+
+**Stack:** React · TypeScript · Node.js · Express · Knex.js · SQLite · Auth0 · TanStack Query · Vitest
+
+## Running locally
+
+git clone https://github.com/croft-tim/workstack.git
+cd workstack
+npm install
+cp .env.example .env   # add your Auth0 and Geoapify keys
+npm run dev
+
 **WorkStack** is a specialized CRM and job management tool built specifically for tradespeople, combining customer relationship management with job tracking and scheduling in a single, integrated workflow. Built with React (frontend), Express (backend), SQLite (database), and TypeScript (shared models), the platform is evolving to include comprehensive financial tracking — enabling users to monitor customer-specific costs and revenue, manage total cost structures, and analyze overall business profitability.
 
 ## Logic Overview: Frontend to Backend
